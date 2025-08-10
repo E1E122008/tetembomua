@@ -1,0 +1,259 @@
+@extends('layouts.app')
+
+@section('title', 'Kontak - Desa Tetembomua')
+
+@section('content')
+<!-- Breadcrumb -->
+<nav aria-label="breadcrumb" class="breadcrumb">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Beranda</a></li>
+            <li class="breadcrumb-item active">Kontak</li>
+        </ol>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-section" style="min-height: 50vh;">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1>Hubungi Kami</h1>
+                <p>Silakan hubungi kami untuk informasi lebih lanjut tentang Desa Tetembomua</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Information Section -->
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-map-marker-alt fa-3x text-primary mb-3"></i>
+                        <h5 class="card-title">Alamat</h5>
+                        <p class="card-text">
+                            Desa Tetembomua, Kecamatan<br>
+                            Kabupaten, Provinsi<br>
+                            Kode Pos: 12345
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-phone fa-3x text-success mb-3"></i>
+                        <h5 class="card-title">Telepon</h5>
+                        <p class="card-text">
+                            <a href="tel:+6281234567890" class="text-decoration-none">+62 812-3456-7890</a><br>
+                            <a href="tel:+6281234567891" class="text-decoration-none">+62 812-3456-7891</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-envelope fa-3x text-warning mb-3"></i>
+                        <h5 class="card-title">Email</h5>
+                        <p class="card-text">
+                            <a href="mailto:info@desatetembomua.id" class="text-decoration-none">info@desatetembomua.id</a><br>
+                            <a href="mailto:pertanian@desatetembomua.id" class="text-decoration-none">pertanian@desatetembomua.id</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Form Section -->
+<section class="section bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="section-title">
+                    <h2>Kirim Pesan</h2>
+                    <p>Silakan isi form di bawah ini untuk mengirim pesan kepada kami</p>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="nama" class="form-label">Nama Lengkap *</label>
+                                    <input type="text" class="form-control" id="nama" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="email" class="form-label">Email *</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="telepon" class="form-label">Telepon</label>
+                                    <input type="tel" class="form-control" id="telepon">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="subjek" class="form-label">Subjek *</label>
+                                    <select class="form-select" id="subjek" required>
+                                        <option value="">Pilih Subjek</option>
+                                        <option value="informasi">Informasi Umum</option>
+                                        <option value="pertanian">Sektor Pertanian</option>
+                                        <option value="kerjasama">Kerjasama</option>
+                                        <option value="kunjungan">Kunjungan</option>
+                                        <option value="lainnya">Lainnya</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="pesan" class="form-label">Pesan *</label>
+                                <textarea class="form-control" id="pesan" rows="5" required placeholder="Tulis pesan Anda di sini..."></textarea>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <i class="fas fa-paper-plane me-2"></i>Kirim Pesan
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Map Section -->
+<section class="section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Lokasi Kami</h2>
+            <p>Peta lokasi Desa Tetembomua</p>
+        </div>
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <div class="card">
+                    <div class="card-body p-0">
+                        <div class="ratio ratio-21x9">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.6666666666667!2d106.66666666666667!3d-6.166666666666667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTAnMDAuMCJTIDEwNsKwNDAnMDAuMCJF!5e0!3m2!1sen!2sid!4v1234567890" 
+                                    style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Office Hours Section -->
+<section class="section bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mx-auto">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h4 class="card-title mb-4">
+                            <i class="fas fa-clock text-primary me-2"></i>
+                            Jam Kerja Kantor Desa
+                        </h4>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6>Senin - Jumat</h6>
+                                <p class="text-muted">08:00 - 16:00 WIB</p>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Sabtu</h6>
+                                <p class="text-muted">08:00 - 12:00 WIB</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <p class="mb-0">
+                            <strong>Catatan:</strong> Kantor desa tutup pada hari Minggu dan hari libur nasional
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Social Media Section -->
+<section class="section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Ikuti Kami</h2>
+            <p>Ikuti media sosial kami untuk informasi terbaru</p>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="row text-center">
+                    <div class="col-md-3 col-6 mb-4">
+                        <a href="#" class="text-decoration-none">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <i class="fab fa-facebook fa-3x text-primary mb-3"></i>
+                                    <h6>Facebook</h6>
+                                    <small class="text-muted">@DesaTetembomua</small>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3 col-6 mb-4">
+                        <a href="#" class="text-decoration-none">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <i class="fab fa-instagram fa-3x text-danger mb-3"></i>
+                                    <h6>Instagram</h6>
+                                    <small class="text-muted">@desa_tetembomua</small>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3 col-6 mb-4">
+                        <a href="#" class="text-decoration-none">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <i class="fab fa-youtube fa-3x text-danger mb-3"></i>
+                                    <h6>YouTube</h6>
+                                    <small class="text-muted">Desa Tetembomua</small>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3 col-6 mb-4">
+                        <a href="#" class="text-decoration-none">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <i class="fab fa-whatsapp fa-3x text-success mb-3"></i>
+                                    <h6>WhatsApp</h6>
+                                    <small class="text-muted">+62 812-3456-7890</small>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 0.2rem rgba(46, 125, 50, 0.25);
+}
+
+.btn-primary {
+    background: var(--primary-green);
+    border-color: var(--primary-green);
+}
+
+.btn-primary:hover {
+    background: var(--dark-green);
+    border-color: var(--dark-green);
+}
+</style>
+@endsection
