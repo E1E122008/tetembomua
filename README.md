@@ -1,6 +1,6 @@
 # Website Profil Desa Tetembomua
 
-Website profil desa dengan tema pertanian yang modern dan menarik untuk Desa Tetembomua. Dibangun menggunakan framework Laravel dengan desain responsif dan user experience yang optimal.
+Website profil desa dengan tema pertanian yang modern dan menarik untuk Desa Tetembomua, Kecamatan Lambuya, Kabupaten Konawe, Provinsi Sulawesi Tenggara. Dibangun menggunakan framework Laravel dengan desain responsif dan user experience yang optimal.
 
 ## 🚀 Fitur Utama
 

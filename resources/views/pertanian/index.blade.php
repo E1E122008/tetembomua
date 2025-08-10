@@ -39,7 +39,7 @@
             </div>
             <div class="col-lg-6">
                 <h3 class="mb-4">Pertanian Berkelanjutan</h3>
-                <p class="mb-4">Sektor pertanian merupakan tulang punggung ekonomi Desa Tetembomua. Dengan luas lahan pertanian mencapai 1,200 hektar, desa ini memiliki potensi besar dalam pengembangan pertanian modern yang berkelanjutan.</p>
+                <p class="mb-4">Sektor pertanian merupakan tulang punggung ekonomi Desa Tetembomua. Mayoritas penduduk desa adalah petani dengan hasil panen utama berupa sawit, kakao, dan lada. Dengan luas lahan pertanian mencapai 1,250 hektar, desa ini memiliki potensi besar dalam pengembangan pertanian modern yang berkelanjutan.</p>
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <div class="d-flex align-items-center">
@@ -95,7 +95,7 @@
                 <div class="card text-center h-100">
                     <div class="card-body">
                         <i class="fas fa-map-marked-alt fa-3x text-primary mb-3"></i>
-                        <h3 class="card-title text-primary">1,200 Ha</h3>
+                        <h3 class="card-title text-primary">1,250 Ha</h3>
                         <p class="card-text">Luas Lahan Pertanian</p>
                     </div>
                 </div>
@@ -113,8 +113,8 @@
                 <div class="card text-center h-100">
                     <div class="card-body">
                         <i class="fas fa-seedling fa-3x text-warning mb-3"></i>
-                        <h3 class="card-title text-warning">15+</h3>
-                        <p class="card-text">Jenis Komoditas</p>
+                        <h3 class="card-title text-warning">3</h3>
+                        <p class="card-text">Komoditas Unggulan</p>
                     </div>
                 </div>
             </div>
@@ -135,24 +135,24 @@
 <section class="section">
     <div class="container">
         <div class="section-title">
-            <h2>Jenis Pertanian</h2>
-            <p>Berbagai jenis pertanian yang dikembangkan di Desa Tetembomua</p>
+            <h2>Komoditas Unggulan</h2>
+            <p>Komoditas perkebunan utama yang menjadi andalan ekonomi Desa Tetembomua</p>
         </div>
         <div class="row">
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card h-100">
                     <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                         class="card-img-top" alt="Sawah">
+                         class="card-img-top" alt="Kelapa Sawit">
                     <div class="card-body">
                         <h5 class="card-title">
-                            <i class="fas fa-water text-primary me-2"></i>
-                            Pertanian Sawah
+                            <i class="fas fa-seedling text-primary me-2"></i>
+                            Kelapa Sawit
                         </h5>
-                        <p class="card-text">Pertanian sawah dengan sistem irigasi yang baik, menghasilkan padi berkualitas tinggi untuk kebutuhan pangan.</p>
+                        <p class="card-text">Perkebunan kelapa sawit yang menjadi komoditas utama dengan hasil panen yang optimal dan berkualitas tinggi.</p>
                         <ul class="list-unstyled">
-                            <li><i class="fas fa-check text-success me-2"></i>Padi organik</li>
-                            <li><i class="fas fa-check text-success me-2"></i>Irigasi teknis</li>
-                            <li><i class="fas fa-check text-success me-2"></i>Panen 2x setahun</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Luas 800 Ha</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Produksi 12,000 Ton</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Kualitas premium</li>
                         </ul>
                     </div>
                 </div>
@@ -160,17 +160,17 @@
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card h-100">
                     <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                         class="card-img-top" alt="Kebun">
+                         class="card-img-top" alt="Kakao">
                     <div class="card-body">
                         <h5 class="card-title">
-                            <i class="fas fa-tree text-success me-2"></i>
-                            Pertanian Kebun
+                            <i class="fas fa-seedling text-success me-2"></i>
+                            Kakao
                         </h5>
-                        <p class="card-text">Pertanian kebun dengan berbagai jenis tanaman buah dan sayuran yang bernilai ekonomi tinggi.</p>
+                        <p class="card-text">Perkebunan kakao yang menghasilkan biji kakao berkualitas premium untuk industri cokelat.</p>
                         <ul class="list-unstyled">
-                            <li><i class="fas fa-check text-success me-2"></i>Buah-buahan</li>
-                            <li><i class="fas fa-check text-success me-2"></i>Sayuran organik</li>
-                            <li><i class="fas fa-check text-success me-2"></i>Rempah-rempah</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Luas 300 Ha</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Produksi 450 Ton</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Kualitas premium</li>
                         </ul>
                     </div>
                 </div>
@@ -178,17 +178,17 @@
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card h-100">
                     <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                         class="card-img-top" alt="Ternak">
+                         class="card-img-top" alt="Lada">
                     <div class="card-body">
                         <h5 class="card-title">
-                            <i class="fas fa-cow text-warning me-2"></i>
-                            Peternakan
+                            <i class="fas fa-seedling text-warning me-2"></i>
+                            Lada
                         </h5>
-                        <p class="card-text">Peternakan sapi, kambing, dan unggas yang mendukung pertanian dengan pupuk organik.</p>
+                        <p class="card-text">Perkebunan lada yang menghasilkan rempah-rempah berkualitas tinggi dengan aroma dan rasa yang kuat.</p>
                         <ul class="list-unstyled">
-                            <li><i class="fas fa-check text-success me-2"></i>Sapi potong</li>
-                            <li><i class="fas fa-check text-success me-2"></i>Kambing</li>
-                            <li><i class="fas fa-check text-success me-2"></i>Unggas</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Luas 150 Ha</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Produksi 75 Ton</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Kualitas premium</li>
                         </ul>
                     </div>
                 </div>

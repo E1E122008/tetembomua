@@ -35,9 +35,9 @@
                         <i class="fas fa-map-marker-alt fa-3x text-primary mb-3"></i>
                         <h5 class="card-title">Alamat</h5>
                         <p class="card-text">
-                            Desa Tetembomua, Kecamatan<br>
-                            Kabupaten, Provinsi<br>
-                            Kode Pos: 12345
+                            Desa Tetembomua, Kecamatan Lambuya<br>
+                            Kabupaten Konawe, Provinsi Sulawesi Tenggara<br>
+                            Kode Pos: 93464
                         </p>
                     </div>
                 </div>
@@ -138,7 +138,7 @@
                 <div class="card">
                     <div class="card-body p-0">
                         <div class="ratio ratio-21x9">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.6666666666667!2d106.66666666666667!3d-6.166666666666667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTAnMDAuMCJTIDEwNsKwNDAnMDAuMCJF!5e0!3m2!1sen!2sid!4v1234567890" 
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3987.5!2d122.5!3d-3.9166666666666665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zM8KwNTUnMDAuMCJTIDEyMsKwMzAnMDAuMCJF!5e0!3m2!1sen!2sid!4v1234567890" 
                                     style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>

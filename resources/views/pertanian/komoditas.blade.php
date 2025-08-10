@@ -36,14 +36,14 @@
             </div>
             <div class="col-lg-6">
                 <h2 class="mb-4">Komoditas Unggulan Desa</h2>
-                <p class="mb-4">Desa Tetembomua memiliki berbagai jenis komoditas pertanian yang berkualitas tinggi. Dengan luas lahan pertanian yang subur dan teknologi modern, desa ini mampu menghasilkan produk pertanian yang tidak hanya memenuhi kebutuhan lokal tetapi juga siap untuk dipasarkan ke tingkat regional dan nasional.</p>
+                <p class="mb-4">Desa Tetembomua memiliki komoditas pertanian unggulan yang menjadi andalan ekonomi masyarakat. Mayoritas penduduk desa adalah petani dengan hasil panen utama berupa sawit, kakao, dan lada. Dengan luas lahan pertanian yang subur, desa ini mampu menghasilkan produk pertanian berkualitas tinggi yang siap dipasarkan ke tingkat regional dan nasional.</p>
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <div class="d-flex align-items-center">
                             <i class="fas fa-seedling text-success me-3 fa-2x"></i>
                             <div>
-                                <h6 class="mb-0">15+ Jenis</h6>
-                                <small class="text-muted">Komoditas unggulan</small>
+                                <h6 class="mb-0">3 Komoditas</h6>
+                                <small class="text-muted">Unggulan utama</small>
                             </div>
                         </div>
                     </div>
@@ -62,55 +62,32 @@
     </div>
 </section>
 
-<!-- Food Crops Section -->
+<!-- Plantation Crops Section -->
 <section class="section bg-light">
     <div class="container">
         <div class="section-title">
-            <h2>Tanaman Pangan</h2>
-            <p>Komoditas pangan utama yang menjadi tulang punggung ketahanan pangan desa</p>
+            <h2>Tanaman Perkebunan</h2>
+            <p>Komoditas perkebunan unggulan yang menjadi andalan ekonomi Desa Tetembomua</p>
         </div>
         <div class="row">
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card h-100">
-                    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                         class="card-img-top" alt="Padi">
+                    <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                         class="card-img-top" alt="Kelapa Sawit">
                     <div class="card-body">
                         <h5 class="card-title">
                             <i class="fas fa-seedling text-success me-2"></i>
-                            Padi Organik
+                            Kelapa Sawit
                         </h5>
-                        <p class="card-text">Padi organik berkualitas tinggi dengan varietas unggul yang menghasilkan beras premium.</p>
+                        <p class="card-text">Kelapa sawit berkualitas tinggi yang menjadi komoditas utama Desa Tetembomua dengan hasil panen yang optimal.</p>
                         <div class="row text-center">
                             <div class="col-6">
                                 <small class="text-muted">Luas Tanam</small>
-                                <h6 class="mb-0">500 Ha</h6>
+                                <h6 class="mb-0">800 Ha</h6>
                             </div>
                             <div class="col-6">
                                 <small class="text-muted">Produksi</small>
-                                <h6 class="mb-0">2,500 Ton</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card h-100">
-                    <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                         class="card-img-top" alt="Jagung">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <i class="fas fa-seedling text-warning me-2"></i>
-                            Jagung Manis
-                        </h5>
-                        <p class="card-text">Jagung manis organik yang cocok untuk konsumsi langsung maupun pengolahan.</p>
-                        <div class="row text-center">
-                            <div class="col-6">
-                                <small class="text-muted">Luas Tanam</small>
-                                <h6 class="mb-0">200 Ha</h6>
-                            </div>
-                            <div class="col-6">
-                                <small class="text-muted">Produksi</small>
-                                <h6 class="mb-0">800 Ton</h6>
+                                <h6 class="mb-0">12,000 Ton</h6>
                             </div>
                         </div>
                     </div>
@@ -119,21 +96,44 @@
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card h-100">
                     <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                         class="card-img-top" alt="Kedelai">
+                         class="card-img-top" alt="Kakao">
                     <div class="card-body">
                         <h5 class="card-title">
-                            <i class="fas fa-seedling text-info me-2"></i>
-                            Kedelai Hitam
+                            <i class="fas fa-seedling text-warning me-2"></i>
+                            Kakao
                         </h5>
-                        <p class="card-text">Kedelai hitam organik yang kaya protein dan cocok untuk pembuatan tempe dan tahu.</p>
+                        <p class="card-text">Kakao berkualitas premium yang menghasilkan biji kakao dengan cita rasa yang unggul untuk industri cokelat.</p>
                         <div class="row text-center">
                             <div class="col-6">
                                 <small class="text-muted">Luas Tanam</small>
-                                <h6 class="mb-0">100 Ha</h6>
+                                <h6 class="mb-0">300 Ha</h6>
                             </div>
                             <div class="col-6">
                                 <small class="text-muted">Produksi</small>
-                                <h6 class="mb-0">150 Ton</h6>
+                                <h6 class="mb-0">450 Ton</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                         class="card-img-top" alt="Lada">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="fas fa-seedling text-info me-2"></i>
+                            Lada
+                        </h5>
+                        <p class="card-text">Lada berkualitas tinggi yang menjadi komoditas rempah-rempah unggulan dengan aroma dan rasa yang kuat.</p>
+                        <div class="row text-center">
+                            <div class="col-6">
+                                <small class="text-muted">Luas Tanam</small>
+                                <h6 class="mb-0">150 Ha</h6>
+                            </div>
+                            <div class="col-6">
+                                <small class="text-muted">Produksi</small>
+                                <h6 class="mb-0">75 Ton</h6>
                             </div>
                         </div>
                     </div>

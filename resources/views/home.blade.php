@@ -89,7 +89,7 @@
             </div>
             <div class="col-lg-6">
                 <h3 class="mb-4">Desa yang Berkelanjutan</h3>
-                <p class="mb-4">Desa Tetembomua merupakan desa yang terletak di wilayah yang subur dengan potensi pertanian yang sangat besar. Masyarakat desa kami dikenal dengan semangat gotong royong yang tinggi dan komitmen untuk mengembangkan sektor pertanian secara berkelanjutan.</p>
+                <p class="mb-4">Desa Tetembomua merupakan desa yang terletak di wilayah yang subur dengan potensi pertanian yang sangat besar. Mayoritas penduduk desa adalah petani dengan hasil panen utama berupa sawit, kakao, dan lada. Masyarakat desa kami dikenal dengan semangat gotong royong yang tinggi dan komitmen untuk mengembangkan sektor pertanian secara berkelanjutan.</p>
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <div class="d-flex align-items-center">

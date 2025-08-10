@@ -35,8 +35,8 @@
             </div>
             <div class="col-lg-6">
                 <h2 class="mb-4">Desa yang Berkelanjutan</h2>
-                <p class="mb-4">Desa Tetembomua merupakan desa yang terletak di wilayah yang subur dengan potensi pertanian yang sangat besar. Masyarakat desa kami dikenal dengan semangat gotong royong yang tinggi dan komitmen untuk mengembangkan sektor pertanian secara berkelanjutan.</p>
-                <p class="mb-4">Dengan luas wilayah sekitar 2,500 hektar dan jumlah penduduk lebih dari 2,500 jiwa, Desa Tetembomua telah menjadi salah satu desa pertanian yang maju di wilayah ini.</p>
+                <p class="mb-4">Desa Tetembomua merupakan desa yang terletak di wilayah yang subur dengan potensi pertanian yang sangat besar. Mayoritas penduduk desa adalah petani dengan hasil panen utama berupa sawit, kakao, dan lada. Masyarakat desa kami dikenal dengan semangat gotong royong yang tinggi dan komitmen untuk mengembangkan sektor pertanian secara berkelanjutan.</p>
+                <p class="mb-4">Dengan luas wilayah sekitar 2,500 hektar dan jumlah penduduk lebih dari 2,500 jiwa, Desa Tetembomua telah menjadi salah satu desa pertanian yang maju di wilayah ini dengan fokus pada komoditas perkebunan unggulan.</p>
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <div class="d-flex align-items-center">
@@ -220,9 +220,9 @@
                         <div class="row">
                             <div class="col-md-6 mb-4">
                                 <h5><i class="fas fa-map-marker-alt text-primary me-2"></i>Alamat</h5>
-                                <p>Desa Tetembomua, Kecamatan<br>
-                                Kabupaten, Provinsi<br>
-                                Kode Pos: 12345</p>
+                                <p>Desa Tetembomua, Kecamatan Lambuya<br>
+                                Kabupaten Konawe, Provinsi Sulawesi Tenggara<br>
+                                Kode Pos: 93464</p>
                             </div>
                             <div class="col-md-6 mb-4">
                                 <h5><i class="fas fa-phone text-success me-2"></i>Telepon</h5>
