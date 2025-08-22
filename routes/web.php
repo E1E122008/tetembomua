@@ -23,19 +23,18 @@ Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 
 // Profile Desa Routes
 Route::prefix('profile')->group(function () {
-    Route::get('/sejarah', [ProfileController::class, 'sejarah'])->name('profile.sejarah');
     Route::get('/visi-misi', [ProfileController::class, 'visiMisi'])->name('profile.visi-misi');
     Route::get('/struktur', [ProfileController::class, 'struktur'])->name('profile.struktur');
     Route::get('/demografi', [ProfileController::class, 'demografi'])->name('profile.demografi');
 });
 
-// Pertanian Routes
+// Pertanian Routes (only komoditas)
 Route::prefix('pertanian')->group(function () {
-    Route::get('/', [PertanianController::class, 'index'])->name('pertanian.index');
     Route::get('/komoditas', [PertanianController::class, 'komoditas'])->name('pertanian.komoditas');
-    Route::get('/teknologi', [PertanianController::class, 'teknologi'])->name('pertanian.teknologi');
-    Route::get('/petani', [PertanianController::class, 'petani'])->name('pertanian.petani');
 });
+
+// News Routes
+Route::get('/news', [HomeController::class, 'news'])->name('news');
 
 // Admin Routes (Temporary - untuk testing)
 Route::prefix('admin')->group(function () {

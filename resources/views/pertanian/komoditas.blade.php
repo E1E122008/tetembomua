@@ -8,7 +8,6 @@
     <div class="container">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('home') }}">Beranda</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('pertanian.index') }}">Pertanian</a></li>
             <li class="breadcrumb-item active">Komoditas</li>
         </ol>
     </div>
@@ -31,8 +30,11 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6 mb-4">
-                <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                     alt="Komoditas Pertanian" class="img-fluid rounded-3 shadow">
+                <div class="komoditas-image-container">
+                    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="Komoditas Pertanian" class="img-fluid komoditas-image">
+                    <div class="komoditas-image-overlay"></div>
+                </div>
             </div>
             <div class="col-lg-6">
                 <h2 class="mb-4">Komoditas Unggulan Desa</h2>
@@ -369,4 +371,89 @@
         </div>
     </div>
 </section>
+<style>
+/* Custom color classes for consistency */
+.text-primary {
+    color: var(--primary-green) !important;
+}
+
+.text-success {
+    color: var(--secondary-green) !important;
+}
+
+.text-warning {
+    color: var(--light-brown) !important;
+}
+
+.text-info {
+    color: var(--accent-brown) !important;
+}
+
+.bg-primary {
+    background: linear-gradient(135deg, var(--primary-green), var(--secondary-green)) !important;
+}
+
+.bg-success {
+    background-color: var(--secondary-green) !important;
+}
+
+.bg-warning {
+    background-color: var(--light-brown) !important;
+}
+
+.bg-info {
+    background-color: var(--accent-brown) !important;
+}
+
+.btn-outline-primary {
+    border-color: var(--primary-green);
+    color: var(--primary-green);
+}
+
+.btn-outline-primary:hover {
+    background: var(--primary-gradient);
+    border-color: var(--primary-green);
+}
+
+/* Komoditas Image Styles */
+.komoditas-image-container {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(46, 139, 87, 0.2);
+}
+
+.komoditas-image {
+    border-radius: 20px;
+    transition: transform 0.5s ease;
+}
+
+.komoditas-image-container:hover .komoditas-image {
+    transform: scale(1.03);
+}
+
+.komoditas-image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, 
+        rgba(46, 139, 87, 0.1), 
+        rgba(60, 179, 113, 0.05), 
+        rgba(32, 178, 170, 0.1));
+    border-radius: 20px;
+}
+
+/* Card Image Styles */
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.card:hover .card-img-top {
+    transform: scale(1.05);
+}
+</style>
 @endsection

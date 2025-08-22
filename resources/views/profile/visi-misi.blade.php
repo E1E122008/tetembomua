@@ -31,8 +31,11 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6 mb-4">
-                <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                     alt="Visi Desa" class="img-fluid rounded-3 shadow">
+                <div class="vision-image-container">
+                    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="Visi Desa" class="img-fluid vision-image">
+                    <div class="vision-image-overlay"></div>
+                </div>
             </div>
             <div class="col-lg-6">
                 <div class="card border-0 bg-primary text-white">
@@ -253,50 +256,6 @@
     </div>
 </section>
 
-<!-- Implementation Strategy -->
-<section class="section">
-    <div class="container">
-        <div class="section-title">
-            <h2>Strategi Implementasi</h2>
-            <p>Langkah-langkah konkret dalam mewujudkan visi dan misi desa</p>
-        </div>
-        <div class="row">
-            <div class="col-lg-8 mx-auto">
-                <div class="timeline-vertical">
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h5>Tahap 1: Persiapan (Tahun 1)</h5>
-                            <p>Penyusunan rencana detail, sosialisasi kepada masyarakat, dan persiapan infrastruktur dasar.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h5>Tahap 2: Implementasi (Tahun 2-3)</h5>
-                            <p>Pelaksanaan program-program prioritas, pelatihan petani, dan pengembangan teknologi.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h5>Tahap 3: Pengembangan (Tahun 4)</h5>
-                            <p>Ekspansi program, penguatan kelembagaan, dan pengembangan pasar.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h5>Tahap 4: Konsolidasi (Tahun 5)</h5>
-                            <p>Evaluasi hasil, perbaikan sistem, dan persiapan untuk tahap selanjutnya.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
 <style>
 .mission-icon {
     width: 80px;
@@ -310,49 +269,75 @@
     color: white;
 }
 
-.timeline-vertical {
-    position: relative;
-    padding: 2rem 0;
+/* Custom color classes for consistency */
+.text-primary {
+    color: var(--primary-green) !important;
 }
 
-.timeline-vertical::before {
-    content: '';
+.text-success {
+    color: var(--secondary-green) !important;
+}
+
+.text-warning {
+    color: var(--light-brown) !important;
+}
+
+.text-info {
+    color: var(--accent-brown) !important;
+}
+
+.bg-primary {
+    background: var(--primary-gradient) !important;
+}
+
+/* Vision Image Styles */
+.vision-image-container {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(46, 139, 87, 0.2);
+}
+
+.vision-image {
+    border-radius: 20px;
+    transition: transform 0.5s ease;
+}
+
+.vision-image-container:hover .vision-image {
+    transform: scale(1.03);
+}
+
+.vision-image-overlay {
     position: absolute;
-    left: 20px;
     top: 0;
+    left: 0;
+    right: 0;
     bottom: 0;
-    width: 2px;
-    background: var(--primary-green);
+    background: linear-gradient(45deg, 
+        rgba(46, 139, 87, 0.1), 
+        rgba(60, 179, 113, 0.05), 
+        rgba(32, 178, 170, 0.1));
+    border-radius: 20px;
 }
 
-.timeline-item {
-    position: relative;
-    margin-bottom: 2rem;
-    padding-left: 60px;
-}
-
-.timeline-marker {
-    position: absolute;
-    left: 11px;
-    top: 0;
-    width: 20px;
-    height: 20px;
-    background: var(--primary-green);
+/* Mission Icon Modern Style */
+.mission-icon {
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
-    border: 3px solid white;
-    box-shadow: 0 0 0 3px var(--primary-green);
+    background: var(--primary-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    color: white;
+    box-shadow: 0 8px 25px rgba(46, 139, 87, 0.3);
+    transition: all 0.3s ease;
 }
 
-.timeline-content {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-.timeline-content h5 {
-    color: var(--primary-green);
-    margin-bottom: 0.5rem;
+.mission-icon:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 12px 35px rgba(46, 139, 87, 0.4);
 }
 </style>
 @endsection

@@ -14,14 +14,26 @@
     
     <style>
         :root {
-            --primary-green: #2E7D32;
-            --secondary-green: #4CAF50;
-            --light-green: #81C784;
-            --dark-green: #1B5E20;
-            --accent-orange: #FF9800;
+            /* Warna Utama - Gradasi Hijau Modern */
+            --primary-gradient: linear-gradient(135deg, #2E8B57, #3CB371, #20B2AA);
+            --primary-green: #2E8B57;
+            --secondary-green: #3CB371;
+            --accent-teal: #20B2AA;
+            --light-green: #90EE90;
+            --dark-green: #006400;
+            
+            /* Warna Aksen - Gradasi Coklat Tanah */
+            --brown-gradient: linear-gradient(135deg, #8B4513, #A0522D, #CD853F);
+            --accent-brown: #8B4513;
+            --light-brown: #DEB887;
+            --warm-brown: #D2691E;
+            
+            /* Warna Netral Modern */
             --text-dark: #2C3E50;
             --text-light: #7F8C8D;
             --bg-light: #F8F9FA;
+            --bg-warm: #FFF8DC;
+            --white: #FFFFFF;
         }
 
         * {
@@ -36,24 +48,27 @@
             color: var(--text-dark);
         }
 
-        /* Navbar Styles */
+        /* Navbar Styles dengan Gradasi Modern */
         .navbar {
-            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: var(--primary-gradient);
+            box-shadow: 0 4px 20px rgba(46, 139, 87, 0.3);
             padding: 1rem 0;
+            backdrop-filter: blur(10px);
         }
 
         .navbar-brand {
             font-weight: 700;
             font-size: 1.5rem;
             color: white !important;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
         .navbar-nav .nav-link {
-            color: rgba(255,255,255,0.9) !important;
+            color: rgba(255,255,255,0.95) !important;
             font-weight: 500;
             margin: 0 0.5rem;
             transition: all 0.3s ease;
+            position: relative;
         }
 
         .navbar-nav .nav-link:hover {
@@ -61,33 +76,80 @@
             transform: translateY(-2px);
         }
 
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .navbar-nav .nav-link:hover::after {
+            width: 100%;
+        }
+
         .navbar-toggler {
             border: none;
             color: white;
         }
 
-        /* Hero Section */
+        /* Hero Section dengan Gradasi Modern */
         .hero-section {
-            background: linear-gradient(rgba(46, 125, 50, 0.8), rgba(76, 175, 80, 0.8)), 
-                        url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background: linear-gradient(135deg, 
+                rgba(46, 139, 87, 0.9), 
+                rgba(60, 179, 113, 0.8), 
+                rgba(32, 178, 170, 0.7)), 
+                url('https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
             min-height: 80vh;
             display: flex;
             align-items: center;
             color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, 
+                rgba(46, 139, 87, 0.3), 
+                rgba(60, 179, 113, 0.2), 
+                rgba(32, 178, 170, 0.3));
+            z-index: 1;
+        }
+
+        .hero-section .container {
+            position: relative;
+            z-index: 2;
         }
 
         .hero-content h1 {
             font-size: 3.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, #FFFFFF, #F0F8FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero-content p {
             font-size: 1.2rem;
             margin-bottom: 2rem;
-            opacity: 0.9;
+            opacity: 0.95;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
         /* Section Styles */
@@ -101,7 +163,10 @@
         }
 
         .section-title h2 {
-            color: var(--primary-green);
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             font-weight: 700;
             font-size: 2.5rem;
             margin-bottom: 1rem;
@@ -112,94 +177,207 @@
             font-size: 1.1rem;
         }
 
-        /* Card Styles */
+        /* Card Styles dengan Efek Modern */
         .card {
             border: none;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
             overflow: hidden;
+            position: relative;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
         }
 
         .card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            box-shadow: 0 20px 40px rgba(46, 139, 87, 0.2);
         }
 
-        .card-img-top {
-            height: 200px;
-            object-fit: cover;
-        }
-
-        /* Button Styles */
+        /* Button Styles dengan Gradasi */
         .btn-primary {
-            background: var(--primary-green);
+            background: var(--primary-gradient);
             border: none;
-            padding: 12px 30px;
-            border-radius: 25px;
+            border-radius: 30px;
+            padding: 15px 35px;
             font-weight: 600;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
         }
 
         .btn-primary:hover {
-            background: var(--dark-green);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(46, 139, 87, 0.4);
         }
 
         .btn-outline-primary {
-            border: 2px solid var(--primary-green);
+            border: 2px solid;
+            border-image: var(--primary-gradient) 1;
             color: var(--primary-green);
-            padding: 12px 30px;
-            border-radius: 25px;
+            border-radius: 30px;
+            padding: 15px 35px;
             font-weight: 600;
             transition: all 0.3s ease;
+            background: transparent;
         }
 
         .btn-outline-primary:hover {
-            background: var(--primary-green);
+            background: var(--primary-gradient);
             color: white;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(46, 139, 87, 0.3);
         }
 
-        /* Footer */
+        /* Stats Cards dengan Gradasi */
+        .stats-card {
+            background: linear-gradient(135deg, var(--bg-light), white);
+            border-left: 4px solid;
+            border-image: var(--primary-gradient) 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 30px 30px 0;
+            border-color: transparent var(--accent-teal) transparent transparent;
+            opacity: 0.3;
+        }
+
+        .stats-card .card-body {
+            padding: 2rem;
+        }
+
+        /* Footer dengan Gradasi Modern */
         .footer {
-            background: var(--dark-green);
+            background: linear-gradient(135deg, 
+                var(--text-dark), 
+                var(--primary-green), 
+                var(--accent-teal));
             color: white;
             padding: 3rem 0 1rem;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-gradient);
         }
 
         .footer h5 {
             color: var(--light-green);
             margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
         .footer a {
-            color: rgba(255,255,255,0.8);
+            color: rgba(255,255,255,0.9);
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         .footer a:hover {
-            color: var(--light-green);
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
         .social-links a {
             display: inline-block;
-            width: 40px;
-            height: 40px;
-            background: var(--primary-green);
+            width: 45px;
+            height: 45px;
+            background: var(--primary-gradient);
             color: white;
             text-align: center;
-            line-height: 40px;
+            line-height: 45px;
             border-radius: 50%;
-            margin-right: 10px;
+            margin-right: 15px;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(46, 139, 87, 0.3);
         }
 
         .social-links a:hover {
-            background: var(--accent-orange);
-            transform: translateY(-3px);
+            background: var(--brown-gradient);
+            transform: translateY(-5px) rotate(360deg);
+            box-shadow: 0 8px 25px rgba(139, 69, 19, 0.4);
+        }
+
+        /* Breadcrumb dengan Gradasi */
+        .breadcrumb {
+            background: linear-gradient(135deg, var(--bg-light), white);
+            padding: 1.5rem 0;
+            margin-bottom: 0;
+            border-bottom: 3px solid;
+            border-image: var(--primary-gradient) 1;
+        }
+
+        .breadcrumb-item a {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .breadcrumb-item.active {
+            color: var(--text-light);
+        }
+
+        /* Custom Animations */
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(30px) scale(0.95); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1); 
+            }
         }
 
         /* Responsive */
@@ -212,32 +390,6 @@
                 font-size: 2rem;
             }
         }
-
-        /* Custom Animations */
-        .fade-in {
-            animation: fadeIn 1s ease-in;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Breadcrumb */
-        .breadcrumb {
-            background: var(--bg-light);
-            padding: 1rem 0;
-            margin-bottom: 0;
-        }
-
-        .breadcrumb-item a {
-            color: var(--primary-green);
-            text-decoration: none;
-        }
-
-        .breadcrumb-item.active {
-            color: var(--text-light);
-        }
     </style>
 </head>
 <body>
@@ -245,7 +397,7 @@
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand" href="{{ route('home') }}">
-                <i class="fas fa-leaf me-2"></i>
+                <i class="fas fa-home me-2"></i>
                 Desa Tetembomua
             </a>
             
@@ -263,22 +415,16 @@
                             Profil Desa
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ route('profile.sejarah') }}">Sejarah</a></li>
                             <li><a class="dropdown-item" href="{{ route('profile.visi-misi') }}">Visi & Misi</a></li>
                             <li><a class="dropdown-item" href="{{ route('profile.struktur') }}">Struktur Organisasi</a></li>
                             <li><a class="dropdown-item" href="{{ route('profile.demografi') }}">Demografi</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                            Pertanian
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ route('pertanian.index') }}">Sektor Pertanian</a></li>
-                            <li><a class="dropdown-item" href="{{ route('pertanian.komoditas') }}">Komoditas</a></li>
-                            <li><a class="dropdown-item" href="{{ route('pertanian.teknologi') }}">Teknologi</a></li>
-                            <li><a class="dropdown-item" href="{{ route('pertanian.petani') }}">Data Petani</a></li>
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('pertanian.komoditas') }}">Komoditas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('news') }}">Berita</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('about') }}">Tentang</a>
@@ -301,8 +447,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-6 mb-4">
-                    <h5><i class="fas fa-leaf me-2"></i>Desa Tetembomua</h5>
-                    <p>Desa yang kaya akan potensi pertanian dengan masyarakat yang ramah dan produktif dalam mengembangkan sektor pertanian.</p>
+                    <h5><i class="fas fa-home me-2"></i>Desa Tetembomua</h5>
+                    <p>Desa yang maju dan berbudaya dengan masyarakat yang ramah, produktif, dan komitmen untuk mengembangkan desa secara berkelanjutan.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
@@ -313,19 +459,18 @@
                 <div class="col-lg-2 col-md-6 mb-4">
                     <h5>Profil Desa</h5>
                     <ul class="list-unstyled">
-                        <li><a href="{{ route('profile.sejarah') }}">Sejarah</a></li>
                         <li><a href="{{ route('profile.visi-misi') }}">Visi & Misi</a></li>
                         <li><a href="{{ route('profile.struktur') }}">Struktur</a></li>
                         <li><a href="{{ route('profile.demografi') }}">Demografi</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-6 mb-4">
-                    <h5>Pertanian</h5>
+                    <h5>Informasi</h5>
                     <ul class="list-unstyled">
-                        <li><a href="{{ route('pertanian.index') }}">Sektor</a></li>
                         <li><a href="{{ route('pertanian.komoditas') }}">Komoditas</a></li>
-                        <li><a href="{{ route('pertanian.teknologi') }}">Teknologi</a></li>
-                        <li><a href="{{ route('pertanian.petani') }}">Petani</a></li>
+                        <li><a href="{{ route('news') }}">Berita</a></li>
+                        <li><a href="{{ route('about') }}">Tentang</a></li>
+                        <li><a href="{{ route('contact') }}">Kontak</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-4 col-md-6 mb-4">
