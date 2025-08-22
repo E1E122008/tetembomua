@@ -1,28 +1,204 @@
-# Website Profil Desa Tetembomua
+# 🌾 Website Profil Desa Tetembomua
 
-Website profil desa dengan tema pertanian yang modern dan menarik untuk Desa Tetembomua, Kecamatan Lambuya, Kabupaten Konawe, Provinsi Sulawesi Tenggara. Dibangun menggunakan framework Laravel dengan desain responsif dan user experience yang optimal.
+Website profil desa dengan tema pertanian yang modern dan menarik untuk **Desa Tetembomua, Kecamatan Lambuya, Kabupaten Konawe, Provinsi Sulawesi Tenggara**. Dibangun menggunakan framework Laravel dengan desain responsif dan user experience yang optimal.
 
-## 🚀 Fitur Utama
+## 🚀 Quick Start
 
-### 📱 Desain Responsif
-- Tampilan yang optimal di desktop, tablet, dan mobile
-- Navigasi yang mudah dan intuitif
-- Loading yang cepat dan smooth
+### **Cara Cepat Menjalankan (Windows)**
+```bash
+# 1. Double click file setup.bat
+# 2. Ikuti instruksi yang muncul
+# 3. Jalankan server
+php artisan serve
+```
 
-### 🎨 Tema Pertanian Modern
-- Warna-warna hijau yang mencerminkan tema pertanian
-- Animasi dan transisi yang menarik
-- Layout yang clean dan profesional
+### **Cara Cepat Menjalankan (Linux/Mac)**
+```bash
+# 1. Berikan permission execute
+chmod +x setup.sh
 
-### 📄 Halaman Lengkap
-- **Beranda**: Overview desa dengan statistik dan informasi utama
-- **Profil Desa**: Sejarah, visi-misi, struktur organisasi, demografi
-- **Sektor Pertanian**: Informasi lengkap tentang pertanian desa
-- **Komoditas**: Detail produk pertanian unggulan
-- **Teknologi**: Inovasi teknologi pertanian yang diterapkan
-- **Data Petani**: Profil petani-petani handal
-- **Tentang**: Informasi lengkap tentang desa
-- **Kontak**: Form kontak dan informasi lengkap
+# 2. Jalankan script setup
+./setup.sh
+
+# 3. Jalankan server
+php artisan serve
+```
+
+## 🌐 Akses Website
+
+### **Public Website**
+```
+URL: http://localhost:8000
+```
+
+### **Admin Panel**
+```
+URL: http://localhost:8000/admin
+Email: admin@desatetembomua.com
+Password: password123
+```
+
+## 📋 Fitur Utama
+
+### **Public Website**
+- ✅ Desain responsif dan modern
+- ✅ Tema pertanian yang menarik
+- ✅ Navigasi yang mudah dan intuitif
+- ✅ Konten yang informatif dan terstruktur
+- ✅ Optimasi SEO
+- ✅ Performa yang cepat
+- ✅ Kompatibilitas multi-browser
+
+### **Admin Panel**
+- ✅ Dashboard dengan statistik
+- ✅ Manajemen berita (CRUD)
+- ✅ Update data kependudukan
+- ✅ Manajemen data pertanian
+- ✅ Upload gambar dan dokumen
+- ✅ Role-based access control
+- ✅ User management
+
+## 🛠️ Teknologi
+
+- **Backend:** Laravel 12.x (PHP 8.2+)
+- **Frontend:** Bootstrap 5.3.0
+- **Database:** MySQL/PostgreSQL/SQLite
+- **Build Tool:** Vite
+- **Icon:** Font Awesome 6.4.0
+- **Font:** Google Fonts (Poppins)
+
+## 📁 Struktur Proyek
+
+```
+webt/
+├── app/
+│   ├── Http/Controllers/
+│   │   ├── Admin/           # Admin controllers
+│   │   └── ...              # Public controllers
+│   ├── Models/              # Database models
+│   └── Http/Middleware/     # Custom middleware
+├── resources/views/
+│   ├── admin/               # Admin panel views
+│   ├── layouts/             # Layout templates
+│   ├── pertanian/           # Agriculture pages
+│   └── profile/             # Village profile pages
+├── routes/
+│   ├── web.php              # Public routes
+│   └── admin.php            # Admin routes
+└── database/migrations/     # Database migrations
+```
+
+## 🔧 Instalasi Manual
+
+### **Prerequisites**
+- PHP 8.2+
+- Composer
+- Node.js 18+
+- MySQL/PostgreSQL/SQLite
+
+### **Steps**
+```bash
+# 1. Clone repository
+git clone [URL_REPOSITORY]
+cd webt
+
+# 2. Install dependencies
+composer install
+npm install
+
+# 3. Setup environment
+cp .env.example .env
+php artisan key:generate
+
+# 4. Configure database in .env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=desa_tetembomua
+DB_USERNAME=root
+DB_PASSWORD=your_password
+
+# 5. Run migrations
+php artisan migrate
+
+# 6. Create storage link
+php artisan storage:link
+
+# 7. Build assets
+npm run build
+
+# 8. Create admin user
+php artisan tinker
+# Di dalam tinker:
+use App\Models\User;
+User::create([
+    'name' => 'Administrator',
+    'email' => 'admin@desatetembomua.com',
+    'password' => bcrypt('password123'),
+    'role' => 'super_admin',
+    'status' => 'active'
+]);
+
+# 9. Start server
+php artisan serve
+```
+
+## 📱 Halaman Website
+
+### **Public Pages**
+- **Beranda** (`/`) - Halaman utama desa
+- **Tentang** (`/about`) - Informasi tentang desa
+- **Pertanian** (`/pertanian`) - Informasi pertanian
+- **Profil Desa** (`/profile/*`) - Halaman profil desa
+- **Kontak** (`/contact`) - Informasi kontak
+
+### **Admin Pages**
+- **Dashboard** (`/admin`) - Dashboard utama
+- **Berita** (`/admin/news`) - Manajemen berita
+- **Data Penduduk** (`/admin/population`) - Data kependudukan
+- **Data Pertanian** (`/admin/agricultural`) - Data pertanian
+- **User** (`/admin/users`) - Manajemen user
+
+## 🔐 Role System
+
+- **Super Admin:** Akses penuh ke semua fitur
+- **Admin:** Akses ke dashboard dan manajemen konten
+- **Editor:** Akses terbatas untuk edit konten
+- **Viewer:** Hanya bisa melihat data
+
+## 🚨 Troubleshooting
+
+### **Common Issues**
+```bash
+# Error "Class not found"
+composer dump-autoload
+
+# Error "Permission denied"
+chmod -R 755 storage/
+chmod -R 755 bootstrap/cache/
+
+# Error "Vite manifest not found"
+npm run build
+
+# Clear cache
+php artisan cache:clear
+php artisan config:clear
+php artisan view:clear
+```
+
+## 📞 Support
+
+- **Email:** [Email support]
+- **WhatsApp:** [Nomor WhatsApp]
+- **Documentation:** [Link dokumentasi]
+
+## 📄 License
+
+This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+---
+
+**"Teknologi untuk Desa, Desa untuk Masa Depan"** 🌾
 
 ## 🛠️ Teknologi yang Digunakan
 

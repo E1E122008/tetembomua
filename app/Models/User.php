@@ -21,6 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
+        'status',
     ];
 
     /**
@@ -44,5 +46,31 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function isAdmin(): bool
+    {
+        return in_array($this->role, ['admin', 'super_admin']);
+    }
+
+    public function isSuperAdmin(): bool
+    {
+        return $this->role === 'super_admin';
+    }
+
+    public function isEditor(): bool
+    {
+        return in_array($this->role, ['admin', 'super_admin', 'editor']);
+    }
+
+    public function getRoleLabelAttribute(): string
+    {
+        return match($this->role) {
+            'super_admin' => 'Super Admin',
+            'admin' => 'Admin',
+            'editor' => 'Editor',
+            'viewer' => 'Viewer',
+            default => 'User'
+        };
     }
 }

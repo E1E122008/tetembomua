@@ -36,3 +36,14 @@ Route::prefix('pertanian')->group(function () {
     Route::get('/teknologi', [PertanianController::class, 'teknologi'])->name('pertanian.teknologi');
     Route::get('/petani', [PertanianController::class, 'petani'])->name('pertanian.petani');
 });
+
+// Admin Routes (Temporary - untuk testing)
+Route::prefix('admin')->group(function () {
+    Route::get('/', function () {
+        return view('admin.dashboard');
+    })->name('admin.dashboard');
+    
+    Route::get('/login', function () {
+        return view('admin.login');
+    })->name('admin.login');
+});
