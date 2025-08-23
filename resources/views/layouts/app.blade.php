@@ -97,6 +97,39 @@
             color: white;
         }
 
+        /* Dropdown Menu Styles */
+        .dropdown-menu {
+            background: white;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            padding: 0.5rem 0;
+            margin-top: 0.5rem;
+        }
+
+        .dropdown-item {
+            color: var(--text-dark);
+            padding: 0.75rem 1.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-radius: 0;
+        }
+
+        .dropdown-item:hover {
+            background: var(--primary-gradient);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .dropdown-toggle::after {
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown.show .dropdown-toggle::after {
+            transform: rotate(180deg);
+        }
+
         /* Hero Section dengan Gradasi Modern */
         .hero-section {
             background: linear-gradient(135deg, 
@@ -389,6 +422,38 @@
             .section-title h2 {
                 font-size: 2rem;
             }
+
+            /* Mobile Navbar Adjustments */
+            .navbar-nav {
+                text-align: center;
+            }
+
+            .navbar-nav .nav-link {
+                padding: 1rem 0;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+
+            .navbar-nav .nav-link:last-child {
+                border-bottom: none;
+            }
+
+            .dropdown-menu {
+                background: rgba(255,255,255,0.1);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255,255,255,0.2);
+                margin-top: 0;
+            }
+
+            .dropdown-item {
+                color: white;
+                text-align: center;
+            }
+
+            .dropdown-item:hover {
+                background: rgba(255,255,255,0.2);
+                color: white;
+                transform: none;
+            }
         }
     </style>
 </head>
@@ -423,17 +488,31 @@
                             <li><a class="dropdown-item" href="{{ route('profile.demografi') }}">Demografi</a></li>
                         </ul>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Informasi Desa
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{{ route('potensi') }}">Potensi Desa</a></li>
+                            <li><a class="dropdown-item" href="{{ route('program') }}">Program Desa</a></li>
+                            <li><a class="dropdown-item" href="{{ route('statistik') }}">Statistik</a></li>
+                            <li><a class="dropdown-item" href="{{ route('pertanian.komoditas') }}">Komoditas</a></li>
+                        </ul>
+                    </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('pertanian.komoditas') }}">Komoditas</a>
+                        <a class="nav-link" href="{{ route('galeri') }}">Galeri</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('news') }}">Berita</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('about') }}">Tentang</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('contact') }}">Kontak</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Lainnya
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{{ route('about') }}">Tentang</a></li>
+                            <li><a class="dropdown-item" href="{{ route('contact') }}">Kontak</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -476,9 +555,18 @@
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-6 mb-4">
-                    <h5>Informasi</h5>
+                    <h5>Informasi Desa</h5>
                     <ul class="list-unstyled">
+                        <li><a href="{{ route('potensi') }}">Potensi Desa</a></li>
+                        <li><a href="{{ route('program') }}">Program Desa</a></li>
+                        <li><a href="{{ route('statistik') }}">Statistik</a></li>
                         <li><a href="{{ route('pertanian.komoditas') }}">Komoditas</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Media</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ route('galeri') }}">Galeri</a></li>
                         <li><a href="{{ route('news') }}">Berita</a></li>
                         <li><a href="{{ route('about') }}">Tentang</a></li>
                         <li><a href="{{ route('contact') }}">Kontak</a></li>

@@ -113,36 +113,46 @@
                                     <div class="perangkat-header">
                                         <i class="fas fa-handshake fa-2x text-info"></i>
                                         <h5 class="text-info">Kasi Pelayanan</h5>
-                </div>
+                                    </div>
                                     <div class="perangkat-body">
+                                        <div class="avatar-container mb-3">
+                                            <img src="{{ asset('FOTO/WhatsApp Image 2025-08-23 at 21.15.33.jpeg') }}" alt="Kasi Pelayanan Baso Suardi" class="rounded-circle" style="width: 80px; height: 80px; object-fit: cover; border: 2px solid white;">
+                                        </div>
                                         <h6 class="fw-bold">BASO SUARDI</h6>
-                    </div>
-                </div>
-            </div>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="col-lg-4 col-md-6 mb-4">
                                 <div class="perangkat-card">
                                     <div class="perangkat-header">
                                         <i class="fas fa-edit fa-2x text-danger"></i>
                                         <h5 class="text-danger">Kaur TU dan Umum</h5>
-                    </div>
+                                    </div>
                                     <div class="perangkat-body">
+                                        <div class="avatar-container mb-3">
+                                            <img src="{{ asset('FOTO/WhatsApp Image 2025-08-23 at 21.15.35.jpeg') }}" alt="Kaur TU dan Umum Devi Ferawati" class="rounded-circle" style="width: 80px; height: 80px; object-fit: cover; border: 2px solid white;">
+                                        </div>
                                         <h6 class="fw-bold">DEVI FERAWATI</h6>
-                    </div>
-                </div>
-                    </div>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="col-lg-4 col-md-6 mb-4">
                                 <div class="perangkat-card">
                                     <div class="perangkat-header">
                                         <i class="fas fa-coins fa-2x text-primary"></i>
                                         <h5 class="text-primary">Kaur Keuangan</h5>
-                </div>
+                                    </div>
                                     <div class="perangkat-body">
-                                        <h6 class="fw-bold">ASRIANI</h6>
-                </div>
-            </div>
-        </div>
+                                        <div class="avatar-container mb-3">
+                                            <img src="{{ asset('FOTO/WhatsApp Image 2025-08-23 at 21.15.34.jpeg') }}" alt="Kaur Keuangan Asriani" class="rounded-circle" style="width: 80px; height: 80px; object-fit: cover; border: 2px solid white;">
+                                        </div>
+                                        <h6 class="fw-bold">ASRIANI, S.Pd</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                             <div class="col-lg-4 col-md-6 mb-4">
                                 <div class="perangkat-card">

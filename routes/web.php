@@ -36,6 +36,18 @@ Route::prefix('pertanian')->group(function () {
 // News Routes
 Route::get('/news', [HomeController::class, 'news'])->name('news');
 
+// Potensi Desa Routes
+Route::get('/potensi', [HomeController::class, 'potensi'])->name('potensi');
+
+// Program Desa Routes
+Route::get('/program', [HomeController::class, 'program'])->name('program');
+
+// Galeri Routes
+Route::get('/galeri', [HomeController::class, 'galeri'])->name('galeri');
+
+// Statistik Routes
+Route::get('/statistik', [HomeController::class, 'statistik'])->name('statistik');
+
 // Admin Routes (Temporary - untuk testing)
 Route::prefix('admin')->group(function () {
     Route::get('/', function () {

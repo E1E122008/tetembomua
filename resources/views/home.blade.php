@@ -207,6 +207,71 @@
     </div>
 </section>
 
+<!-- Statistics Section -->
+<section class="section bg-light">
+    <div class="container">
+        <div class="section-title">
+            <h2>Statistik Desa</h2>
+            <p>Data terkini perkembangan desa dalam berbagai aspek</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-number">2,847</h3>
+                        <p class="stat-label">Total Penduduk</p>
+                        <span class="stat-change positive">+2.3% dari tahun lalu</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-number">89.5%</h3>
+                        <p class="stat-label">Angka Melek Huruf</p>
+                        <span class="stat-change positive">+1.2% dari tahun lalu</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-number">Rp 2.8M</h3>
+                        <p class="stat-label">PAD Desa</p>
+                        <span class="stat-change positive">+15.3% dari tahun lalu</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-number">685</h3>
+                        <p class="stat-label">Kepala Keluarga</p>
+                        <span class="stat-change positive">+1.8% dari tahun lalu</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="{{ route('statistik') }}" class="btn btn-primary">
+                <i class="fas fa-chart-bar me-2"></i>Lihat Statistik Lengkap
+            </a>
+        </div>
+    </div>
+</section>
+
 <!-- Latest News Section -->
 <section class="section">
     <div class="container">
@@ -523,6 +588,65 @@
 .btn-outline-info:hover {
     background: var(--accent-teal);
     border-color: var(--accent-teal);
+}
+
+/* Stat Card Styles */
+.stat-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+.stat-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--primary-gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1.5rem;
+}
+
+.stat-icon i {
+    font-size: 2rem;
+    color: white;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-green);
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.stat-change {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.stat-change.positive {
+    color: #28a745;
+}
+
+.stat-change.negative {
+    color: #dc3545;
 }
 
 /* Responsive adjustments */

@@ -25,4 +25,24 @@ class HomeController extends Controller
     {
         return view('news');
     }
+
+    public function potensi()
+    {
+        return view('potensi');
+    }
+
+    public function program()
+    {
+        return view('program');
+    }
+
+    public function galeri()
+    {
+        return view('galeri');
+    }
+
+    public function statistik()
+    {
+        return view('statistik');
+    }
 }

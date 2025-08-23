@@ -19,9 +19,7 @@
         <div class="row align-items-center">
             <div class="col-lg-8">
                 <div class="hero-content">
-                    <div class="text-center mb-4">
-                        <img src="{{ asset('FOTO/LOGO-removebg-preview.png') }}" alt="Logo Desa Tetembomua" height="60" class="mb-3">
-                    </div>
+                                        
                     <h1 class="display-4 fw-bold mb-4">Komoditas Pertanian Unggulan</h1>
                     <p class="lead mb-4">Kelapa Sawit, Kakao, dan Lada sebagai komoditas utama yang menjadi tulang punggung perekonomian desa</p>
                 </div>
