@@ -17,9 +17,14 @@
 <section class="hero-section" style="min-height: 50vh;">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-lg-8 mx-auto text-center">
-                <h1>Komoditas Pertanian</h1>
-                <p>Berbagai jenis komoditas unggulan yang menjadi andalan Desa Tetembomua</p>
+            <div class="col-lg-8">
+                <div class="hero-content">
+                    <div class="text-center mb-4">
+                        <img src="{{ asset('FOTO/LOGO-removebg-preview.png') }}" alt="Logo Desa Tetembomua" height="60" class="mb-3">
+                    </div>
+                    <h1 class="display-4 fw-bold mb-4">Komoditas Pertanian Unggulan</h1>
+                    <p class="lead mb-4">Kelapa Sawit, Kakao, dan Lada sebagai komoditas utama yang menjadi tulang punggung perekonomian desa</p>
+                </div>
             </div>
         </div>
     </div>
@@ -31,7 +36,7 @@
         <div class="row align-items-center">
             <div class="col-lg-6 mb-4">
                 <div class="komoditas-image-container">
-                    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
                          alt="Komoditas Pertanian" class="img-fluid komoditas-image">
                     <div class="komoditas-image-overlay"></div>
                 </div>

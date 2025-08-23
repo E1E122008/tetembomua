@@ -9,14 +9,15 @@
         <div class="row align-items-center">
             <div class="col-lg-6">
                 <div class="hero-content">
-                    <h1>Selamat Datang di Desa Tetembomua</h1>
-                    <p>Desa yang maju dan berbudaya dengan masyarakat yang ramah, produktif, dan komitmen untuk mengembangkan desa secara berkelanjutan.</p>
-                    <div class="d-flex gap-3">
-                        <a href="{{ route('profile.visi-misi') }}" class="btn btn-primary">
-                            <i class="fas fa-book me-2"></i>Visi & Misi
+                    
+                    <h1 class="display-4 fw-bold mb-4">Selamat Datang di Desa Tetembomua</h1>
+                    <p class="lead mb-4">Desa yang maju dan berbudaya dengan masyarakat yang ramah, produktif, dan komitmen untuk mengembangkan desa secara berkelanjutan</p>
+                    <div class="hero-buttons">
+                        <a href="{{ route('about') }}" class="btn btn-primary btn-lg me-3">
+                            <i class="fas fa-info-circle me-2"></i>Tentang Desa
                         </a>
-                        <a href="{{ route('news') }}" class="btn btn-outline-primary">
-                            <i class="fas fa-newspaper me-2"></i>Berita Terbaru
+                        <a href="{{ route('contact') }}" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-envelope me-2"></i>Hubungi Kami
                         </a>
                     </div>
                 </div>

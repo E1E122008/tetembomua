@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Demografi - Desa Tetembomua')
+@section('title', 'Demografi Desa - Desa Tetembomua')
 
 @section('content')
 <!-- Breadcrumb -->
@@ -15,220 +15,617 @@
 </nav>
 
 <!-- Hero Section -->
-<section class="hero-section" style="min-height: 50vh;">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-8 mx-auto text-center">
-                <h1>Demografi Desa Tetembomua</h1>
-                <p>Data kependudukan dan statistik demografis yang menggambarkan kondisi masyarakat desa</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Overview Section -->
-<section class="section">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6 mb-4">
-                <div class="demografi-image-container">
-                    <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                         alt="Demografi Desa" class="img-fluid demografi-image">
-                    <div class="demografi-image-overlay"></div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <h2 class="mb-4">Profil Kependudukan</h2>
-                <p class="mb-4">Desa Tetembomua memiliki jumlah penduduk yang terus berkembang dengan komposisi yang seimbang. Masyarakat desa dikenal dengan semangat gotong royong yang tinggi dan komitmen untuk mengembangkan sektor pertanian secara berkelanjutan.</p>
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <div class="d-flex align-items-center">
-                            <i class="fas fa-users text-primary me-3 fa-2x"></i>
-                            <div>
-                                <h6 class="mb-0">2,500+ Jiwa</h6>
-                                <small class="text-muted">Total penduduk</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <div class="d-flex align-items-center">
-                            <i class="fas fa-home text-success me-3 fa-2x"></i>
-                            <div>
-                                <h6 class="mb-0">500+ KK</h6>
-                                <small class="text-muted">Kartu keluarga</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Population Statistics Section -->
-<section class="section bg-light">
-    <div class="container">
-        <div class="section-title">
-            <h2>Statistik Kependudukan</h2>
-            <p>Data lengkap tentang jumlah dan komposisi penduduk Desa Tetembomua</p>
-        </div>
-        <div class="row">
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card text-center h-100">
-                    <div class="card-body">
-                        <i class="fas fa-users fa-3x text-primary mb-3"></i>
-                        <h3 class="card-title text-primary">2,547</h3>
-                        <p class="card-text">Total Penduduk</p>
-                        <small class="text-muted">Update: Desember 2024</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card text-center h-100">
-                    <div class="card-body">
-                        <i class="fas fa-male fa-3x text-success mb-3"></i>
-                        <h3 class="card-title text-success">1,298</h3>
-                        <p class="card-text">Laki-laki</p>
-                        <small class="text-muted">51% dari total</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card text-center h-100">
-                    <div class="card-body">
-                        <i class="fas fa-female fa-3x text-warning mb-3"></i>
-                        <h3 class="card-title text-warning">1,249</h3>
-                        <p class="card-text">Perempuan</p>
-                        <small class="text-muted">49% dari total</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card text-center h-100">
-                    <div class="card-body">
-                        <i class="fas fa-home fa-3x text-info mb-3"></i>
-                        <h3 class="card-title text-info">523</h3>
-                        <p class="card-text">Kartu Keluarga</p>
-                        <small class="text-muted">Rata-rata 4.9 jiwa/KK</small>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Wilayah Section -->
-<section class="section">
-    <div class="container">
-        <div class="section-title">
-            <h2>Informasi Wilayah</h2>
-            <p>Data luas wilayah dan pembagian administratif desa</p>
-        </div>
-        <div class="row">
-            <div class="col-lg-6 col-md-6 mb-4">
-                <div class="card text-center h-100">
-                    <div class="card-body">
-                        <i class="fas fa-map-marked-alt fa-3x text-primary mb-3"></i>
-                        <h5 class="card-title">Luas Wilayah</h5>
-                        <h3 class="text-primary">2,500 Ha</h3>
-                        <p class="card-text">Total luas wilayah Desa Tetembomua</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6 mb-4">
-                <div class="card text-center h-100">
-                    <div class="card-body">
-                        <i class="fas fa-home fa-3x text-warning mb-3"></i>
-                        <h5 class="card-title">Jumlah Dusun</h5>
-                        <h3 class="text-warning">4 Dusun</h3>
-                        <p class="card-text">Dusun A, B, C, dan D</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- CTA Section -->
-<section class="section bg-primary text-white">
+<section class="hero-section">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <h3>Data Demografi Terkini</h3>
-                <p class="mb-0">Untuk informasi demografi yang lebih detail dan terkini, silakan hubungi kantor desa atau kunjungi langsung.</p>
+                <div class="hero-content">
+                    <h1 class="display-4 fw-bold mb-4">Demografi Desa Tetembomua</h1>
+                    <p class="lead mb-4">Data kependudukan dan kondisi sosial ekonomi masyarakat Desa Tetembomua tahun 2024</p>
+                </div>
             </div>
-            <div class="col-lg-4 text-lg-end">
-                <a href="{{ route('contact') }}" class="btn btn-light btn-lg">
-                    <i class="fas fa-info-circle me-2"></i>Informasi Lebih Lanjut
-                </a>
+            <div class="col-lg-4 text-center">
+                <i class="fas fa-chart-pie fa-6x text-white opacity-75"></i>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Demografi Section -->
+<section class="section">
+    <div class="container">
+        <!-- Kondisi Geografis -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <div class="card fade-in">
+                    <div class="card-body p-5">
+                        <div class="text-center mb-5">
+                            <i class="fas fa-map-marked-alt fa-4x text-primary mb-3"></i>
+                            <h2 class="text-primary fw-bold">KONDISI GEOGRAFIS</h2>
+                        </div>
+
+                        <div class="row">
+            <div class="col-lg-6 mb-4">
+                                <div class="info-card">
+                                    <div class="info-header">
+                                        <i class="fas fa-location-arrow fa-2x text-success"></i>
+                                        <h5 class="text-success">Letak dan Luas Wilayah</h5>
+                                    </div>
+                                    <div class="info-body">
+                                        <p><strong>Jarak dari Ibu Kota Kabupaten:</strong> 62 km</p>
+                                        <p><strong>Luas Wilayah:</strong> 10,54 km²</p>
+                                        <p><strong>Kode Pos:</strong> 93464</p>
+                                    </div>
+                </div>
+            </div>
+
+                            <div class="col-lg-6 mb-4">
+                                <div class="info-card">
+                                    <div class="info-header">
+                                        <i class="fas fa-border-all fa-2x text-warning"></i>
+                                        <h5 class="text-warning">Batas Wilayah</h5>
+                                    </div>
+                                    <div class="info-body">
+                                        <ul class="list-unstyled">
+                                            <li><i class="fas fa-arrow-up text-danger me-2"></i><strong>Utara:</strong> Kecamatan Onembute</li>
+                                            <li><i class="fas fa-arrow-right text-primary me-2"></i><strong>Timur:</strong> Kecamatan Onembute</li>
+                                            <li><i class="fas fa-arrow-down text-success me-2"></i><strong>Selatan:</strong> Desa Wonua Hoa dan Asaki</li>
+                                            <li><i class="fas fa-arrow-left text-warning me-2"></i><strong>Barat:</strong> Desa Amberi</li>
+                                        </ul>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="info-card">
+                                    <div class="info-header">
+                                        <i class="fas fa-road fa-2x text-info"></i>
+                                        <h5 class="text-info">Lokasi Strategis</h5>
+                                    </div>
+                                    <div class="info-body">
+                                        <p>Desa Tetembomua berada di jalan provinsi penghubung antara Kabupaten Konawe Utara dan Kabupaten Konawe serta jalan utama menuju Provinsi Sulawesi Selatan dan Tengah. Hal ini membuat potensi di bidang perdagangan sangat berpeluang tumbuh pesat.</p>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- Data Kependudukan -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <div class="card fade-in">
+                    <div class="card-body p-5">
+                        <div class="text-center mb-5">
+                            <i class="fas fa-users fa-4x text-success mb-3"></i>
+                            <h2 class="text-success fw-bold">DATA KEPENDUDUKAN</h2>
+                            <p class="text-muted">Tahun 2024</p>
+                        </div>
+
+                        <!-- Statistik Utama -->
+                        <div class="row mb-4">
+                            <div class="col-lg-3 col-md-6 mb-3">
+                                <div class="stat-card">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-users fa-3x text-primary"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <h3 class="text-primary fw-bold">402</h3>
+                                        <p class="text-muted">Total Penduduk</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6 mb-3">
+                                <div class="stat-card">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-home fa-3x text-success"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <h3 class="text-success fw-bold">118</h3>
+                                        <p class="text-muted">Total KK</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6 mb-3">
+                                <div class="stat-card">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-male fa-3x text-info"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <h3 class="text-info fw-bold">222</h3>
+                                        <p class="text-muted">Laki-laki</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6 mb-3">
+                                <div class="stat-card">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-female fa-3x text-warning"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <h3 class="text-warning fw-bold">178</h3>
+                                        <p class="text-muted">Perempuan</p>
+        </div>
+                    </div>
+                </div>
+            </div>
+
+                        <!-- Tabel Data per RT -->
+                        <div class="row">
+                            <div class="col-12">
+                                <h4 class="text-center mb-4">
+                                    <i class="fas fa-table me-2 text-primary"></i>
+                                    DATA PENDUDUK PER RT
+                                </h4>
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead class="table-primary">
+                                            <tr>
+                                                <th>RT</th>
+                                                <th>KK</th>
+                                                <th>KK (Laki-laki)</th>
+                                                <th>KK (Perempuan)</th>
+                                                <th>Laki-laki (Jiwa)</th>
+                                                <th>Perempuan (Jiwa)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>01</strong></td>
+                                                <td>11</td>
+                                                <td>10</td>
+                                                <td>1</td>
+                                                <td>30</td>
+                                                <td>18</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>02</strong></td>
+                                                <td>14</td>
+                                                <td>11</td>
+                                                <td>3</td>
+                                                <td>25</td>
+                                                <td>21</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>03</strong></td>
+                                                <td>13</td>
+                                                <td>12</td>
+                                                <td>1</td>
+                                                <td>29</td>
+                                                <td>22</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>04</strong></td>
+                                                <td>25</td>
+                                                <td>19</td>
+                                                <td>6</td>
+                                                <td>35</td>
+                                                <td>28</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>05</strong></td>
+                                                <td>22</td>
+                                                <td>21</td>
+                                                <td>1</td>
+                                                <td>50</td>
+                                                <td>40</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>06</strong></td>
+                                                <td>33</td>
+                                                <td>27</td>
+                                                <td>6</td>
+                                                <td>62</td>
+                                                <td>49</td>
+                                            </tr>
+                                            <tr class="table-active">
+                                                <td><strong>Total</strong></td>
+                                                <td><strong>118</strong></td>
+                                                <td><strong>100</strong></td>
+                                                <td><strong>18</strong></td>
+                                                <td><strong>222</strong></td>
+                                                <td><strong>178</strong></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                    </div>
+                </div>
+            </div>
+                    </div>
+                </div>
+            </div>
+
+        <!-- Mata Pencaharian -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <div class="card fade-in">
+                    <div class="card-body p-5">
+                        <div class="text-center mb-5">
+                            <i class="fas fa-briefcase fa-4x text-warning mb-3"></i>
+                            <h2 class="text-warning fw-bold">MATA PENCAHARIAN PENDUDUK</h2>
+                            <p class="text-muted">Tahun 2024</p>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead class="table-warning">
+                                            <tr>
+                                                <th>No.</th>
+                                                <th>Pekerjaan</th>
+                                                <th>Jumlah</th>
+                                                <th>Persentase</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td><strong>Tani</strong></td>
+                                                <td>206</td>
+                                                <td>51.0%</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td><strong>Pedagang</strong></td>
+                                                <td>57</td>
+                                                <td>14.1%</td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td><strong>Pelajar/Mahasiswa</strong></td>
+                                                <td>102</td>
+                                                <td>25.2%</td>
+                                            </tr>
+                                            <tr>
+                                                <td>4</td>
+                                                <td><strong>Ibu Rumah Tangga</strong></td>
+                                                <td>96</td>
+                                                <td>23.8%</td>
+                                            </tr>
+                                            <tr>
+                                                <td>5</td>
+                                                <td><strong>Wiraswasta</strong></td>
+                                                <td>28</td>
+                                                <td>6.9%</td>
+                                            </tr>
+                                            <tr>
+                                                <td>6</td>
+                                                <td><strong>Karyawan</strong></td>
+                                                <td>25</td>
+                                                <td>6.2%</td>
+                                            </tr>
+                                            <tr>
+                                                <td>7</td>
+                                                <td><strong>Jasa</strong></td>
+                                                <td>7</td>
+                                                <td>1.7%</td>
+                                            </tr>
+                                            <tr>
+                                                <td>8</td>
+                                                <td><strong>Buruh Batu</strong></td>
+                                                <td>5</td>
+                                                <td>1.2%</td>
+                                            </tr>
+                                            <tr>
+                                                <td>9</td>
+                                                <td><strong>Buruh Kayu</strong></td>
+                                                <td>4</td>
+                                                <td>1.0%</td>
+                                            </tr>
+                                            <tr>
+                                                <td>10</td>
+                                                <td><strong>ASN/TNI/POLRI</strong></td>
+                                                <td>1</td>
+                                                <td>0.2%</td>
+                                            </tr>
+                                            <tr>
+                                                <td>11</td>
+                                                <td><strong>Belum/Tidak Bekerja</strong></td>
+                                                <td>19</td>
+                                                <td>4.7%</td>
+                                            </tr>
+                                            <tr>
+                                                <td>12</td>
+                                                <td><strong>Lain lain</strong></td>
+                                                <td>2</td>
+                                                <td>0.5%</td>
+                                            </tr>
+                                            <tr class="table-active">
+                                                <td colspan="2"><strong>Total</strong></td>
+                                                <td><strong>404</strong></td>
+                                                <td><strong>100%</strong></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="chart-container">
+                                    <canvas id="occupationChart" width="400" height="400"></canvas>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- Sarana Prasarana -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card fade-in">
+                    <div class="card-body p-5">
+                        <div class="text-center mb-5">
+                            <i class="fas fa-building fa-4x text-info mb-3"></i>
+                            <h2 class="text-info fw-bold">SARANA PRASARANA</h2>
+        </div>
+
+        <div class="row">
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="facility-card">
+                                    <div class="facility-header">
+                                        <i class="fas fa-heartbeat fa-2x text-danger"></i>
+                                        <h5 class="text-danger">Kesehatan</h5>
+                                    </div>
+                                    <div class="facility-body">
+                                        <ul class="list-unstyled">
+                                            <li><i class="fas fa-check text-success me-2"></i>Bidan: 1 orang</li>
+                                            <li><i class="fas fa-check text-success me-2"></i>Posyandu: 1 unit</li>
+                                            <li><i class="fas fa-times text-danger me-2"></i>Puskesmas: 0 unit</li>
+                                            <li><i class="fas fa-times text-danger me-2"></i>Puskesmas Pembantu: 0 unit</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="facility-card">
+                                    <div class="facility-header">
+                                        <i class="fas fa-graduation-cap fa-2x text-primary"></i>
+                                        <h5 class="text-primary">Pendidikan</h5>
+                                    </div>
+                                    <div class="facility-body">
+                                        <ul class="list-unstyled">
+                                            <li><i class="fas fa-check text-success me-2"></i>TK Meohai: 1 unit (Baik)</li>
+                                            <li><i class="fas fa-times text-danger me-2"></i>SD Negeri: 0 unit</li>
+                                            <li><i class="fas fa-times text-danger me-2"></i>SMP: 0 unit</li>
+                                            <li><i class="fas fa-times text-danger me-2"></i>SMA: 0 unit</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="facility-card">
+                                    <div class="facility-header">
+                                        <i class="fas fa-mosque fa-2x text-success"></i>
+                                        <h5 class="text-success">Keagamaan</h5>
+                                    </div>
+                                    <div class="facility-body">
+                                        <ul class="list-unstyled">
+                                            <li><i class="fas fa-check text-success me-2"></i>Mesjid Al-Muhajirin: 1 unit (Baik)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="facility-card">
+                                    <div class="facility-header">
+                                        <i class="fas fa-road fa-2x text-warning"></i>
+                                        <h5 class="text-warning">Infrastruktur</h5>
+                                    </div>
+                                    <div class="facility-body">
+                                        <ul class="list-unstyled">
+                                            <li><i class="fas fa-check text-success me-2"></i>Jalan beraspal: 3 Km</li>
+                                            <li><i class="fas fa-check text-success me-2"></i>Jalan berbatu/tanah: 7 Km</li>
+                                            <li><i class="fas fa-check text-success me-2"></i>Jembatan kecil: 8 buah</li>
+                                            <li><i class="fas fa-check text-success me-2"></i>Jembatan sedang/besar: 7 buah</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="facility-card">
+                                    <div class="facility-header">
+                                        <i class="fas fa-tint fa-2x text-info"></i>
+                                        <h5 class="text-info">Air & Sanitasi</h5>
+                                    </div>
+                                    <div class="facility-body">
+                                        <ul class="list-unstyled">
+                                            <li><i class="fas fa-check text-success me-2"></i>Jaringan irigasi: 1 buah</li>
+                                            <li><i class="fas fa-check text-success me-2"></i>WC Umum: 2 buah</li>
+                                            <li><i class="fas fa-times text-danger me-2"></i>Sumur Bor: 0 unit</li>
+                                        </ul>
+                    </div>
+                </div>
+            </div>
+
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="facility-card">
+                                    <div class="facility-header">
+                                        <i class="fas fa-futbol fa-2x text-success"></i>
+                                        <h5 class="text-success">Olahraga & Rekreasi</h5>
+                                    </div>
+                                    <div class="facility-body">
+                                        <ul class="list-unstyled">
+                                            <li><i class="fas fa-check text-success me-2"></i>Fasilitas Olahraga: 1 buah</li>
+                                            <li><i class="fas fa-times text-danger me-2"></i>Lapangan Bola: 0 unit</li>
+                                            <li><i class="fas fa-times text-danger me-2"></i>Gedung Olahraga: 0 unit</li>
+                                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+            </div>
             </div>
         </div>
     </div>
 </section>
 
 <style>
-.age-group, .education-level {
+.info-card {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-left: 4px solid var(--primary-green);
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(46, 139, 87, 0.2);
+}
+
+.info-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid rgba(46, 139, 87, 0.1);
+}
+
+.info-header i {
+    margin-right: 1rem;
+}
+
+.info-header h5 {
+    margin-bottom: 0;
+    font-weight: 600;
+}
+
+.info-body p, .info-body li {
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+}
+
+.stat-card {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-left: 4px solid var(--primary-green);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(46, 139, 87, 0.2);
+}
+
+.stat-icon {
     margin-bottom: 1rem;
 }
 
-.progress {
-    height: 8px;
-    border-radius: 4px;
+.stat-content h3 {
+    margin-bottom: 0.5rem;
 }
 
-.progress-bar {
-    border-radius: 4px;
+.facility-card {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-left: 4px solid var(--primary-green);
+    height: 100%;
+    transition: all 0.3s ease;
 }
 
-/* Custom color classes for consistency */
-.text-primary {
-    color: var(--primary-green) !important;
+.facility-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(46, 139, 87, 0.2);
 }
 
-.text-success {
-    color: var(--secondary-green) !important;
+.facility-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid rgba(46, 139, 87, 0.1);
 }
 
-.text-warning {
-    color: var(--light-brown) !important;
+.facility-header i {
+    margin-right: 1rem;
 }
 
-.text-info {
-    color: var(--accent-brown) !important;
+.facility-header h5 {
+    margin-bottom: 0;
+    font-weight: 600;
 }
 
-.bg-primary {
-    background: var(--primary-gradient) !important;
+.facility-body li {
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
 }
 
-/* Demografi Image Styles */
-.demografi-image-container {
-    position: relative;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 15px 35px rgba(46, 139, 87, 0.2);
-}
-
-.demografi-image {
-    border-radius: 20px;
-    transition: transform 0.5s ease;
-}
-
-.demografi-image-container:hover .demografi-image {
-    transform: scale(1.03);
-}
-
-.demografi-image-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, 
-        rgba(46, 139, 87, 0.1), 
-        rgba(60, 179, 113, 0.05), 
-        rgba(32, 178, 170, 0.1));
-    border-radius: 20px;
+.chart-container {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: center;
 }
 </style>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+// Chart untuk mata pencaharian
+const ctx = document.getElementById('occupationChart').getContext('2d');
+const occupationChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        labels: ['Tani', 'Pedagang', 'Pelajar/Mahasiswa', 'Ibu Rumah Tangga', 'Wiraswasta', 'Karyawan', 'Lainnya'],
+        datasets: [{
+            data: [206, 57, 102, 96, 28, 25, 30],
+            backgroundColor: [
+                '#2E8B57',
+                '#3CB371',
+                '#20B2AA',
+                '#FFD700',
+                '#FFA500',
+                '#FF6347',
+                '#9370DB'
+            ],
+            borderWidth: 2,
+            borderColor: '#fff'
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'bottom',
+                labels: {
+                    padding: 20,
+                    usePointStyle: true
+                }
+            },
+            title: {
+                display: true,
+                text: 'Mata Pencaharian Penduduk',
+                font: {
+                    size: 16,
+                    weight: 'bold'
+                }
+            }
+        }
+    }
+});
+</script>
 @endsection

@@ -66,6 +66,20 @@
                     </div>
                 </div>
             </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card fade-in">
+                    <div class="card-body text-center">
+                        <img src="{{ asset('FOTO/DSC_0596.JPG') }}" alt="Kepala Desa Abdullah, SP" class="rounded-circle mb-3" style="width: 100px; height: 100px; object-fit: cover;">
+                        <h5 class="card-title">Abdullah, SP</h5>
+                        <p class="text-muted">Kepala Desa</p>
+                        <p class="card-text">Masa Jabatan: 2024 - Sekarang</p>
+                        <div class="contact-info">
+                            <p><i class="fas fa-phone me-2"></i>+62 812-3456-7890</p>
+                            <p><i class="fas fa-envelope me-2"></i>kepaladesa@desatetembomua.id</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>

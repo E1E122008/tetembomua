@@ -396,9 +396,12 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="{{ route('home') }}">
-                <i class="fas fa-home me-2"></i>
-                Desa Tetembomua
+            <a class="navbar-brand d-flex align-items-center" href="{{ route('home') }}">
+                <img src="{{ asset('FOTO/LOGO-removebg-preview.png') }}" alt="Logo Desa Tetembomua" height="50" class="me-2">
+                <div>
+                    <span class="fw-bold text-white">Desa Tetembomua</span>
+                    <small class="d-block text-white-50">Kecamatan Lambuya</small>
+                </div>
             </a>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -447,13 +450,21 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-6 mb-4">
-                    <h5><i class="fas fa-home me-2"></i>Desa Tetembomua</h5>
-                    <p>Desa yang maju dan berbudaya dengan masyarakat yang ramah, produktif, dan komitmen untuk mengembangkan desa secara berkelanjutan.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <div class="footer-section">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="{{ asset('FOTO/LOGO-removebg-preview.png') }}" alt="Logo Desa Tetembomua" height="40" class="me-2">
+                            <div>
+                                <h5 class="text-white mb-0">Desa Tetembomua</h5>
+                                <small class="text-white-50">Kecamatan Lambuya</small>
+                            </div>
+                        </div>
+                        <p class="text-white-50">Desa yang maju dan berbudaya dengan masyarakat yang ramah, produktif, dan komitmen untuk mengembangkan desa secara berkelanjutan.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-6 mb-4">
