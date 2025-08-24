@@ -48,13 +48,38 @@ Route::get('/galeri', [HomeController::class, 'galeri'])->name('galeri');
 // Statistik Routes
 Route::get('/statistik', [HomeController::class, 'statistik'])->name('statistik');
 
-// Admin Routes (Temporary - untuk testing)
+// Admin Routes
 Route::prefix('admin')->group(function () {
-    Route::get('/', function () {
-        return view('admin.dashboard');
-    })->name('admin.dashboard');
-    
+    Route::get('/', [App\Http\Controllers\AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/login', function () {
         return view('admin.login');
     })->name('admin.login');
+    
+    // News Management
+    Route::get('/news', [App\Http\Controllers\AdminController::class, 'news'])->name('admin.news');
+    Route::get('/news/create', [App\Http\Controllers\AdminController::class, 'createNews'])->name('admin.news.create');
+    Route::post('/news', [App\Http\Controllers\AdminController::class, 'storeNews'])->name('admin.news.store');
+    
+    // Population Data Management
+    Route::get('/population', [App\Http\Controllers\AdminController::class, 'population'])->name('admin.population');
+    Route::post('/population', [App\Http\Controllers\AdminController::class, 'updatePopulation'])->name('admin.population.update');
+    
+    // Agricultural Data Management
+    Route::get('/agricultural', [App\Http\Controllers\AdminController::class, 'agricultural'])->name('admin.agricultural');
+    Route::post('/agricultural', [App\Http\Controllers\AdminController::class, 'updateAgricultural'])->name('admin.agricultural.update');
+    
+    // User Management
+    Route::get('/users', [App\Http\Controllers\AdminController::class, 'users'])->name('admin.users');
+    Route::get('/users/create', [App\Http\Controllers\AdminController::class, 'createUser'])->name('admin.users.create');
+    Route::post('/users', [App\Http\Controllers\AdminController::class, 'storeUser'])->name('admin.users.store');
+    
+    // Settings Management
+    Route::get('/settings', [App\Http\Controllers\AdminController::class, 'settings'])->name('admin.settings');
+    Route::post('/settings', [App\Http\Controllers\AdminController::class, 'updateSettings'])->name('admin.settings.update');
+    
+                  // Gallery Management
+              Route::get('/gallery', [App\Http\Controllers\AdminController::class, 'gallery'])->name('admin.gallery');
+              Route::post('/gallery/upload', [App\Http\Controllers\AdminController::class, 'uploadGallery'])->name('admin.gallery.upload');
+              Route::put('/gallery/{filename}/edit', [App\Http\Controllers\AdminController::class, 'editGalleryImage'])->name('admin.gallery.edit');
+              Route::delete('/gallery/{filename}', [App\Http\Controllers\AdminController::class, 'deleteGalleryImage'])->name('admin.gallery.delete');
 });

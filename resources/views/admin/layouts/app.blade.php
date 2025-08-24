@@ -359,23 +359,27 @@
                             <i class="fas fa-tachometer-alt"></i>
                             Dashboard
                         </a>
-                        <a class="nav-link {{ request()->is('admin/news*') ? 'active' : '' }}" href="#">
+                        <a class="nav-link {{ request()->is('admin/news*') ? 'active' : '' }}" href="{{ route('admin.news') }}">
                             <i class="fas fa-newspaper"></i>
                             Berita
                         </a>
-                        <a class="nav-link {{ request()->is('admin/population*') ? 'active' : '' }}" href="#">
+                        <a class="nav-link {{ request()->is('admin/population*') ? 'active' : '' }}" href="{{ route('admin.population') }}">
                             <i class="fas fa-users"></i>
                             Data Penduduk
                         </a>
-                        <a class="nav-link {{ request()->is('admin/agricultural*') ? 'active' : '' }}" href="#">
+                        <a class="nav-link {{ request()->is('admin/agricultural*') ? 'active' : '' }}" href="{{ route('admin.agricultural') }}">
                             <i class="fas fa-seedling"></i>
                             Data Pertanian
                         </a>
-                        <a class="nav-link {{ request()->is('admin/users*') ? 'active' : '' }}" href="#">
+                        <a class="nav-link {{ request()->is('admin/gallery*') ? 'active' : '' }}" href="{{ route('admin.gallery') }}">
+                            <i class="fas fa-images"></i>
+                            Galeri
+                        </a>
+                        <a class="nav-link {{ request()->is('admin/users*') ? 'active' : '' }}" href="{{ route('admin.users') }}">
                             <i class="fas fa-user-cog"></i>
                             Manajemen User
                         </a>
-                        <a class="nav-link {{ request()->is('admin/settings*') ? 'active' : '' }}" href="#">
+                        <a class="nav-link {{ request()->is('admin/settings*') ? 'active' : '' }}" href="{{ route('admin.settings') }}">
                             <i class="fas fa-cog"></i>
                             Pengaturan
                         </a>

@@ -36,265 +36,40 @@
 <section class="py-5">
     <div class="container">
         <div class="row g-4" id="gallery-grid">
-            <!-- Kegiatan -->
-            <div class="col-lg-4 col-md-6 gallery-item" data-category="kegiatan">
-                <div class="gallery-card">
-                    <div class="gallery-image">
-                        <img src="/FOTO/kegiatan/WhatsApp Image 2025-08-23 at 21.15.00.jpeg" alt="Kegiatan Desa" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <div class="overlay-content">
-                                <h5>Kegiatan Musyawarah Desa</h5>
-                                <p>Musyawarah perencanaan pembangunan desa tahun 2024</p>
-                                <span class="gallery-date">15 Oktober 2024</span>
+            @if(count($images) > 0)
+                @foreach($images as $image)
+                <div class="col-lg-4 col-md-6 gallery-item" data-category="{{ $image['category'] ?? 'kegiatan' }}">
+                    <div class="gallery-card">
+                        <div class="gallery-image">
+                            <img src="{{ $image['path'] }}" alt="{{ $image['name'] }}" class="img-fluid">
+                            <div class="gallery-overlay">
+                                <div class="overlay-content">
+                                    @if($image['description'])
+                                        <p>{{ $image['description'] }}</p>
+                                    @else
+                                        <p>Kegiatan Desa Tetembomua</p>
+                                    @endif
+                                    @if($image['image_date'])
+                                        <span class="gallery-date">{{ date('d F Y', strtotime($image['image_date'])) }}</span>
+                                    @else
+                                        <span class="gallery-date">{{ date('d F Y', strtotime('now')) }}</span>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="col-lg-4 col-md-6 gallery-item" data-category="kegiatan">
-                <div class="gallery-card">
-                    <div class="gallery-image">
-                        <img src="/FOTO/kegiatan/WhatsApp Image 2025-08-23 at 21.14.55.jpeg" alt="Kegiatan Pertanian" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <div class="overlay-content">
-                                <h5>Pelatihan Pertanian</h5>
-                                <p>Pelatihan teknik pertanian modern untuk petani desa</p>
-                                <span class="gallery-date">20 Oktober 2024</span>
-                            </div>
-                        </div>
-                    </div>
+                @endforeach
+            @else
+                <div class="col-12 text-center py-5">
+                    <i class="fas fa-images fa-4x text-muted mb-3"></i>
+                    <h5 class="text-muted">Belum ada gambar</h5>
+                    <p class="text-muted">Galeri akan ditampilkan setelah ada gambar yang diupload</p>
                 </div>
-            </div>
-            
-            <div class="col-lg-4 col-md-6 gallery-item" data-category="kegiatan">
-                <div class="gallery-card">
-                    <div class="gallery-image">
-                        <img src="/FOTO/kegiatan/WhatsApp Image 2025-08-23 at 21.14.54.jpeg" alt="Kegiatan Sosial" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <div class="overlay-content">
-                                <h5>Kegiatan Sosial</h5>
-                                <p>Kegiatan gotong royong membersihkan lingkungan desa</p>
-                                <span class="gallery-date">25 Oktober 2024</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-lg-4 col-md-6 gallery-item" data-category="kegiatan">
-                <div class="gallery-card">
-                    <div class="gallery-image">
-                        <img src="/FOTO/kegiatan/WhatsApp Image 2025-08-23 at 21.14.53.jpeg" alt="Kegiatan Pembangunan" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <div class="overlay-content">
-                                <h5>Kegiatan Pembangunan</h5>
-                                <p>Progres pembangunan infrastruktur desa</p>
-                                <span class="gallery-date">30 Oktober 2024</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-lg-4 col-md-6 gallery-item" data-category="kegiatan">
-                <div class="gallery-card">
-                    <div class="gallery-image">
-                        <img src="/FOTO/kegiatan/WhatsApp Image 2025-08-23 at 21.14.51.jpeg" alt="Kegiatan Masyarakat" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <div class="overlay-content">
-                                <h5>Kegiatan Masyarakat</h5>
-                                <p>Kegiatan pemberdayaan masyarakat desa</p>
-                                <span class="gallery-date">5 November 2024</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-lg-4 col-md-6 gallery-item" data-category="kegiatan">
-                <div class="gallery-card">
-                    <div class="gallery-image">
-                        <img src="/FOTO/kegiatan/WhatsApp Image 2025-08-23 at 21.14.50.jpeg" alt="Kegiatan Pelatihan" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <div class="overlay-content">
-                                <h5>Kegiatan Pelatihan</h5>
-                                <p>Pelatihan keterampilan untuk warga desa</p>
-                                <span class="gallery-date">10 November 2024</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-lg-4 col-md-6 gallery-item" data-category="kegiatan">
-                <div class="gallery-card">
-                    <div class="gallery-image">
-                        <img src="/FOTO/kegiatan/WhatsApp Image 2025-08-23 at 21.14.45.jpeg" alt="Kegiatan Desa" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <div class="overlay-content">
-                                <h5>Kegiatan Desa</h5>
-                                <p>Dokumentasi berbagai kegiatan pembangunan desa</p>
-                                <span class="gallery-date">15 November 2024</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Pembangunan -->
-            <div class="col-lg-4 col-md-6 gallery-item" data-category="pembangunan">
-                <div class="gallery-card">
-                    <div class="gallery-image">
-                        <img src="/FOTO/DSC_0596.JPG" alt="Pembangunan Jalan" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <div class="overlay-content">
-                                <h5>Pembangunan Jalan Desa</h5>
-                                <p>Progres pembangunan jalan desa untuk meningkatkan aksesibilitas</p>
-                                <span class="gallery-date">25 Oktober 2024</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-lg-4 col-md-6 gallery-item" data-category="pembangunan">
-                <div class="gallery-card">
-                    <div class="gallery-image">
-                        <img src="/FOTO/DSC_0605.JPG" alt="Pembangunan Air Bersih" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <div class="overlay-content">
-                                <h5>Sistem Air Bersih</h5>
-                                <p>Instalasi sistem air bersih untuk seluruh warga desa</p>
-                                <span class="gallery-date">30 Oktober 2024</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Potensi -->
-            <div class="col-lg-4 col-md-6 gallery-item" data-category="potensi">
-                <div class="gallery-card">
-                    <div class="gallery-image">
-                        <img src="/FOTO/DSC_0596.JPG" alt="Potensi Pertanian" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <div class="overlay-content">
-                                <h5>Lahan Pertanian</h5>
-                                <p>Lahan pertanian subur yang menjadi tulang punggung ekonomi desa</p>
-                                <span class="gallery-date">5 November 2024</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-lg-4 col-md-6 gallery-item" data-category="potensi">
-                <div class="gallery-card">
-                    <div class="gallery-image">
-                        <img src="/FOTO/DSC_0605.JPG" alt="Potensi UMKM" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <div class="overlay-content">
-                                <h5>UMKM Desa</h5>
-                                <p>Usaha Mikro Kecil dan Menengah yang berkembang di desa</p>
-                                <span class="gallery-date">10 November 2024</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Alam -->
-            <div class="col-lg-4 col-md-6 gallery-item" data-category="alam">
-                <div class="gallery-card">
-                    <div class="gallery-image">
-                        <img src="/FOTO/DSC_0596.JPG" alt="Pemandangan Alam" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <div class="overlay-content">
-                                <h5>Pemandangan Gunung</h5>
-                                <p>Keindahan alam desa dengan pemandangan gunung yang memukau</p>
-                                <span class="gallery-date">15 November 2024</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-lg-4 col-md-6 gallery-item" data-category="alam">
-                <div class="gallery-card">
-                    <div class="gallery-image">
-                        <img src="/FOTO/DSC_0605.JPG" alt="Persawahan" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <div class="overlay-content">
-                                <h5>Persawahan Terasering</h5>
-                                <p>Persawahan terasering yang indah dan produktif</p>
-                                <span class="gallery-date">20 November 2024</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-lg-4 col-md-6 gallery-item" data-category="kegiatan">
-                <div class="gallery-card">
-                    <div class="gallery-image">
-                        <img src="/FOTO/DSC_0596.JPG" alt="Kegiatan Sosial" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <div class="overlay-content">
-                                <h5>Kegiatan Sosial</h5>
-                                <p>Kegiatan gotong royong membersihkan lingkungan desa</p>
-                                <span class="gallery-date">25 November 2024</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-lg-4 col-md-6 gallery-item" data-category="pembangunan">
-                <div class="gallery-card">
-                    <div class="gallery-image">
-                        <img src="/FOTO/DSC_0605.JPG" alt="Pembangunan Balai Desa" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <div class="overlay-content">
-                                <h5>Balai Desa</h5>
-                                <p>Pembangunan balai desa untuk kegiatan masyarakat</p>
-                                <span class="gallery-date">30 November 2024</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-lg-4 col-md-6 gallery-item" data-category="potensi">
-                <div class="gallery-card">
-                    <div class="gallery-image">
-                        <img src="/FOTO/DSC_0596.JPG" alt="Potensi Pariwisata" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <div class="overlay-content">
-                                <h5>Potensi Pariwisata</h5>
-                                <p>Lokasi wisata alam yang dapat dikembangkan</p>
-                                <span class="gallery-date">5 Desember 2024</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-lg-4 col-md-6 gallery-item" data-category="alam">
-                <div class="gallery-card">
-                    <div class="gallery-image">
-                        <img src="/FOTO/DSC_0605.JPG" alt="Hutan Desa" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <div class="overlay-content">
-                                <h5>Hutan Lindung</h5>
-                                <p>Hutan lindung yang menjaga kelestarian alam desa</p>
-                                <span class="gallery-date">10 Desember 2024</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endif
         </div>
+    </div>
+</section>
     </div>
 </section>
 
