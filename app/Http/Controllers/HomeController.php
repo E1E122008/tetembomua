@@ -39,10 +39,10 @@ class HomeController extends Controller
 
     public function galeri()
     {
-        // Get images from kegiatan folder with descriptions
+        // Get media (images and videos) from kegiatan folder with descriptions
         $kegiatanPath = public_path('FOTO/kegiatan');
         $descriptionsPath = public_path('FOTO/kegiatan/descriptions.json');
-        $images = [];
+        $media = [];
         
         // Load descriptions if exists
         $descriptions = [];
@@ -56,18 +56,22 @@ class HomeController extends Controller
                 $filename = $file->getFilename();
                 // Skip descriptions.json file
                 if ($filename === 'descriptions.json') continue;
-                
-                $images[] = [
+
+                $extension = strtolower($file->getExtension());
+                $isVideo = in_array($extension, ['mp4', 'avi', 'mov', 'wmv', 'flv', 'webm', 'ogg']);
+
+                $media[] = [
                     'name' => $filename,
                     'path' => '/FOTO/kegiatan/' . $filename,
                     'description' => $descriptions[$filename]['description'] ?? null,
                     'category' => $descriptions[$filename]['category'] ?? null,
-                    'image_date' => $descriptions[$filename]['image_date'] ?? null
+                    'image_date' => $descriptions[$filename]['image_date'] ?? null,
+                    'type' => $descriptions[$filename]['type'] ?? ($isVideo ? 'video' : 'image')
                 ];
             }
         }
         
-        return view('galeri', compact('images'));
+        return view('galeri', compact('media'));
     }
 
     public function statistik()

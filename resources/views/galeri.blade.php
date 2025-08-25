@@ -4,7 +4,7 @@
 
 @section('content')
 <!-- Hero Section -->
-<section class="hero-section" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/FOTO/DSC_0596.JPG') center/cover;">
+<section class="hero-section" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/FOTO/devyle.jpeg') center/cover;">
     <div class="container">
         <div class="row align-items-center min-vh-50">
             <div class="col-lg-8 mx-auto text-center">
@@ -36,21 +36,30 @@
 <section class="py-5">
     <div class="container">
         <div class="row g-4" id="gallery-grid">
-            @if(count($images) > 0)
-                @foreach($images as $image)
-                <div class="col-lg-4 col-md-6 gallery-item" data-category="{{ $image['category'] ?? 'kegiatan' }}">
+            @if(isset($media) && count($media) > 0)
+                @foreach($media as $item)
+                <div class="col-lg-4 col-md-6 gallery-item" data-category="{{ $item['category'] ?? 'kegiatan' }}">
                     <div class="gallery-card">
                         <div class="gallery-image">
-                            <img src="{{ $image['path'] }}" alt="{{ $image['name'] }}" class="img-fluid">
+                            @if(($item['type'] ?? 'image') === 'video')
+                                <video controls class="img-fluid" preload="metadata" style="background:#000">
+                                    <source src="{{ $item['path'] }}" type="video/mp4">
+                                    <source src="{{ $item['path'] }}" type="video/webm">
+                                    <source src="{{ $item['path'] }}" type="video/ogg">
+                                    Browser Anda tidak mendukung tag video.
+                                </video>
+                            @else
+                                <img src="{{ $item['path'] }}" alt="{{ $item['name'] }}" class="img-fluid">
+                            @endif
                             <div class="gallery-overlay">
                                 <div class="overlay-content">
-                                    @if($image['description'])
-                                        <p>{{ $image['description'] }}</p>
+                                    @if(!empty($item['description']))
+                                        <p>{{ $item['description'] }}</p>
                                     @else
                                         <p>Kegiatan Desa Tetembomua</p>
                                     @endif
-                                    @if($image['image_date'])
-                                        <span class="gallery-date">{{ date('d F Y', strtotime($image['image_date'])) }}</span>
+                                    @if(!empty($item['image_date']))
+                                        <span class="gallery-date">{{ date('d F Y', strtotime($item['image_date'])) }}</span>
                                     @else
                                         <span class="gallery-date">{{ date('d F Y', strtotime('now')) }}</span>
                                     @endif
@@ -63,8 +72,8 @@
             @else
                 <div class="col-12 text-center py-5">
                     <i class="fas fa-images fa-4x text-muted mb-3"></i>
-                    <h5 class="text-muted">Belum ada gambar</h5>
-                    <p class="text-muted">Galeri akan ditampilkan setelah ada gambar yang diupload</p>
+                    <h5 class="text-muted">Belum ada media</h5>
+                    <p class="text-muted">Galeri akan ditampilkan setelah ada gambar atau video yang diupload</p>
                 </div>
             @endif
         </div>

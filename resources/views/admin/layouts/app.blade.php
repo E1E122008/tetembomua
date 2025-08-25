@@ -51,13 +51,15 @@
         /* Sidebar Styles dengan Gradasi Modern */
         .sidebar {
             background: var(--primary-gradient);
-            min-height: 100vh;
+            height: 650px;
             color: white;
             box-shadow: 4px 0 20px rgba(46, 139, 87, 0.3);
             position: fixed;
             width: 280px;
             z-index: 1000;
             transition: all 0.3s ease;
+            overflow: auto;
+            
         }
 
         .sidebar-header {

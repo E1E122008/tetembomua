@@ -25,7 +25,7 @@
             <div class="col-lg-6">
                 <div class="text-center">
                     <div class="hero-image-container">
-                        <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                        <img src="{{ asset('FOTO/upacara.jpeg') }}" 
                              alt="Desa Tetembomua" class="img-fluid hero-image">
                         <div class="hero-image-overlay"></div>
                     </div>
@@ -272,79 +272,7 @@
     </div>
 </section>
 
-<!-- Latest News Section -->
-<section class="section">
-    <div class="container">
-        <div class="section-title">
-            <h2>Berita Terbaru</h2>
-            <p>Informasi terkini seputar kegiatan dan program desa</p>
-        </div>
-        <div class="row">
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card h-100 news-card">
-                    <div class="news-image-container">
-                        <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                             class="card-img-top" alt="Program Desa">
-                        <div class="news-overlay">
-                            <span class="badge">Program</span>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="news-meta">
-                            <small class="text-muted">15 Des 2024</small>
-                        </div>
-                        <h5 class="card-title">Pelaksanaan Program Pemberdayaan Masyarakat</h5>
-                        <p class="card-text">Program pemberdayaan masyarakat desa telah dilaksanakan dengan sukses melibatkan seluruh elemen masyarakat.</p>
-                        <a href="{{ route('news') }}" class="btn btn-outline-primary btn-sm">Baca Selengkapnya</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card h-100 news-card">
-                    <div class="news-image-container">
-                        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                             class="card-img-top" alt="Pertanian">
-                        <div class="news-overlay">
-                            <span class="badge">Pertanian</span>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="news-meta">
-                            <small class="text-muted">12 Des 2024</small>
-                        </div>
-                        <h5 class="card-title">Pelatihan Teknologi Pertanian Modern</h5>
-                        <p class="card-text">Kegiatan pelatihan teknologi pertanian modern untuk meningkatkan produktivitas petani desa.</p>
-                        <a href="{{ route('news') }}" class="btn btn-outline-success btn-sm">Baca Selengkapnya</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card h-100 news-card">
-                    <div class="news-image-container">
-                        <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                             class="card-img-top" alt="Infrastruktur">
-                        <div class="news-overlay">
-                            <span class="badge">Infrastruktur</span>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="news-meta">
-                            <small class="text-muted">10 Des 2024</small>
-                        </div>
-                        <h5 class="card-title">Pembangunan Jalan Desa Selesai</h5>
-                        <p class="card-text">Proyek pembangunan jalan desa sepanjang 2 kilometer telah selesai dan siap digunakan masyarakat.</p>
-                        <a href="{{ route('news') }}" class="btn btn-outline-info btn-sm">Baca Selengkapnya</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="text-center mt-4">
-            <a href="{{ route('news') }}" class="btn btn-primary">
-                <i class="fas fa-newspaper me-2"></i>Lihat Semua Berita
-            </a>
-        </div>
-    </div>
-</section>
+
 
 <!-- CTA Section -->
 <section class="section bg-primary text-white">

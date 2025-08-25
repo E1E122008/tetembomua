@@ -223,10 +223,10 @@ class AdminController extends Controller
 
     public function gallery()
     {
-        // Get images from kegiatan folder
+        // Get images and videos from kegiatan folder
         $kegiatanPath = public_path('FOTO/kegiatan');
         $descriptionsPath = public_path('FOTO/kegiatan/descriptions.json');
-        $images = [];
+        $media = [];
         
         // Load descriptions if exists
         $descriptions = [];
@@ -241,25 +241,30 @@ class AdminController extends Controller
                 // Skip descriptions.json file
                 if ($filename === 'descriptions.json') continue;
                 
-                $images[] = [
+                $extension = strtolower($file->getExtension());
+                $isVideo = in_array($extension, ['mp4', 'avi', 'mov', 'wmv', 'flv', 'webm']);
+                
+                $media[] = [
                     'name' => $filename,
                     'path' => '/FOTO/kegiatan/' . $filename,
                     'size' => $file->getSize(),
                     'date' => date('Y-m-d H:i:s', $file->getMTime()),
                     'description' => $descriptions[$filename]['description'] ?? null,
                     'category' => $descriptions[$filename]['category'] ?? null,
-                    'image_date' => $descriptions[$filename]['image_date'] ?? null
+                    'image_date' => $descriptions[$filename]['image_date'] ?? null,
+                    'type' => $descriptions[$filename]['type'] ?? ($isVideo ? 'video' : 'image')
                 ];
             }
         }
 
-        return view('admin.gallery.index', compact('images'));
+        return view('admin.gallery.index', compact('media'));
     }
 
     public function uploadGallery(Request $request)
     {
         $request->validate([
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'videos.*' => 'nullable|mimes:mp4,avi,mov,wmv,flv,webm|max:5120000', // 100MB max for videos
             'category' => 'required|in:kegiatan,pembangunan,potensi,alam',
             'image_date' => 'required|date',
             'description' => 'nullable|string|max:500'
@@ -273,6 +278,9 @@ class AdminController extends Controller
             $descriptions = json_decode(File::get($descriptionsPath), true) ?? [];
         }
 
+        $uploadedFiles = [];
+
+        // Handle image uploads
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
                 $imageName = time() . '_' . $image->getClientOriginalName();
@@ -282,15 +290,49 @@ class AdminController extends Controller
                 $descriptions[$imageName] = [
                     'description' => $request->description,
                     'category' => $request->category,
-                    'image_date' => $request->image_date
+                    'image_date' => $request->image_date,
+                    'type' => 'image'
                 ];
+                $uploadedFiles[] = $imageName;
             }
+        }
+
+        // Handle video uploads
+        if ($request->hasFile('videos')) {
+            foreach ($request->file('videos') as $video) {
+                $videoName = time() . '_' . $video->getClientOriginalName();
+                $video->move(public_path('FOTO/kegiatan'), $videoName);
+                
+                // Save video data
+                $descriptions[$videoName] = [
+                    'description' => $request->description,
+                    'category' => $request->category,
+                    'image_date' => $request->image_date,
+                    'type' => 'video'
+                ];
+                $uploadedFiles[] = $videoName;
+            }
+        }
             
-            // Save descriptions to JSON file
+        // Save descriptions to JSON file
+        if (!empty($uploadedFiles)) {
             File::put($descriptionsPath, json_encode($descriptions, JSON_PRETTY_PRINT));
         }
 
-        return redirect()->route('admin.gallery')->with('success', 'Gambar berhasil diunggah');
+        $message = '';
+        if (!empty($uploadedFiles)) {
+            $fileTypes = array_unique(array_map(function($file) use ($descriptions) {
+                return $descriptions[$file]['type'] ?? 'file';
+            }, $uploadedFiles));
+            
+            if (count($fileTypes) === 1) {
+                $message = ucfirst($fileTypes[0]) . ' berhasil diunggah';
+            } else {
+                $message = 'File berhasil diunggah';
+            }
+        }
+
+        return redirect()->route('admin.gallery')->with('success', $message);
     }
 
     public function editGalleryImage(Request $request, $filename)
@@ -309,11 +351,12 @@ class AdminController extends Controller
             $descriptions = json_decode(File::get($descriptionsPath), true) ?? [];
         }
 
-        // Update image data
+        // Update media data
         $descriptions[$filename] = [
             'description' => $request->description,
             'category' => $request->category,
-            'image_date' => $request->image_date
+            'image_date' => $request->image_date,
+            'type' => $descriptions[$filename]['type'] ?? 'image' // Preserve existing type
         ];
         
         // Save descriptions to JSON file
