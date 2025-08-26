@@ -1,0 +1,82 @@
+{
+    "entries": {
+        "rt": [
+            {
+                "id": "68ac7680cfed15.24603352",
+                "category": "rt",
+                "name": "Ridwan",
+                "role_type": "lainnya",
+                "role_text": "RT 02",
+                "info": null,
+                "photo": "\/FOTO\/struktur\/entry_1756133267_WhatsApp Image 2025-08-25 at 22.42.41.jpeg"
+            },
+            {
+                "id": "68ac7f9227b3b5.15546511",
+                "category": "rt",
+                "name": "Devy",
+                "role_type": "lainnya",
+                "role_text": "RT 03",
+                "info": null,
+                "photo": "\/FOTO\/struktur\/entry_1756135314_brother.jpeg"
+            }
+        ],
+        "dusun": [
+            {
+                "id": "68ac764b8621d6.92913091",
+                "category": "dusun",
+                "name": "Darsosno",
+                "role_type": "lainnya",
+                "role_text": "Dusun 01",
+                "info": null,
+                "photo": "\/FOTO\/struktur\/entry_1756132939_WhatsApp Image 2025-08-25 at 22.39.58.jpeg"
+            },
+            {
+                "id": "68ac77e189d048.04895356",
+                "category": "dusun",
+                "name": "Munir",
+                "role_type": "lainnya",
+                "role_text": "Dusun 02",
+                "info": null,
+                "photo": "\/FOTO\/struktur\/entry_1756133345_WhatsApp Image 2025-08-25 at 22.48.38.jpeg"
+            }
+        ],
+        "perangkat": [
+            {
+                "id": "68ac7dcbd17456.89281173",
+                "category": "perangkat",
+                "name": "Ahmad Fajar",
+                "role_type": "sekretaris",
+                "role_text": null,
+                "info": null,
+                "photo": "\/FOTO\/struktur\/entry_1756134859_WhatsApp Image 2025-08-25 at 20.48.44.jpeg"
+            }
+        ],
+        "bpd": [
+            {
+                "id": "68ac7e2edfd901.41030857",
+                "category": "bpd",
+                "name": "Amiruddin",
+                "role_type": "ketua",
+                "role_text": null,
+                "info": null,
+                "photo": "\/FOTO\/struktur\/entry_1756134958_WhatsApp Image 2025-08-25 at 23.15.29.jpeg"
+            }
+        ],
+        "lpm": [
+            {
+                "id": "68ac7f4e787d69.15016453",
+                "category": "lpm",
+                "name": "Ansyah",
+                "role_type": "ketua",
+                "role_text": null,
+                "info": null,
+                "photo": "\/FOTO\/struktur\/entry_1756135246_IMG_20220317_130732_062.jpg"
+            }
+        ]
+    },
+    "kades": {
+        "name": "Abdullah, Sp.",
+        "info": "Masa Jabatan: 2024 - Sekarang",
+        "photo": "\/FOTO\/struktur\/kades_1756134057_DSC_0596.JPG"
+    }
+}

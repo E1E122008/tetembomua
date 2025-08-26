@@ -385,4 +385,299 @@ class AdminController extends Controller
 
         return redirect()->route('admin.gallery')->with('error', 'Gambar tidak ditemukan');
     }
+
+    // Struktur Organisasi - Admin
+    public function structure()
+    {
+        $path = public_path('data/struktur.json');
+        $struktur = [
+            'kades' => [
+                'name' => 'Nama Kepala Desa',
+                'info' => 'Masa Jabatan: 2024 - Sekarang',
+                'photo' => null,
+            ],
+            'rt' => [],
+            'dusun' => []
+        ];
+
+        for ($i = 1; $i <= 6; $i++) {
+            $struktur['rt'][$i] = $struktur['rt'][$i] ?? [
+                'name' => "Kepala RT $i",
+                'info' => null,
+                'photo' => null,
+            ];
+        }
+        for ($i = 1; $i <= 3; $i++) {
+            $struktur['dusun'][$i] = $struktur['dusun'][$i] ?? [
+                'name' => "Kepala Dusun $i",
+                'info' => null,
+                'photo' => null,
+            ];
+        }
+
+        if (File::exists($path)) {
+            $loaded = json_decode(File::get($path), true) ?? [];
+            // Merge defaults with loaded content to ensure new keys exist
+            $struktur = array_replace_recursive($struktur, $loaded);
+        }
+
+        return view('admin.structure.index', compact('struktur'));
+    }
+
+    public function updateStructure(Request $request)
+    {
+        $path = public_path('data/struktur.json');
+        $uploadDir = public_path('FOTO/struktur');
+        if (!File::exists($uploadDir)) {
+            File::ensureDirectoryExists($uploadDir);
+        }
+
+        // Load existing
+        $struktur = [
+            'kdes' => null,
+        ];
+        if (File::exists($path)) {
+            $struktur = json_decode(File::get($path), true) ?? [];
+        }
+
+        // Initialize structure
+        $data = [
+            'kades' => [
+                'name' => $request->input('kades_name'),
+                'info' => $request->input('kades_info'),
+                'photo' => $struktur['kades']['photo'] ?? null,
+            ],
+            'rt' => [],
+            'dusun' => []
+        ];
+
+        // Handle Kepala Desa photo
+        if ($request->hasFile('kades_photo')) {
+            $file = $request->file('kades_photo');
+            if ($file->isValid()) {
+                $name = 'kades_' . time() . '_' . $file->getClientOriginalName();
+                $file->move($uploadDir, $name);
+                $data['kades']['photo'] = '/FOTO/struktur/' . $name;
+            }
+        }
+
+        // RT 1-6
+        for ($i = 1; $i <= 6; $i++) {
+            $current = $struktur['rt'][$i] ?? [];
+            $entry = [
+                'name' => $request->input("rt{$i}_name"),
+                'info' => $request->input("rt{$i}_info"),
+                'photo' => $current['photo'] ?? null,
+            ];
+            if ($request->hasFile("rt{$i}_photo")) {
+                $file = $request->file("rt{$i}_photo");
+                if ($file->isValid()) {
+                    $name = 'rt' . $i . '_' . time() . '_' . $file->getClientOriginalName();
+                    $file->move($uploadDir, $name);
+                    $entry['photo'] = '/FOTO/struktur/' . $name;
+                }
+            }
+            $data['rt'][$i] = $entry;
+        }
+
+        // Dusun 1-3
+        for ($i = 1; $i <= 3; $i++) {
+            $current = $struktur['dusun'][$i] ?? [];
+            $entry = [
+                'name' => $request->input("dusun{$i}_name"),
+                'info' => $request->input("dusun{$i}_info"),
+                'photo' => $current['photo'] ?? null,
+            ];
+            if ($request->hasFile("dusun{$i}_photo")) {
+                $file = $request->file("dusun{$i}_photo");
+                if ($file->isValid()) {
+                    $name = 'dusun' . $i . '_' . time() . '_' . $file->getClientOriginalName();
+                    $file->move($uploadDir, $name);
+                    $entry['photo'] = '/FOTO/struktur/' . $name;
+                }
+            }
+            $data['dusun'][$i] = $entry;
+        }
+
+        File::ensureDirectoryExists(dirname($path));
+        File::put($path, json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+
+        return redirect()->route('admin.structure')->with('success', 'Struktur organisasi berhasil diperbarui');
+    }
+
+    public function updateKades(Request $request)
+    {
+        $request->validate([
+            'kades_name' => 'required|string|max:255',
+            'kades_info' => 'nullable|string|max:255',
+            'kades_photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:4096',
+        ]);
+
+        $data = $this->loadStrukturData();
+        if (!isset($data['kades'])) {
+            $data['kades'] = ['name' => null, 'info' => null, 'photo' => null];
+        }
+
+        $data['kades']['name'] = $request->input('kades_name');
+        $data['kades']['info'] = $request->input('kades_info');
+
+        if ($request->hasFile('kades_photo')) {
+            $uploadDir = public_path('FOTO/struktur');
+            File::ensureDirectoryExists($uploadDir);
+            $file = $request->file('kades_photo');
+            if ($file->isValid()) {
+                $name = 'kades_' . time() . '_' . $file->getClientOriginalName();
+                $file->move($uploadDir, $name);
+                $data['kades']['photo'] = '/FOTO/struktur/' . $name;
+            }
+        }
+
+        $this->saveStrukturData($data);
+
+        return redirect()->route('admin.structure')->with('success', 'Data Kepala Desa berhasil diperbarui');
+    }
+
+    // Helpers for Struktur JSON
+    private function loadStrukturData(): array
+    {
+        $path = public_path('data/struktur.json');
+        if (File::exists($path)) {
+            $data = json_decode(File::get($path), true) ?? [];
+        } else {
+            $data = [];
+        }
+        // Ensure collections exist
+        $data['entries'] = $data['entries'] ?? [
+            'rt' => [], 'dusun' => [], 'perangkat' => [], 'bpd' => [], 'lpm' => []
+        ];
+        return $data;
+    }
+
+    private function saveStrukturData(array $data): void
+    {
+        $path = public_path('data/struktur.json');
+        File::ensureDirectoryExists(dirname($path));
+        File::put($path, json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+    }
+
+    public function storeStructureEntry(Request $request)
+    {
+        $request->validate([
+            'category' => 'required|in:rt,dusun,perangkat,bpd,lpm',
+            'name' => 'required|string|max:255',
+            'role_type' => 'required|in:ketua,sekretaris,laninya,lainnya',
+            'role_text' => 'nullable|string|max:255',
+            'info' => 'nullable|string|max:255',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:4096',
+        ]);
+
+        $data = $this->loadStrukturData();
+
+        $entry = [
+            'id' => uniqid('', true),
+            'category' => $request->category,
+            'name' => $request->name,
+            'role_type' => $request->role_type === 'laninya' ? 'lainnya' : $request->role_type,
+            'role_text' => $request->role_text,
+            'info' => $request->info,
+            'photo' => null,
+        ];
+
+        if ($request->hasFile('photo')) {
+            $uploadDir = public_path('FOTO/struktur');
+            File::ensureDirectoryExists($uploadDir);
+            $file = $request->file('photo');
+            if ($file->isValid()) {
+                $name = 'entry_' . time() . '_' . $file->getClientOriginalName();
+                $file->move($uploadDir, $name);
+                $entry['photo'] = '/FOTO/struktur/' . $name;
+            }
+        }
+
+        $data['entries'][$entry['category']][] = $entry;
+        $this->saveStrukturData($data);
+
+        return redirect()->route('admin.structure')->with('success', 'Struktur berhasil ditambahkan');
+    }
+
+    public function updateStructureEntry(Request $request, string $id)
+    {
+        $request->validate([
+            'category' => 'required|in:rt,dusun,perangkat,bpd,lpm',
+            'name' => 'required|string|max:255',
+            'role_type' => 'required|in:ketua,sekretaris,lainnya',
+            'role_text' => 'nullable|string|max:255',
+            'info' => 'nullable|string|max:255',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:4096',
+        ]);
+
+        $data = $this->loadStrukturData();
+        $category = $request->category;
+        $updated = false;
+
+        foreach ($data['entries'] as $cat => &$list) {
+            foreach ($list as &$item) {
+                if (($item['id'] ?? '') === $id) {
+                    // If category changed, remove and re-add later
+                    if ($cat !== $category) {
+                        $moved = $item;
+                        $list = array_values(array_filter($list, function ($x) use ($id) { return ($x['id'] ?? '') !== $id; }));
+                        $item = null; // break marker
+                        // set to add to target later
+                        $entry = $moved;
+                        $entry['category'] = $category;
+                    } else {
+                        $item['name'] = $request->name;
+                        $item['role_type'] = $request->role_type;
+                        $item['role_text'] = $request->role_text;
+                        $item['info'] = $request->info;
+                        $entry =& $item;
+                    }
+
+                    if ($request->hasFile('photo')) {
+                        $uploadDir = public_path('FOTO/struktur');
+                        File::ensureDirectoryExists($uploadDir);
+                        $file = $request->file('photo');
+                        if ($file->isValid()) {
+                            $name = 'entry_' . time() . '_' . $file->getClientOriginalName();
+                            $file->move($uploadDir, $name);
+                            $entry['photo'] = '/FOTO/struktur/' . $name;
+                        }
+                    }
+
+                    // If moved to new category
+                    if (($entry['category'] ?? $cat) !== $cat) {
+                        $data['entries'][$entry['category']][] = $entry;
+                    }
+                    $updated = true;
+                    break 2;
+                }
+            }
+        }
+
+        if ($updated) {
+            $this->saveStrukturData($data);
+            return redirect()->route('admin.structure')->with('success', 'Struktur berhasil diperbarui');
+        }
+
+        return redirect()->route('admin.structure')->with('error', 'Data struktur tidak ditemukan');
+    }
+
+    public function deleteStructureEntry(string $id)
+    {
+        $data = $this->loadStrukturData();
+        $removed = false;
+        foreach ($data['entries'] as $cat => $list) {
+            $filtered = array_values(array_filter($list, function ($x) use ($id) { return ($x['id'] ?? '') !== $id; }));
+            if (count($filtered) !== count($list)) {
+                $data['entries'][$cat] = $filtered;
+                $removed = true;
+            }
+        }
+        if ($removed) {
+            $this->saveStrukturData($data);
+            return redirect()->route('admin.structure')->with('success', 'Struktur berhasil dihapus');
+        }
+        return redirect()->route('admin.structure')->with('error', 'Data struktur tidak ditemukan');
+    }
 }

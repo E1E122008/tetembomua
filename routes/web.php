@@ -82,4 +82,12 @@ Route::prefix('admin')->group(function () {
               Route::post('/gallery/upload', [App\Http\Controllers\AdminController::class, 'uploadGallery'])->name('admin.gallery.upload');
               Route::put('/gallery/{filename}/edit', [App\Http\Controllers\AdminController::class, 'editGalleryImage'])->name('admin.gallery.edit');
               Route::delete('/gallery/{filename}', [App\Http\Controllers\AdminController::class, 'deleteGalleryImage'])->name('admin.gallery.delete');
+
+    // Struktur Organisasi Management
+    Route::get('/structure', [App\Http\Controllers\AdminController::class, 'structure'])->name('admin.structure');
+    Route::post('/structure', [App\Http\Controllers\AdminController::class, 'updateStructure'])->name('admin.structure.update');
+    Route::post('/structure/kades', [App\Http\Controllers\AdminController::class, 'updateKades'])->name('admin.structure.kades.update');
+    Route::post('/structure/entry', [App\Http\Controllers\AdminController::class, 'storeStructureEntry'])->name('admin.structure.entry.store');
+    Route::post('/structure/entry/{id}', [App\Http\Controllers\AdminController::class, 'updateStructureEntry'])->name('admin.structure.entry.update');
+    Route::delete('/structure/entry/{id}', [App\Http\Controllers\AdminController::class, 'deleteStructureEntry'])->name('admin.structure.entry.delete');
 });

@@ -13,7 +13,18 @@ class ProfileController extends Controller
 
     public function struktur()
     {
-        return view('profile.struktur');
+        $struktur = [];
+        $path = public_path('data/struktur.json');
+        if (file_exists($path)) {
+            $json = @file_get_contents($path);
+            if ($json !== false) {
+                $decoded = json_decode($json, true);
+                if (is_array($decoded)) {
+                    $struktur = $decoded;
+                }
+            }
+        }
+        return view('profile.struktur', compact('struktur'));
     }
 
     public function demografi()

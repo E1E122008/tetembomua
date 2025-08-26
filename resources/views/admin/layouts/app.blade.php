@@ -377,6 +377,10 @@
                             <i class="fas fa-images"></i>
                             Galeri
                         </a>
+                        <a class="nav-link {{ request()->is('admin/structure*') ? 'active' : '' }}" href="{{ route('admin.structure') }}">
+                            <i class="fas fa-sitemap"></i>
+                            Struktur Organisasi
+                        </a>
                         <a class="nav-link {{ request()->is('admin/users*') ? 'active' : '' }}" href="{{ route('admin.users') }}">
                             <i class="fas fa-user-cog"></i>
                             Manajemen User
