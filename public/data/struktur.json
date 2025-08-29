@@ -4,31 +4,67 @@
             {
                 "id": "68ac7680cfed15.24603352",
                 "category": "rt",
-                "name": "Ridwan",
+                "name": "Kembang",
                 "role_type": "lainnya",
-                "role_text": "RT 02",
+                "role_text": "RT 01",
                 "info": null,
-                "photo": "\/FOTO\/struktur\/entry_1756133267_WhatsApp Image 2025-08-25 at 22.42.41.jpeg"
+                "photo": "\/FOTO\/struktur\/entry_1756225129_Kembang(Ketua RT 01).png"
             },
             {
                 "id": "68ac7f9227b3b5.15546511",
                 "category": "rt",
-                "name": "Devy",
+                "name": "Ridwan",
                 "role_type": "lainnya",
-                "role_text": "RT 03",
+                "role_text": "RT 02",
                 "info": null,
-                "photo": "\/FOTO\/struktur\/entry_1756135314_brother.jpeg"
+                "photo": "\/FOTO\/struktur\/entry_1756225157_Ridwan (ketua RT 02).png"
+            },
+            {
+                "id": "68adcbbf3c2c52.06503133",
+                "category": "rt",
+                "name": "Erik",
+                "role_type": "lainnya",
+                "role_text": "RT 3",
+                "info": null,
+                "photo": "\/FOTO\/struktur\/entry_1756225183_Erik (ketua RT 03).png"
+            },
+            {
+                "id": "68adcbecdfbc82.88212810",
+                "category": "rt",
+                "name": "Ambo Sakka",
+                "role_type": "lainnya",
+                "role_text": "RT 4",
+                "info": null,
+                "photo": "\/FOTO\/struktur\/entry_1756225211_Ambo Sakka (ketua RT 04).png"
+            },
+            {
+                "id": "68add77a454673.20846542",
+                "category": "rt",
+                "name": "Nurlia",
+                "role_type": "lainnya",
+                "role_text": "RT 5",
+                "info": null,
+                "photo": "\/FOTO\/struktur\/entry_1756225244_Nurlia (Ketua RT 5).png"
+            },
+            {
+                "id": "68addf14579d40.36914591",
+                "category": "rt",
+                "name": "Hasbi",
+                "role_type": "lainnya",
+                "role_text": "RT 6",
+                "info": null,
+                "photo": "\/FOTO\/struktur\/entry_1756225300_Hasbi (ketua RT 6).png"
             }
         ],
         "dusun": [
             {
                 "id": "68ac764b8621d6.92913091",
                 "category": "dusun",
-                "name": "Darsosno",
+                "name": "Darsono",
                 "role_type": "lainnya",
                 "role_text": "Dusun 01",
                 "info": null,
-                "photo": "\/FOTO\/struktur\/entry_1756132939_WhatsApp Image 2025-08-25 at 22.39.58.jpeg"
+                "photo": "\/FOTO\/struktur\/entry_1756223453_Darsono (Kepala dusun 1).png"
             },
             {
                 "id": "68ac77e189d048.04895356",
@@ -37,7 +73,7 @@
                 "role_type": "lainnya",
                 "role_text": "Dusun 02",
                 "info": null,
-                "photo": "\/FOTO\/struktur\/entry_1756133345_WhatsApp Image 2025-08-25 at 22.48.38.jpeg"
+                "photo": "\/FOTO\/struktur\/entry_1756223477_Munir ( Kepala dusun 2).png"
             }
         ],
         "perangkat": [
@@ -48,18 +84,117 @@
                 "role_type": "sekretaris",
                 "role_text": null,
                 "info": null,
-                "photo": "\/FOTO\/struktur\/entry_1756134859_WhatsApp Image 2025-08-25 at 20.48.44.jpeg"
+                "photo": "\/FOTO\/struktur\/entry_1756223499_Ahmad Fajar (Sekretaris Desa).png"
+            },
+            {
+                "id": "68add94f286683.90781304",
+                "category": "perangkat",
+                "name": "Arfan",
+                "role_type": "lainnya",
+                "role_text": "Kasi Kesejahteraan",
+                "info": null,
+                "photo": "\/FOTO\/struktur\/entry_1756223823_Arfan (kasi kesejahteraan).png"
+            },
+            {
+                "id": "68add98c0dfac4.37717139",
+                "category": "perangkat",
+                "name": "Suardi",
+                "role_type": "lainnya",
+                "role_text": "Kasi Pelayanan",
+                "info": null,
+                "photo": "\/FOTO\/struktur\/entry_1756225558_Suardi (Kasi pelayanan).png"
+            },
+            {
+                "id": "68add9b7a08ae2.44572855",
+                "category": "perangkat",
+                "name": "Darmawati",
+                "role_type": "lainnya",
+                "role_text": "Kasi Pemerintahan",
+                "info": null,
+                "photo": "\/FOTO\/struktur\/entry_1756223927_Darmawati (kasi pemerintahan).png"
+            },
+            {
+                "id": "68add9f3d32a37.01914704",
+                "category": "perangkat",
+                "name": "Devi Ferawati",
+                "role_type": "lainnya",
+                "role_text": "Kaur ADM dan Umum",
+                "info": null,
+                "photo": "\/FOTO\/struktur\/entry_1756223987_Dvi Ferawati (Kaur ADM dan Umum).png"
+            },
+            {
+                "id": "68adda57104e57.09969187",
+                "category": "perangkat",
+                "name": "Asriani, S.pd",
+                "role_type": "lainnya",
+                "role_text": "Kaur Keuangan",
+                "info": null,
+                "photo": "\/FOTO\/struktur\/entry_1756225704_Asriani, S.pd (kaur keuangan).png"
+            },
+            {
+                "id": "68addaad67fef4.37110648",
+                "category": "perangkat",
+                "name": "Sofian Ependi, S.pd",
+                "role_type": "lainnya",
+                "role_text": "Kaur Perencanaan",
+                "info": null,
+                "photo": "\/FOTO\/struktur\/entry_1756225744_Sofian Ependi, S.pd (kaur perencanaan).png"
+            },
+            {
+                "id": "68ade12025a710.58173786",
+                "category": "perangkat",
+                "name": "Hasan",
+                "role_type": "lainnya",
+                "role_text": "Imam Desa",
+                "info": null,
+                "photo": "\/FOTO\/struktur\/entry_1756225824_Hasan (Imam Desa).png"
+            },
+            {
+                "id": "68ade15219eb87.24954890",
+                "category": "perangkat",
+                "name": "Baso Ilyas",
+                "role_type": "lainnya",
+                "role_text": "Tonomotuo",
+                "info": null,
+                "photo": "\/FOTO\/struktur\/entry_1756225874_Baso Ilyas (Tonomotuo).png"
             }
         ],
         "bpd": [
             {
                 "id": "68ac7e2edfd901.41030857",
                 "category": "bpd",
-                "name": "Amiruddin",
+                "name": "Amirudding",
                 "role_type": "ketua",
                 "role_text": null,
                 "info": null,
-                "photo": "\/FOTO\/struktur\/entry_1756134958_WhatsApp Image 2025-08-25 at 23.15.29.jpeg"
+                "photo": "\/FOTO\/struktur\/entry_1756226175_Amirudding (ketua BPD).png"
+            },
+            {
+                "id": "68add891386415.04243526",
+                "category": "bpd",
+                "name": "Anusa",
+                "role_type": "lainnya",
+                "role_text": "Wakil",
+                "info": null,
+                "photo": "\/FOTO\/struktur\/entry_1756225415_Anusa (wakil ketua BPD).png"
+            },
+            {
+                "id": "68add8cb595767.86951652",
+                "category": "bpd",
+                "name": "Misrayani",
+                "role_type": "lainnya",
+                "role_text": "Anggota",
+                "info": null,
+                "photo": "\/FOTO\/struktur\/entry_1756223691_Misrayani (Anggota BPD).png"
+            },
+            {
+                "id": "68addc85d38b29.70362779",
+                "category": "bpd",
+                "name": "Brambang Herman",
+                "role_type": "lainnya",
+                "role_text": "Anggota",
+                "info": null,
+                "photo": "\/FOTO\/struktur\/entry_1756225468_Brambang Herman (Anggota BPD).png"
             }
         ],
         "lpm": [

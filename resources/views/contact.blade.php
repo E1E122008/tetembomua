@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Kontak - Desa Tetembomua')
+@section('title', 'Kontak - ' . ($siteSettings['village_name'] ?? 'Desa Tetembomua'))
 
 @section('content')
 <!-- Breadcrumb -->
@@ -18,8 +18,8 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-8 mx-auto text-center">
-                <h1>Hubungi Kami</h1>
-                <p>Silakan hubungi kami untuk informasi lebih lanjut tentang Desa Tetembomua</p>
+                <h1>Hubungi {{ $siteSettings['village_name'] ?? 'Desa Tetembomua' }}</h1>
+                <p>Silakan hubungi kami untuk informasi lebih lanjut tentang {{ $siteSettings['village_name'] ?? 'Desa Tetembomua' }}</p>
             </div>
         </div>
     </div>
@@ -35,8 +35,7 @@
                         <i class="fas fa-map-marker-alt fa-3x text-primary mb-3"></i>
                         <h5 class="card-title">Alamat</h5>
                         <p class="card-text">
-                            Desa Tetembomua, Kecamatan Lambuya<br>
-                            Kabupaten Konawe, Provinsi Sulawesi Tenggara<br>
+                            {{ $siteSettings['contact_address'] ?? ('Desa ' . ($siteSettings['village_name'] ?? 'Tetembomua') . ', Kecamatan ' . ($siteSettings['district'] ?? 'Lambuya') . ', Kabupaten ' . ($siteSettings['regency'] ?? 'Konawe') . ', Provinsi ' . ($siteSettings['province'] ?? 'Sulawesi Tenggara')) }}<br>
                             Kode Pos: 93464
                         </p>
                     </div>
@@ -48,8 +47,8 @@
                         <i class="fas fa-phone fa-3x text-success mb-3"></i>
                         <h5 class="card-title">Telepon</h5>
                         <p class="card-text">
-                            <a href="tel:+6281234567890" class="text-decoration-none">+62 812-3456-7890</a><br>
-                            <a href="tel:+6281234567891" class="text-decoration-none">+62 812-3456-7891</a>
+                            @php $phone = $siteSettings['contact_phone'] ?? '+62 812-3456-7890'; @endphp
+                            <a href="tel:{{ preg_replace('/\s+/', '', $phone) }}" class="text-decoration-none">{{ $phone }}</a>
                         </p>
                     </div>
                 </div>
@@ -60,8 +59,7 @@
                         <i class="fas fa-envelope fa-3x text-warning mb-3"></i>
                         <h5 class="card-title">Email</h5>
                         <p class="card-text">
-                            <a href="mailto:info@desatetembomua.id" class="text-decoration-none">info@desatetembomua.id</a><br>
-                            <a href="mailto:pertanian@desatetembomua.id" class="text-decoration-none">pertanian@desatetembomua.id</a>
+                            <a href="mailto:{{ $siteSettings['contact_email'] ?? 'info@desatetembomua.id' }}" class="text-decoration-none">{{ $siteSettings['contact_email'] ?? 'info@desatetembomua.id' }}</a>
                         </p>
                     </div>
                 </div>
@@ -69,13 +67,17 @@
             <div class="col-lg-4 mb-4">
                 <div class="card fade-in">
                     <div class="card-body text-center">
-                        <img src="{{ asset('FOTO/DSC_0596.JPG') }}" alt="Kepala Desa Abdullah, SP" class="rounded-circle mb-3" style="width: 100px; height: 100px; object-fit: cover;">
-                        <h5 class="card-title">Abdullah, SP</h5>
+                        <img src="{{ asset('FOTO/DSC_0596.JPG') }}" alt="Kepala Desa {{ $siteSettings['village_head'] ?? 'Abdullah, SP' }}" class="rounded-circle mb-3" style="width: 100px; height: 100px; object-fit: cover;">
+                        <h5 class="card-title">{{ $siteSettings['village_head'] ?? 'Abdullah, SP' }}</h5>
                         <p class="text-muted">Kepala Desa</p>
-                        <p class="card-text">Masa Jabatan: 2024 - Sekarang</p>
+                        <p class="card-text">Masa Jabatan: {{ $siteSettings['term_period'] ?? '2024 - Sekarang' }}</p>
                         <div class="contact-info">
-                            <p><i class="fas fa-phone me-2"></i>+62 812-3456-7890</p>
-                            <p><i class="fas fa-envelope me-2"></i>kepaladesa@desatetembomua.id</p>
+                            @if(!empty($siteSettings['contact_phone']))
+                            <p><i class="fas fa-phone me-2"></i>{{ $siteSettings['contact_phone'] }}</p>
+                            @endif
+                            @if(!empty($siteSettings['contact_email']))
+                            <p><i class="fas fa-envelope me-2"></i>{{ $siteSettings['contact_email'] }}</p>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -145,7 +147,7 @@
     <div class="container">
         <div class="section-title">
             <h2>Lokasi Kami</h2>
-            <p>Peta lokasi Desa Tetembomua</p>
+            <p>Peta lokasi {{ $siteSettings['village_name'] ?? 'Desa Tetembomua' }}</p>
         </div>
         <div class="row">
             <div class="col-lg-10 mx-auto">
@@ -205,34 +207,34 @@
             <div class="col-lg-8 mx-auto">
                 <div class="row text-center">
                     <div class="col-md-3 col-6 mb-4">
-                        <a href="#" class="text-decoration-none">
+                        <a href="{{ $siteSettings['social_media']['facebook'] ?? '#' }}" class="text-decoration-none">
                             <div class="card h-100">
                                 <div class="card-body">
                                     <i class="fab fa-facebook fa-3x text-primary mb-3"></i>
                                     <h6>Facebook</h6>
-                                    <small class="text-muted">@DesaTetembomua</small>
+                                    <small class="text-muted">@{{ ($siteSettings['village_name'] ?? 'DesaTetembomua') }}</small>
                                 </div>
                             </div>
                         </a>
                     </div>
                     <div class="col-md-3 col-6 mb-4">
-                        <a href="#" class="text-decoration-none">
+                        <a href="{{ $siteSettings['social_media']['instagram'] ?? '#' }}" class="text-decoration-none">
                             <div class="card h-100">
                                 <div class="card-body">
                                     <i class="fab fa-instagram fa-3x text-danger mb-3"></i>
                                     <h6>Instagram</h6>
-                                    <small class="text-muted">@desa_tetembomua</small>
+                                    <small class="text-muted">@{{ str_replace(' ', '', strtolower($siteSettings['village_name'] ?? 'desa_tetembomua')) }}</small>
                                 </div>
                             </div>
                         </a>
                     </div>
                     <div class="col-md-3 col-6 mb-4">
-                        <a href="#" class="text-decoration-none">
+                        <a href="{{ $siteSettings['social_media']['youtube'] ?? '#' }}" class="text-decoration-none">
                             <div class="card h-100">
                                 <div class="card-body">
                                     <i class="fab fa-youtube fa-3x text-danger mb-3"></i>
                                     <h6>YouTube</h6>
-                                    <small class="text-muted">Desa Tetembomua</small>
+                                    <small class="text-muted">{{ $siteSettings['village_name'] ?? 'Desa Tetembomua' }}</small>
                                 </div>
                             </div>
                         </a>
@@ -243,7 +245,7 @@
                                 <div class="card-body">
                                     <i class="fab fa-whatsapp fa-3x text-success mb-3"></i>
                                     <h6>WhatsApp</h6>
-                                    <small class="text-muted">+62 812-3456-7890</small>
+                                    <small class="text-muted">{{ $siteSettings['contact_phone'] ?? '+62 812-3456-7890' }}</small>
                                 </div>
                             </div>
                         </a>

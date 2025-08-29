@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Tentang Desa - Desa Tetembomua')
+@section('title', 'Tentang ' . ($siteSettings['village_name'] ?? 'Desa Tetembomua'))
 
 @section('content')
 <!-- Hero Section -->
@@ -9,8 +9,8 @@
         <div class="row align-items-center">
             <div class="col-lg-8">
                 <div class="hero-content">
-                    <h1 class="display-4 fw-bold mb-4">Tentang Desa Tetembomua</h1>
-                    <p class="lead mb-4">Desa yang maju dan berbudaya dengan masyarakat yang ramah, produktif, dan komitmen untuk mengembangkan desa secara berkelanjutan</p>
+                    <h1 class="display-4 fw-bold mb-4">Tentang {{ $siteSettings['village_name'] ?? 'Desa Tetembomua' }}</h1>
+                    <p class="lead mb-4">{{ $siteSettings['village_description'] ?? 'Desa yang maju dan berbudaya dengan masyarakat yang ramah, produktif, dan komitmen untuk mengembangkan desa secara berkelanjutan' }}</p>
                 </div>
             </div>
             <div class="col-lg-4 text-center">
@@ -40,7 +40,7 @@
                                     </div>
                                     <div class="info-content">
                                         <h5 class="text-primary">Lokasi</h5>
-                                        <p>Desa Tetembomua, Kecamatan Lambuya, Kabupaten Konawe, Provinsi Sulawesi Tenggara</p>
+                                        <p>{{ $siteSettings['contact_address'] ?? ('Desa ' . ($siteSettings['village_name'] ?? 'Tetembomua') . ', Kecamatan ' . ($siteSettings['district'] ?? 'Lambuya') . ', Kabupaten ' . ($siteSettings['regency'] ?? 'Konawe') . ', Provinsi ' . ($siteSettings['province'] ?? 'Sulawesi Tenggara')) }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -51,7 +51,7 @@
                                     </div>
                                     <div class="info-content">
                                         <h5 class="text-success">Luas Wilayah</h5>
-                                        <p>10,54 km² dengan jarak 62 km dari ibu kota Kabupaten Konawe</p>
+                                        <p>{{ $siteSettings['area'] ?? '10,54 km² dengan jarak 62 km dari ibu kota Kabupaten Konawe' }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -134,7 +134,7 @@
                             <div class="col-md-6">
                                 <div class="text-center">
                                     <i class="fas fa-bridge fa-4x text-primary mb-3"></i>
-                                    <h4 class="text-primary">Tetembomua</h4>
+                                    <h4 class="text-primary">{{ $siteSettings['village_name'] ?? 'Tetembomua' }}</h4>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -242,12 +242,12 @@
                             <div class="col-md-6">
                                 <div class="leadership-card">
                                     <div class="leadership-avatar">
-                                        <img src="{{ asset('FOTO/DSC_0596.JPG') }}" alt="Kepala Desa Abdullah, SP" class="rounded-circle" style="width: 120px; height: 120px; object-fit: cover;">
+                                        <img src="{{ asset('FOTO/DSC_0596.JPG') }}" alt="Kepala Desa {{ $siteSettings['village_head'] ?? 'Abdullah, SP' }}" class="rounded-circle" style="width: 120px; height: 120px; object-fit: cover;">
                                     </div>
                                     <div class="leadership-info">
-                                        <h4 class="text-primary">Abdullah, SP</h4>
+                                        <h4 class="text-primary">{{ $siteSettings['village_head'] ?? 'Abdullah, SP' }}</h4>
                                         <p class="text-muted">Kepala Desa</p>
-                                        <p><strong>Masa Jabatan:</strong> 2024 - Sekarang</p>
+                                        <p><strong>Masa Jabatan:</strong> {{ $siteSettings['term_period'] ?? '2024 - Sekarang' }}</p>
                                         <p><strong>Status:</strong> Desa Definitif</p>
                                     </div>
                                 </div>

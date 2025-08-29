@@ -181,21 +181,9 @@ class AdminController extends Controller
 
     public function settings()
     {
-        // Sample settings data
-        $settings = [
-            'village_name' => 'Desa Tetembomua',
-            'village_head' => 'Abdullah, SP',
-            'term_period' => '2024 - Sekarang',
-            'district' => 'Lambuya',
-            'regency' => 'Konawe',
-            'province' => 'Sulawesi Tenggara',
-            'area' => '10.54 km²',
-            'north_boundary' => 'Kecamatan Onembute',
-            'east_boundary' => 'Kecamatan Onembute',
-            'south_boundary' => 'Desa Wonua Hoa dan Asaki',
-            'west_boundary' => 'Desa Amberi'
-        ];
-
+        // Get settings from database or use defaults
+        $settings = \App\Helpers\SettingsHelper::getAll();
+        
         return view('admin.settings.index', compact('settings'));
     }
 
@@ -212,13 +200,35 @@ class AdminController extends Controller
             'north_boundary' => 'required|string|max:255',
             'east_boundary' => 'required|string|max:255',
             'south_boundary' => 'required|string|max:255',
-            'west_boundary' => 'required|string|max:255'
+            'west_boundary' => 'required|string|max:255',
+            'village_description' => 'nullable|string',
+            'contact_phone' => 'nullable|string|max:255',
+            'contact_email' => 'nullable|email|max:255',
+            'contact_address' => 'nullable|string',
+            'website_status' => 'boolean',
+            'maintenance_mode' => 'boolean'
         ]);
 
-        // In real app, update settings in database
-        // Settings::update([...]);
+        // Update settings in database
+        $settingsData = $request->only([
+            'village_name', 'village_head', 'term_period',
+            'district', 'regency', 'province', 'area',
+            'north_boundary', 'east_boundary', 'south_boundary', 'west_boundary',
+            'village_description', 'contact_phone', 'contact_email', 'contact_address',
+            'website_status', 'maintenance_mode'
+        ]);
 
-        return redirect()->route('admin.settings')->with('success', 'Pengaturan berhasil diperbarui');
+        // Convert checkbox values to boolean
+        $settingsData['website_status'] = $request->has('website_status');
+        $settingsData['maintenance_mode'] = $request->has('maintenance_mode');
+
+        // Update settings using the model
+        \App\Models\Settings::updateSettings($settingsData);
+
+        // Clear cache
+        \App\Helpers\SettingsHelper::clearCache();
+
+        return redirect()->route('admin.settings')->with('success', 'Pengaturan berhasil diperbarui dan website telah diupdate!');
     }
 
     public function gallery()

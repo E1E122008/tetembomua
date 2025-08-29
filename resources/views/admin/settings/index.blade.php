@@ -166,7 +166,9 @@
                 <div class="setting-item mb-3">
                     <div class="d-flex justify-content-between align-items-center">
                         <span class="text-muted">Status Website</span>
-                        <span class="badge bg-success">Aktif</span>
+                        <span class="badge {{ $settings['website_status'] ? 'bg-success' : 'bg-danger' }}">
+                            {{ $settings['website_status'] ? 'Aktif' : 'Nonaktif' }}
+                        </span>
                     </div>
                 </div>
                 <div class="setting-item mb-3">
@@ -178,13 +180,15 @@
                 <div class="setting-item mb-3">
                     <div class="d-flex justify-content-between align-items-center">
                         <span class="text-muted">Terakhir Update</span>
-                        <strong>{{ date('d/m/Y H:i') }}</strong>
+                        <strong>{{ $settings['updated_at'] ?? date('d/m/Y H:i') }}</strong>
                     </div>
                 </div>
                 <div class="setting-item">
                     <div class="d-flex justify-content-between align-items-center">
                         <span class="text-muted">Maintenance Mode</span>
-                        <span class="badge bg-secondary">Nonaktif</span>
+                        <span class="badge {{ $settings['maintenance_mode'] ? 'bg-warning' : 'bg-secondary' }}">
+                            {{ $settings['maintenance_mode'] ? 'Aktif' : 'Nonaktif' }}
+                        </span>
                     </div>
                 </div>
             </div>

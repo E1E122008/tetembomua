@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Beranda - Desa Tetembomua')
+@section('title', 'Beranda - ' . ($siteSettings['village_name'] ?? 'Desa Tetembomua'))
 
 @section('content')
 <!-- Hero Section -->
@@ -10,8 +10,8 @@
             <div class="col-lg-6">
                 <div class="hero-content">
                     
-                    <h1 class="display-4 fw-bold mb-4">Selamat Datang di Desa Tetembomua</h1>
-                    <p class="lead mb-4">Desa yang maju dan berbudaya dengan masyarakat yang ramah, produktif, dan komitmen untuk mengembangkan desa secara berkelanjutan</p>
+                    <h1 class="display-4 fw-bold mb-4">Selamat Datang di {{ $siteSettings['village_name'] ?? 'Desa Tetembomua' }}</h1>
+                    <p class="lead mb-4">{{ $siteSettings['village_description'] ?? 'Desa yang maju dan berbudaya dengan masyarakat yang ramah, produktif, dan komitmen untuk mengembangkan desa secara berkelanjutan' }}</p>
                     <div class="hero-buttons">
                         <a href="{{ route('about') }}" class="btn btn-primary btn-lg me-3">
                             <i class="fas fa-info-circle me-2"></i>Tentang Desa
@@ -26,7 +26,7 @@
                 <div class="text-center">
                     <div class="hero-image-container">
                         <img src="{{ asset('FOTO/upacara.jpeg') }}" 
-                             alt="Desa Tetembomua" class="img-fluid hero-image">
+                             alt="{{ $siteSettings['village_name'] ?? 'Desa Tetembomua' }}" class="img-fluid hero-image">
                         <div class="hero-image-overlay"></div>
                     </div>
                 </div>
@@ -113,20 +113,20 @@
 <section class="section">
     <div class="container">
         <div class="section-title">
-            <h2>Tentang Desa Tetembomua</h2>
+            <h2>Tentang {{ $siteSettings['village_name'] ?? 'Desa Tetembomua' }}</h2>
             <p>Mengenal lebih dekat desa kami yang kaya akan budaya dan potensi</p>
         </div>
         <div class="row align-items-center">
             <div class="col-lg-6 mb-4">
                 <div class="about-image-container">
                     <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                         alt="Desa Tetembomua" class="img-fluid about-image">
+                         alt="{{ $siteSettings['village_name'] ?? 'Desa Tetembomua' }}" class="img-fluid about-image">
                     <div class="about-image-overlay"></div>
                 </div>
             </div>
             <div class="col-lg-6">
-                <h3 class="mb-4">Desa Tetembomua yang Maju dan Berbudaya</h3>
-                <p class="mb-4">Desa Tetembomua adalah desa yang terletak di Kecamatan Lambuya, Kabupaten Konawe, Sulawesi Tenggara. Desa kami memiliki masyarakat yang beragam dengan berbagai profesi dan potensi. Selain terkenal dengan sektor pertanian yang maju, desa kami juga memiliki tradisi budaya yang kaya, pendidikan yang berkembang, dan semangat gotong royong yang tinggi dalam membangun desa.</p>
+                <h3 class="mb-4">{{ $siteSettings['village_name'] ?? 'Desa Tetembomua' }} yang Maju dan Berbudaya</h3>
+                <p class="mb-4">{{ $siteSettings['village_description'] ?? 'Desa Tetembomua adalah desa yang terletak di Kecamatan Lambuya, Kabupaten Konawe, Sulawesi Tenggara. Desa kami memiliki masyarakat yang beragam dengan berbagai profesi dan potensi. Selain terkenal dengan sektor pertanian yang maju, desa kami juga memiliki tradisi budaya yang kaya, pendidikan yang berkembang, dan semangat gotong royong yang tinggi dalam membangun desa.' }}</p>
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <div class="feature-item">
