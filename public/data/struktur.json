@@ -167,7 +167,7 @@
                 "role_type": "ketua",
                 "role_text": null,
                 "info": null,
-                "photo": "\/FOTO\/struktur\/entry_1756226175_Amirudding (ketua BPD).png"
+                "photo": "\/FOTO\/struktur\/entry_1756473841_ketua BPD.jpg"
             },
             {
                 "id": "68add891386415.04243526",
@@ -197,17 +197,7 @@
                 "photo": "\/FOTO\/struktur\/entry_1756225468_Brambang Herman (Anggota BPD).png"
             }
         ],
-        "lpm": [
-            {
-                "id": "68ac7f4e787d69.15016453",
-                "category": "lpm",
-                "name": "Ansyah",
-                "role_type": "ketua",
-                "role_text": null,
-                "info": null,
-                "photo": "\/FOTO\/struktur\/entry_1756135246_IMG_20220317_130732_062.jpg"
-            }
-        ]
+        "lpm": []
     },
     "kades": {
         "name": "Abdullah, Sp.",

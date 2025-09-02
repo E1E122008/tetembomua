@@ -246,7 +246,9 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-3 text-center mb-3">
-                        <img src="{{ asset('FOTO/DSC_0596.JPG') }}" alt="Kepala Desa Abdullah, SP" class="rounded-circle mb-2" style="width: 80px; height: 80px; object-fit: cover;">
+                        <span role="button" class="open-image" data-src="{{ asset('FOTO/DSC_0596.JPG') }}">
+                            <img src="{{ asset('FOTO/DSC_0596.JPG') }}" alt="Kepala Desa Abdullah, SP" class="rounded-circle mb-2" style="width: 80px; height: 80px; object-fit: cover;">
+                        </span>
                         <h6 class="text-primary fw-bold">Abdullah, SP</h6>
                         <small class="text-muted">Kepala Desa</small>
                     </div>
@@ -287,3 +289,30 @@
     </div>
 </div>
 @endsection
+
+<!-- Image Preview Modal -->
+<div class="modal fade" id="dashboardImagePreviewModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-md">
+    <div class="modal-content" style="background: transparent; border: none;">
+      <button type="button" class="btn-close btn-close-white ms-auto me-2 mt-2" data-bs-dismiss="modal" aria-label="Close"></button>
+      <img id="dashboardImagePreviewModalImg" src="" alt="Preview" style="width:100%; height:auto; border-radius:12px; box-shadow:0 20px 40px rgba(0,0,0,.4);">
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const previewModal = document.getElementById('dashboardImagePreviewModal');
+    const previewImg = document.getElementById('dashboardImagePreviewModalImg');
+    const bsModal = previewModal ? new bootstrap.Modal(previewModal) : null;
+    
+    // Open image preview modal
+    document.querySelectorAll('.open-image').forEach(el => {
+        el.addEventListener('click', () => {
+            if (!bsModal) return;
+            previewImg.src = el.getAttribute('data-src');
+            bsModal.show();
+        });
+    });
+});
+</script>

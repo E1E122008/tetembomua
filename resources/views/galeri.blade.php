@@ -32,37 +32,38 @@
     </div>
 </section>
 
-<!-- Gallery Grid -->
+@php
+    $images = [];
+    $videos = [];
+    if (isset($media) && is_array($media)) {
+        foreach ($media as $m) {
+            if (($m['type'] ?? 'image') === 'video') { $videos[] = $m; } else { $images[] = $m; }
+        }
+    }
+@endphp
+
+<!-- Foto/Gambar -->
 <section class="py-5">
     <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-4">
+                <h2 class="section-title">Foto Kegiatan</h2>
+                <div class="title-underline"></div>
+            </div>
+        </div>
         <div class="row g-4" id="gallery-grid">
-            @if(isset($media) && count($media) > 0)
-                @foreach($media as $item)
+            @if(count($images) > 0)
+                @foreach($images as $item)
                 <div class="col-lg-4 col-md-6 gallery-item" data-category="{{ $item['category'] ?? 'kegiatan' }}">
                     <div class="gallery-card">
                         <div class="gallery-image">
-                            @if(($item['type'] ?? 'image') === 'video')
-                                <video controls class="img-fluid" preload="metadata" style="background:#000">
-                                    <source src="{{ $item['path'] }}" type="video/mp4">
-                                    <source src="{{ $item['path'] }}" type="video/webm">
-                                    <source src="{{ $item['path'] }}" type="video/ogg">
-                                    Browser Anda tidak mendukung tag video.
-                                </video>
-                            @else
+                            <span role="button" class="open-image" data-src="{{ $item['path'] }}">
                                 <img src="{{ $item['path'] }}" alt="{{ $item['name'] }}" class="img-fluid">
-                            @endif
+                            </span>
                             <div class="gallery-overlay">
                                 <div class="overlay-content">
-                                    @if(!empty($item['description']))
-                                        <p>{{ $item['description'] }}</p>
-                                    @else
-                                        <p>Kegiatan Desa Tetembomua</p>
-                                    @endif
-                                    @if(!empty($item['image_date']))
-                                        <span class="gallery-date">{{ date('d F Y', strtotime($item['image_date'])) }}</span>
-                                    @else
-                                        <span class="gallery-date">{{ date('d F Y', strtotime('now')) }}</span>
-                                    @endif
+                                    <p>{{ $item['description'] ?? 'Kegiatan Desa Tetembomua' }}</p>
+                                    <span class="gallery-date">{{ !empty($item['image_date']) ? date('d F Y', strtotime($item['image_date'])) : date('d F Y') }}</span>
                                 </div>
                             </div>
                         </div>
@@ -72,17 +73,14 @@
             @else
                 <div class="col-12 text-center py-5">
                     <i class="fas fa-images fa-4x text-muted mb-3"></i>
-                    <h5 class="text-muted">Belum ada media</h5>
-                    <p class="text-muted">Galeri akan ditampilkan setelah ada gambar atau video yang diupload</p>
+                    <h5 class="text-muted">Belum ada foto</h5>
                 </div>
             @endif
         </div>
     </div>
-</section>
-    </div>
-</section>
+    </section>
 
-<!-- Video Section -->
+<!-- Video Section (from media list) -->
 <section class="py-5 bg-light">
     <div class="container">
         <div class="row">
@@ -92,27 +90,30 @@
                 <p class="text-muted">Video dokumentasi kegiatan dan potensi desa</p>
             </div>
         </div>
-        
         <div class="row g-4">
-            <div class="col-lg-6">
-                <div class="video-card">
-                    <div class="video-placeholder">
-                        <i class="fas fa-play-circle"></i>
-                        <h5>Profil Desa Tetembomua</h5>
-                        <p>Video profil lengkap desa yang menampilkan potensi dan kegiatan</p>
+            @if(count($videos) > 0)
+                @foreach($videos as $item)
+                <div class="col-lg-6">
+                    <div class="video-card">
+                        <video controls preload="metadata" style="width:100%; height:360px; background:#000; object-fit:cover;">
+                            <source src="{{ $item['path'] }}" type="video/mp4">
+                            <source src="{{ $item['path'] }}" type="video/webm">
+                            <source src="{{ $item['path'] }}" type="video/ogg">
+                            Browser Anda tidak mendukung tag video.
+                        </video>
+                        <div class="p-3">
+                            <h5 class="mb-1">{{ $item['title'] ?? ($item['name'] ?? 'Video') }}</h5>
+                            <small class="text-muted">{{ $item['description'] ?? 'Video dokumentasi desa' }}</small>
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="col-lg-6">
-                <div class="video-card">
-                    <div class="video-placeholder">
-                        <i class="fas fa-play-circle"></i>
-                        <h5>Kegiatan Pertanian</h5>
-                        <p>Dokumentasi kegiatan pertanian dan pelatihan petani</p>
-                    </div>
+                @endforeach
+            @else
+                <div class="col-12 text-center py-5">
+                    <i class="fas fa-video fa-4x text-muted mb-3"></i>
+                    <h5 class="text-muted">Belum ada video</h5>
                 </div>
-            </div>
+            @endif
         </div>
     </div>
 </section>
@@ -282,10 +283,23 @@
 }
 </style>
 
+<!-- Image Preview Modal -->
+<div class="modal fade" id="imagePreviewModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-md">
+    <div class="modal-content" style="background: transparent; border: none;">
+      <button type="button" class="btn-close btn-close-white ms-auto me-2 mt-2" data-bs-dismiss="modal" aria-label="Close"></button>
+      <img id="imagePreviewModalImg" src="" alt="Preview" style="width:100%; height:auto; border-radius:12px; box-shadow:0 20px 40px rgba(0,0,0,.4);">
+    </div>
+  </div>
+  </div>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const filterBtns = document.querySelectorAll('.filter-btn');
     const galleryItems = document.querySelectorAll('.gallery-item');
+    const previewModal = document.getElementById('imagePreviewModal');
+    const previewImg = document.getElementById('imagePreviewModalImg');
+    const bsModal = previewModal ? new bootstrap.Modal(previewModal) : null;
     
     filterBtns.forEach(btn => {
         btn.addEventListener('click', function() {
@@ -303,6 +317,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     item.style.display = 'none';
                 }
             });
+        });
+    });
+    // Open image in modal (lightbox)
+    document.querySelectorAll('.open-image').forEach(el => {
+        el.addEventListener('click', () => {
+            if (!bsModal) return;
+            previewImg.src = el.getAttribute('data-src');
+            bsModal.show();
         });
     });
 });

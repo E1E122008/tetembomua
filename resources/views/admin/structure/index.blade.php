@@ -39,7 +39,9 @@
             <div class="row g-3 mb-4">
                 <div class="col-md-3 text-center">
                     <div class="border rounded p-2">
-                        <img src="{{ $struktur['kades']['photo'] ?? asset('FOTO/LOGO.png') }}" alt="Kepala Desa" class="img-fluid" style="max-height:160px; object-fit:cover;">
+                        <span role="button" class="open-image" data-src="{{ $struktur['kades']['photo'] ?? asset('FOTO/LOGO.png') }}">
+                            <img src="{{ $struktur['kades']['photo'] ?? asset('FOTO/LOGO.png') }}" alt="Kepala Desa" class="img-fluid" style="max-height:160px; object-fit:cover;">
+                        </span>
                     </div>
                 </div>
                 <div class="col-md-9">
@@ -81,7 +83,9 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="p-3 border rounded h-100 d-flex">
                         <div class="me-3" style="width:64px;height:64px;flex:0 0 64px;">
-                            <img src="{{ $item['photo'] ?? asset('FOTO/LOGO-removebg-preview.png') }}" alt="{{ $item['name'] }}" class="rounded" style="width:64px;height:64px;object-fit:cover;">
+                            <span role="button" class="open-image" data-src="{{ $item['photo'] ?? asset('FOTO/LOGO-removebg-preview.png') }}">
+                                <img src="{{ $item['photo'] ?? asset('FOTO/LOGO-removebg-preview.png') }}" alt="{{ $item['name'] }}" class="rounded" style="width:64px;height:64px;object-fit:cover;">
+                            </span>
                         </div>
                         <div class="flex-grow-1">
                             <div class="d-flex justify-content-between align-items-start">
@@ -108,10 +112,10 @@
                                         data-info="{{ $item['info'] ?? '' }}">
                                         <i class="fas fa-edit"></i>
                                     </button>
-                                    <form action="{{ route('admin.structure.entry.delete', $item['id']) }}" method="POST" onsubmit="return confirm('Hapus data ini?')">
+                                    <form action="{{ route('admin.structure.entry.delete', $item['id']) }}" method="POST" class="delete-entry-form d-inline">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="btn btn-outline-danger" title="Hapus"><i class="fas fa-trash"></i></button>
+                                        <button type="button" class="btn btn-outline-danger btn-delete-entry" title="Hapus"><i class="fas fa-trash"></i></button>
                                     </form>
                                 </div>
                             </div>
@@ -345,6 +349,26 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         toggleEditControls();
+    });
+    // SweetAlert2 confirm for delete buttons
+    document.querySelectorAll('.btn-delete-entry').forEach((btn) => {
+        btn.addEventListener('click', function(e) {
+            const form = this.closest('form.delete-entry-form');
+            Swal.fire({
+                title: 'Hapus data ini?',
+                text: 'Tindakan ini tidak dapat dibatalkan.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#6c757d',
+                confirmButtonText: 'Ya, hapus',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            });
+        });
     });
 });
 </script>

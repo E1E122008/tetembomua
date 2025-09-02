@@ -14,12 +14,34 @@ class HomeController extends Controller
 
     public function about()
     {
-        return view('about');
+        // Load struktur organisasi data untuk halaman about
+        $struktur = [];
+        $path = public_path('data/struktur.json');
+        
+        if (File::exists($path)) {
+            $decoded = json_decode(File::get($path), true);
+            if ($decoded !== null) {
+                $struktur = $decoded;
+            }
+        }
+        
+        return view('about', compact('struktur'));
     }
 
     public function contact()
     {
-        return view('contact');
+        // Load struktur organisasi data untuk halaman contact
+        $struktur = [];
+        $path = public_path('data/struktur.json');
+        
+        if (File::exists($path)) {
+            $decoded = json_decode(File::get($path), true);
+            if ($decoded !== null) {
+                $struktur = $decoded;
+            }
+        }
+        
+        return view('contact', compact('struktur'));
     }
 
     public function news()
@@ -29,7 +51,18 @@ class HomeController extends Controller
 
     public function potensi()
     {
-        return view('potensi');
+        // Load struktur organisasi data untuk halaman potensi
+        $struktur = [];
+        $path = public_path('data/struktur.json');
+        
+        if (File::exists($path)) {
+            $decoded = json_decode(File::get($path), true);
+            if ($decoded !== null) {
+                $struktur = $decoded;
+            }
+        }
+        
+        return view('potensi', compact('struktur'));
     }
 
     public function program()

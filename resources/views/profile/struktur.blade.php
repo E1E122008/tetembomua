@@ -52,7 +52,9 @@
                                         <span class="badge bg-primary">RT {{ $i }}</span>
                                     </div>
                                     <div class="text-center mb-3">
-                                        <img src="{{ $rt['photo'] ?? asset('FOTO/LOGO-removebg-preview.png') }}" alt="RT {{ $i }}" class="rounded-circle" style="width: 80px; height: 80px; object-fit: cover; border: 2px solid #fff;">
+                                        <span role="button" class="open-image" data-src="{{ $rt['photo'] ?? asset('FOTO/LOGO-removebg-preview.png') }}">
+                                            <img src="{{ $rt['photo'] ?? asset('FOTO/LOGO-removebg-preview.png') }}" alt="RT {{ $i }}" class="rounded-circle" style="width: 80px; height: 80px; object-fit: cover; border: 2px solid #fff;">
+                                        </span>
                                     </div>
                                     <div class="perangkat-body">
                                         <h6 class="fw-bold">{{ $rt['name'] ?? 'Kepala RT ' . $i }}</h6>
@@ -113,8 +115,7 @@
                     <div class="card-body p-5">
                         <div class="text-center mb-5">
                             <i class="fas fa-map-signs fa-4x text-primary mb-3"></i>
-                            <h2 class="text-primary fw-bold">Bagan Kepala Dusun & RT</h2>
-                            <p class="text-muted">Struktur Kepala Dusun beserta RT di bawahnya</p>
+                            <h2 class="text-primary fw-bold">Bagan Kepala Dusun</h2>
                         </div>
 
                         <div class="row g-4">
@@ -124,9 +125,13 @@
                                     <div class="d-flex align-items-center mb-3">
                                         <div class="me-3" style="width:64px;height:64px;flex:0 0 64px;">
                                             @if(!empty($d['photo']))
-                                            <img src="{{ $d['photo'] }}" alt="{{ $d['name'] }}" class="rounded-circle" style="width:64px;height:64px;object-fit:cover;">
+                                            <span role="button" class="open-image" data-src="{{ $d['photo'] }}">
+                                                <img src="{{ $d['photo'] }}" alt="{{ $d['name'] }}" class="rounded-circle" style="width:64px;height:64px;object-fit:cover;">
+                                            </span>
                                             @else
-                                            <img src="{{ asset('FOTO/LOGO-removebg-preview.png') }}" alt="Dusun" class="rounded-circle" style="width:64px;height:64px;object-fit:cover;">
+                                            <span role="button" class="open-image" data-src="{{ asset('FOTO/LOGO-removebg-preview.png') }}">
+                                                <img src="{{ asset('FOTO/LOGO-removebg-preview.png') }}" alt="Dusun" class="rounded-circle" style="width:64px;height:64px;object-fit:cover;">
+                                            </span>
                                             @endif
                                         </div>
                                         <div>
@@ -146,7 +151,6 @@
                                         $rtsForDusun = [];
                                         if (!empty($rt)) {
                                             foreach ($rt as $r) {
-                                                // Ambil hanya RT yang role_text-nya berupa "RT X" (tampilkan semua; mapping ke dusun opsional)
                                                 $rtsForDusun[] = $r;
                                             }
                                         }
@@ -159,7 +163,9 @@
                                             @foreach($rtsForDusun as $r)
                                             <div class="border rounded px-2 py-1 d-flex align-items-center" style="gap:.5rem;">
                                                 @if(!empty($r['photo']))
-                                                <img src="{{ $r['photo'] }}" alt="{{ $r['name'] }}" style="width:24px;height:24px;border-radius:50%;object-fit:cover;">
+                                                <span role="button" class="open-image" data-src="{{ $r['photo'] }}">
+                                                    <img src="{{ $r['photo'] }}" alt="{{ $r['name'] }}" style="width:24px;height:24px;border-radius:50%;object-fit:cover;">
+                                                </span>
                                                 @endif
                                                 <span class="small fw-semibold">{{ $r['role_text'] ?? 'RT' }}</span>
                                                 <span class="small text-muted">{{ $r['name'] }}</span>
@@ -195,7 +201,15 @@
                                         <span class="badge bg-warning text-dark">Dusun {{ $i }}</span>
                                     </div>
                                     <div class="text-center mb-3">
-                                        <img src="{{ $dusun['photo'] ?? asset('FOTO/LOGO-removebg-preview.png') }}" alt="Dusun {{ $i }}" class="rounded-circle" style="width: 80px; height: 80px; object-fit: cover; border: 2px solid #fff;">
+                                        @if(!empty($dusun['photo']))
+                                        <span role="button" class="open-image" data-src="{{ $dusun['photo'] }}">
+                                            <img src="{{ $dusun['photo'] }}" alt="Dusun {{ $i }}" class="rounded-circle" style="width: 80px; height: 80px; object-fit: cover; border: 2px solid #fff;">
+                                        </span>
+                                        @else
+                                        <span role="button" class="open-image" data-src="{{ asset('FOTO/LOGO-removebg-preview.png') }}">
+                                            <img src="{{ asset('FOTO/LOGO-removebg-preview.png') }}" alt="Dusun {{ $i }}" class="rounded-circle" style="width: 80px; height: 80px; object-fit: cover; border: 2px solid #fff;">
+                                        </span>
+                                        @endif
                                     </div>
                                     <div class="perangkat-body">
                                         <h6 class="fw-bold">{{ $dusun['name'] ?? 'Kepala Dusun ' . $i }}</h6>
@@ -235,8 +249,10 @@
                                 <div class="kepala-desa-card">
                                     <div class="text-center">
                                         <div class="avatar-container mb-3">
-                                            <img src="{{ isset($struktur['kades']['photo']) && $struktur['kades']['photo'] ? $struktur['kades']['photo'] : asset('FOTO/DSC_0596.JPG') }}" alt="Kepala Desa" class="rounded-circle" style="width: 100px; height: 100px; object-fit: cover; border: 3px solid white;">
-                            </div>
+                                            <span role="button" class="open-image" data-src="{{ isset($struktur['kades']['photo']) && $struktur['kades']['photo'] ? $struktur['kades']['photo'] : asset('FOTO/DSC_0596.JPG') }}">
+                                                <img src="{{ isset($struktur['kades']['photo']) && $struktur['kades']['photo'] ? $struktur['kades']['photo'] : asset('FOTO/DSC_0596.JPG') }}" alt="Kepala Desa" class="rounded-circle" style="width: 100px; height: 100px; object-fit: cover; border: 3px solid white;">
+                                            </span>
+                                        </div>
                                         <h3 class="text-primary fw-bold">KEPALA DESA</h3>
                                         <h4 class="text-success">{{ $struktur['kades']['name'] ?? 'ABDULLAH, SP' }}</h4>
                                         <p class="text-muted">{{ $struktur['kades']['info'] ?? 'Masa Jabatan: 2024 - Sekarang' }}</p>
@@ -268,7 +284,9 @@
                                     <div class="perangkat-body">
                                         @if(!empty($p['photo']))
                                         <div class="avatar-container mb-3">
-                                            <img src="{{ $p['photo'] }}" alt="{{ $p['name'] }}" class="rounded-circle" style="width: 80px; height: 80px; object-fit: cover; border: 2px solid white;">
+                                            <span role="button" class="open-image" data-src="{{ $p['photo'] }}">
+                                                <img src="{{ $p['photo'] }}" alt="{{ $p['name'] }}" class="rounded-circle" style="width: 80px; height: 80px; object-fit: cover; border: 2px solid white;">
+                                            </span>
                                         </div>
                                         @endif
                                         <h6 class="fw-bold">{{ $p['name'] }}</h6>
@@ -308,7 +326,14 @@
                                         <i class="fas fa-user fa-2x text-primary"></i>
                                         <h5 class="text-primary">{{ ($m['role_type'] ?? '') === 'lainnya' ? ($m['role_text'] ?? 'Anggota') : ucfirst($m['role_type'] ?? 'Anggota') }}</h5>
                                     </div>
-                                    <div class="bpd-body">
+                                    <div class="bpd-body text-center">
+                                        @if(!empty($m['photo']))
+                                        <div class="avatar-container mb-3">
+                                            <span role="button" class="open-image" data-src="{{ $m['photo'] }}">
+                                                <img src="{{ $m['photo'] }}" alt="{{ $m['name'] }}" class="rounded-circle" style="width: 80px; height: 80px; object-fit: cover; border: 2px solid white;">
+                                            </span>
+                                        </div>
+                                        @endif
                                         <h6 class="fw-bold">{{ $m['name'] }}</h6>
                                         @if(!empty($m['info']))
                                             <p class="mb-0 text-muted">{{ $m['info'] }}</p>
@@ -343,7 +368,14 @@
                                         <i class="fas fa-user fa-2x text-info"></i>
                                         <h5 class="text-info">{{ ($m['role_type'] ?? '') === 'lainnya' ? ($m['role_text'] ?? 'Anggota') : ucfirst($m['role_type'] ?? 'Anggota') }}</h5>
                                     </div>
-                                    <div class="lpm-body">
+                                    <div class="lpm-body text-center">
+                                        @if(!empty($m['photo']))
+                                        <div class="avatar-container mb-3">
+                                            <span role="button" class="open-image" data-src="{{ $m['photo'] }}">
+                                                <img src="{{ $m['photo'] }}" alt="{{ $m['name'] }}" class="rounded-circle" style="width: 80px; height: 80px; object-fit: cover; border: 2px solid white;">
+                                            </span>
+                                        </div>
+                                        @endif
                                         <h6 class="fw-bold">{{ $m['name'] }}</h6>
                                         @if(!empty($m['info']))
                                             <p class="mb-0 text-muted">{{ $m['info'] }}</p>
@@ -367,7 +399,6 @@
                         <div class="text-center mb-5">
                             <i class="fas fa-map-signs fa-4x text-warning mb-3"></i>
                             <h2 class="text-warning fw-bold">KEPALA DUSUN</h2>
-                            <p class="text-muted">Struktur Kepala Dusun beserta RT di bawahnya</p>
             </div>
 
                         <div class="row">
@@ -381,7 +412,9 @@
                                     <div class="dusun-body">
                                         @if(!empty($m['photo']))
                                         <div class="avatar-container mb-3">
-                                            <img src="{{ $m['photo'] }}" alt="{{ $m['name'] }}" class="rounded-circle" style="width: 80px; height: 80px; object-fit: cover; border: 2px solid white;">
+                                            <span role="button" class="open-image" data-src="{{ $m['photo'] }}">
+                                                <img src="{{ $m['photo'] }}" alt="{{ $m['name'] }}" class="rounded-circle" style="width: 80px; height: 80px; object-fit: cover; border: 2px solid white;">
+                                            </span>
                                         </div>
                                         @else
                                         <div class="avatar-container mb-3">
@@ -412,7 +445,6 @@
                         <div class="text-center mb-5">
                             <i class="fas fa-home fa-4x text-primary mb-3"></i>
                             <h2 class="text-primary fw-bold">RT</h2>
-                            <p class="text-muted">Struktur RT beserta Dusun di bawahnya</p>
     </div>
 
                         <div class="row">
@@ -426,7 +458,9 @@
                                     <div class="rt-body">
                                         @if(!empty($m['photo']))
                                         <div class="avatar-container mb-3">
-                                            <img src="{{ $m['photo'] }}" alt="{{ $m['name'] }}" class="rounded-circle" style="width: 80px; height: 80px; object-fit: cover; border: 2px solid white;">
+                                            <span role="button" class="open-image" data-src="{{ $m['photo'] }}">
+                                                <img src="{{ $m['photo'] }}" alt="{{ $m['name'] }}" class="rounded-circle" style="width: 80px; height: 80px; object-fit: cover; border: 2px solid white;">
+                                            </span>
                                     </div>
                                         @else
                                         <div class="avatar-container mb-3">
@@ -449,6 +483,16 @@
         @endif
     </div>
 </section>
+
+<!-- Image Preview Modal for Struktur Page -->
+<div class="modal fade" id="strukturImagePreviewModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-md">
+    <div class="modal-content" style="background: transparent; border: none;">
+      <button type="button" class="btn-close btn-close-white ms-auto me-2 mt-2" data-bs-dismiss="modal" aria-label="Close"></button>
+      <img id="strukturImagePreviewModalImg" src="" alt="Preview" style="width:100%; height:auto; border-radius:12px; box-shadow:0 20px 40px rgba(0,0,0,.4);">
+    </div>
+  </div>
+  </div>
 
 <style>
 .kepala-desa-card {
@@ -535,4 +579,21 @@
     50% { transform: translateX(100%); }
 }
 </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  const modalEl = document.getElementById('strukturImagePreviewModal');
+  const imgEl = document.getElementById('strukturImagePreviewModalImg');
+  if (!modalEl || !imgEl) return;
+  const bsModal = new bootstrap.Modal(modalEl);
+  document.querySelectorAll('.open-image').forEach(function(el){
+    el.addEventListener('click', function(){
+      const src = el.getAttribute('data-src');
+      if (!src) return;
+      imgEl.src = src;
+      bsModal.show();
+    });
+  });
+});
+</script>
 @endsection

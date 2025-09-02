@@ -83,6 +83,11 @@ Route::prefix('admin')->group(function () {
               Route::put('/gallery/{filename}/edit', [App\Http\Controllers\AdminController::class, 'editGalleryImage'])->name('admin.gallery.edit');
               Route::delete('/gallery/{filename}', [App\Http\Controllers\AdminController::class, 'deleteGalleryImage'])->name('admin.gallery.delete');
 
+              // Enhanced Gallery (DB-backed)
+              Route::resource('gallery-db', App\Http\Controllers\Admin\GalleryController::class, ['as' => 'admin']);
+              Route::post('gallery-db/{id}/toggle-featured', [App\Http\Controllers\Admin\GalleryController::class, 'toggleFeatured'])->name('admin.gallery-db.toggle-featured');
+              Route::post('gallery-db/{id}/toggle-published', [App\Http\Controllers\Admin\GalleryController::class, 'togglePublished'])->name('admin.gallery-db.toggle-published');
+
     // Struktur Organisasi Management
     Route::get('/structure', [App\Http\Controllers\AdminController::class, 'structure'])->name('admin.structure');
     Route::post('/structure', [App\Http\Controllers\AdminController::class, 'updateStructure'])->name('admin.structure.update');
@@ -90,4 +95,9 @@ Route::prefix('admin')->group(function () {
     Route::post('/structure/entry', [App\Http\Controllers\AdminController::class, 'storeStructureEntry'])->name('admin.structure.entry.store');
     Route::post('/structure/entry/{id}', [App\Http\Controllers\AdminController::class, 'updateStructureEntry'])->name('admin.structure.entry.update');
     Route::delete('/structure/entry/{id}', [App\Http\Controllers\AdminController::class, 'deleteStructureEntry'])->name('admin.structure.entry.delete');
+
+    // New Organizational Structure CRUD (DB-backed)
+    Route::resource('organizational-structure', App\Http\Controllers\Admin\OrganizationalStructureController::class, ['as' => 'admin']);
+    Route::post('organizational-structure/{id}/toggle-status', [App\Http\Controllers\Admin\OrganizationalStructureController::class, 'toggleStatus'])->name('admin.organizational-structure.toggle-status');
+    Route::post('organizational-structure/reorder', [App\Http\Controllers\Admin\OrganizationalStructureController::class, 'reorder'])->name('admin.organizational-structure.reorder');
 });

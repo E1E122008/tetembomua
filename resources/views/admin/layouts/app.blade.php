@@ -389,6 +389,14 @@
                             <i class="fas fa-cog"></i>
                             Pengaturan
                         </a>
+                        <a class="nav-link {{ request()->is('admin/organizational-structure*') ? 'active' : '' }}" href="{{ route('admin.organizational-structure.index') }}">
+                            <i class="fas fa-sitemap"></i>
+                            Struktur Organisasi
+                        </a>
+                        <a class="nav-link {{ request()->is('admin/gallery-db*') ? 'active' : '' }}" href="{{ route('admin.gallery-db.index') }}">
+                            <i class="fas fa-images"></i>
+                            Galeri (DB)
+                        </a>
                         <hr class="my-3" style="border-color: rgba(255,255,255,0.2);">
                         <a class="nav-link" href="{{ route('home') }}">
                             <i class="fas fa-home"></i>
@@ -413,6 +421,8 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
     <!-- Custom JS -->
     <script>

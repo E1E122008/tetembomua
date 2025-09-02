@@ -67,10 +67,12 @@
             <div class="col-lg-4 mb-4">
                 <div class="card fade-in">
                     <div class="card-body text-center">
-                        <img src="{{ asset('FOTO/DSC_0596.JPG') }}" alt="Kepala Desa {{ $siteSettings['village_head'] ?? 'Abdullah, SP' }}" class="rounded-circle mb-3" style="width: 100px; height: 100px; object-fit: cover;">
-                        <h5 class="card-title">{{ $siteSettings['village_head'] ?? 'Abdullah, SP' }}</h5>
+                        <span role="button" class="open-image" data-src="{{ isset($struktur['kades']['photo']) && $struktur['kades']['photo'] ? $struktur['kades']['photo'] : asset('FOTO/DSC_0596.JPG') }}">
+                            <img src="{{ isset($struktur['kades']['photo']) && $struktur['kades']['photo'] ? $struktur['kades']['photo'] : asset('FOTO/DSC_0596.JPG') }}" alt="Kepala Desa" class="rounded-circle mb-3" style="width: 100px; height: 100px; object-fit: cover;">
+                        </span>
+                        <h5 class="card-title">{{ $struktur['kades']['name'] ?? 'Abdullah, SP' }}</h5>
                         <p class="text-muted">Kepala Desa</p>
-                        <p class="card-text">Masa Jabatan: {{ $siteSettings['term_period'] ?? '2024 - Sekarang' }}</p>
+                        <p class="card-text">Masa Jabatan: {{ $struktur['kades']['info'] ?? '2024 - Sekarang' }}</p>
                         <div class="contact-info">
                             @if(!empty($siteSettings['contact_phone']))
                             <p><i class="fas fa-phone me-2"></i>{{ $siteSettings['contact_phone'] }}</p>
@@ -273,3 +275,30 @@
 }
 </style>
 @endsection
+
+<!-- Image Preview Modal -->
+<div class="modal fade" id="contactImagePreviewModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-md">
+    <div class="modal-content" style="background: transparent; border: none;">
+      <button type="button" class="btn-close btn-close-white ms-auto me-2 mt-2" data-bs-dismiss="modal" aria-label="Close"></button>
+      <img id="contactImagePreviewModalImg" src="" alt="Preview" style="width:100%; height:auto; border-radius:12px; box-shadow:0 20px 40px rgba(0,0,0,.4);">
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const previewModal = document.getElementById('contactImagePreviewModal');
+    const previewImg = document.getElementById('contactImagePreviewModalImg');
+    const bsModal = previewModal ? new bootstrap.Modal(previewModal) : null;
+    
+    // Open image preview modal
+    document.querySelectorAll('.open-image').forEach(el => {
+        el.addEventListener('click', () => {
+            if (!bsModal) return;
+            previewImg.src = el.getAttribute('data-src');
+            bsModal.show();
+        });
+    });
+});
+</script>

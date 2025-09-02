@@ -34,8 +34,10 @@
         <div class="row align-items-center">
             <div class="col-lg-6 mb-4">
                 <div class="komoditas-image-container">
-                <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                         alt="Komoditas Pertanian" class="img-fluid komoditas-image">
+                    <span role="button" class="open-image" data-src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80">
+                        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Komoditas Pertanian" class="img-fluid komoditas-image">
+                    </span>
                     <div class="komoditas-image-overlay"></div>
                 </div>
             </div>
@@ -77,8 +79,10 @@
         <div class="row">
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card h-100">
-                    <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                         class="card-img-top" alt="Kelapa Sawit">
+                    <span role="button" class="open-image" data-src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">
+                        <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             class="card-img-top" alt="Kelapa Sawit">
+                    </span>
                     <div class="card-body">
                         <h5 class="card-title">
                             <i class="fas fa-seedling text-success me-2"></i>
@@ -100,8 +104,10 @@
             </div>
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card h-100">
-                    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                         class="card-img-top" alt="Kakao">
+                    <span role="button" class="open-image" data-src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">
+                        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             class="card-img-top" alt="Kakao">
+                    </span>
                     <div class="card-body">
                         <h5 class="card-title">
                             <i class="fas fa-seedling text-warning me-2"></i>
@@ -123,8 +129,10 @@
             </div>
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card h-100">
-                    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                         class="card-img-top" alt="Lada">
+                    <span role="button" class="open-image" data-src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">
+                        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             class="card-img-top" alt="Lada">
+                    </span>
                     <div class="card-body">
                         <h5 class="card-title">
                             <i class="fas fa-seedling text-info me-2"></i>
@@ -158,8 +166,10 @@
         <div class="row">
             <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card h-100">
-                    <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                         class="card-img-top" alt="Tomat">
+                    <span role="button" class="open-image" data-src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">
+                        <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             class="card-img-top" alt="Tomat">
+                    </span>
                     <div class="card-body text-center">
                         <h6 class="card-title">Tomat Cherry</h6>
                         <p class="card-text small">Tomat cherry organik yang manis dan segar.</p>
@@ -169,8 +179,10 @@
             </div>
             <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card h-100">
-                    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                         class="card-img-top" alt="Cabai">
+                    <span role="button" class="open-image" data-src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">
+                        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             class="card-img-top" alt="Cabai">
+                    </span>
                     <div class="card-body text-center">
                         <h6 class="card-title">Cabai Merah</h6>
                         <p class="card-text small">Cabai merah yang pedas dan berkualitas tinggi.</p>
@@ -180,8 +192,10 @@
             </div>
             <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card h-100">
-                    <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                         class="card-img-top" alt="Terong">
+                    <span role="button" class="open-image" data-src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">
+                        <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             class="card-img-top" alt="Terong">
+                    </span>
                     <div class="card-body text-center">
                         <h6 class="card-title">Terong Ungu</h6>
                         <p class="card-text small">Terong ungu yang segar dan bergizi tinggi.</p>
@@ -191,8 +205,10 @@
             </div>
             <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card h-100">
-                    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                         class="card-img-top" alt="Bayam">
+                    <span role="button" class="open-image" data-src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">
+                        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             class="card-img-top" alt="Bayam">
+                    </span>
                     <div class="card-body text-center">
                         <h6 class="card-title">Bayam Hijau</h6>
                         <p class="card-text small">Bayam hijau yang kaya zat besi dan vitamin.</p>
@@ -214,8 +230,10 @@
         <div class="row">
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card h-100">
-                    <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                         class="card-img-top" alt="Pisang">
+                    <span role="button" class="open-image" data-src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">
+                        <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             class="card-img-top" alt="Pisang">
+                    </span>
                     <div class="card-body">
                         <h5 class="card-title">
                             <i class="fas fa-apple-alt text-warning me-2"></i>
@@ -231,8 +249,10 @@
             </div>
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card h-100">
-                    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                         class="card-img-top" alt="Pepaya">
+                    <span role="button" class="open-image" data-src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">
+                        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             class="card-img-top" alt="Pepaya">
+                    </span>
                     <div class="card-body">
                         <h5 class="card-title">
                             <i class="fas fa-apple-alt text-warning me-2"></i>
@@ -248,8 +268,10 @@
             </div>
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card h-100">
-                    <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                         class="card-img-top" alt="Jeruk">
+                    <span role="button" class="open-image" data-src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">
+                        <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             class="card-img-top" alt="Jeruk">
+                    </span>
                     <div class="card-body">
                         <h5 class="card-title">
                             <i class="fas fa-apple-alt text-warning me-2"></i>
@@ -458,5 +480,99 @@
 .card:hover .card-img-top {
     transform: scale(1.05);
 }
+
+/* Image Preview Modal */
+.image-preview-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    backdrop-filter: blur(5px);
+}
+
+.image-preview-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 70%;
+    max-height: 70%;
+}
+
+.image-preview-content img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.image-preview-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10000;
+}
+
+.image-preview-close:hover {
+    color: #ccc;
+}
+
+.open-image {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.open-image:hover {
+    transform: scale(1.02);
+}
 </style>
+
+<!-- Image Preview Modal -->
+<div class="image-preview-modal" id="imagePreviewModal">
+    <span class="image-preview-close" onclick="closeImagePreview()">&times;</span>
+    <div class="image-preview-content">
+        <img id="imagePreviewImg" src="" alt="Preview">
+    </div>
+</div>
+
+<script>
+function openImagePreview(src) {
+    document.getElementById('imagePreviewImg').src = src;
+    document.getElementById('imagePreviewModal').style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeImagePreview() {
+    document.getElementById('imagePreviewModal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// Close modal when clicking outside the image
+document.getElementById('imagePreviewModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeImagePreview();
+    }
+});
+
+// Add click event to all open-image elements
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.open-image').forEach(function(element) {
+        element.addEventListener('click', function() {
+            const src = this.getAttribute('data-src');
+            if (src) {
+                openImagePreview(src);
+            }
+        });
+    });
+});
+</script>
+
 @endsection

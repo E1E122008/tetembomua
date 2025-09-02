@@ -230,7 +230,7 @@
 
 <!-- Update Agricultural Modal -->
 <div class="modal fade" id="updateAgriculturalModal" tabindex="-1">
-    <div class="modal-dialog modal-lg">
+            <div class="modal-dialog modal-md">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">

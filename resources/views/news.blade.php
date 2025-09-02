@@ -29,8 +29,10 @@
         <div class="row mb-5">
             <div class="col-lg-8">
                 <div class="card featured-news">
-                    <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                         class="card-img-top" alt="Kegiatan Desa">
+                    <span role="button" class="open-image" data-src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
+                        <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             class="card-img-top" alt="Kegiatan Desa">
+                    </span>
                     <div class="card-body">
                         <div class="news-meta mb-3">
                             <span class="badge bg-primary">Utama</span>
@@ -77,8 +79,10 @@
         <div class="row">
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card h-100">
-                    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                         class="card-img-top" alt="Pertanian">
+                    <span role="button" class="open-image" data-src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">
+                        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             class="card-img-top" alt="Pertanian">
+                    </span>
                     <div class="card-body">
                         <div class="news-meta mb-2">
                             <span class="badge bg-success">Pertanian</span>
@@ -95,8 +99,10 @@
             
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card h-100">
-                    <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                         class="card-img-top" alt="Infrastruktur">
+                    <span role="button" class="open-image" data-src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">
+                        <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             class="card-img-top" alt="Infrastruktur">
+                    </span>
                     <div class="card-body">
                         <div class="news-meta mb-2">
                             <span class="badge bg-info">Infrastruktur</span>
@@ -113,8 +119,10 @@
             
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card h-100">
-                    <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                         class="card-img-top" alt="Pendidikan">
+                    <span role="button" class="open-image" data-src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">
+                        <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             class="card-img-top" alt="Pendidikan">
+                    </span>
                     <div class="card-body">
                         <div class="news-meta mb-2">
                             <span class="badge bg-warning">Pendidikan</span>
@@ -131,8 +139,10 @@
             
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card h-100">
-                    <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                         class="card-img-top" alt="Kesehatan">
+                    <span role="button" class="open-image" data-src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">
+                        <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             class="card-img-top" alt="Kesehatan">
+                    </span>
                     <div class="card-body">
                         <div class="news-meta mb-2">
                             <span class="badge bg-danger">Kesehatan</span>
@@ -149,8 +159,10 @@
             
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card h-100">
-                    <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                         class="card-img-top" alt="Ekonomi">
+                    <span role="button" class="open-image" data-src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">
+                        <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             class="card-img-top" alt="Ekonomi">
+                    </span>
                     <div class="card-body">
                         <div class="news-meta mb-2">
                             <span class="badge bg-secondary">Ekonomi</span>
@@ -167,8 +179,10 @@
             
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card h-100">
-                    <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                         class="card-img-top" alt="Budaya">
+                    <span role="button" class="open-image" data-src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">
+                        <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             class="card-img-top" alt="Budaya">
+                    </span>
                     <div class="card-body">
                         <div class="news-meta mb-2">
                             <span class="badge bg-dark">Budaya</span>
@@ -350,5 +364,99 @@
     background-color: var(--primary-green);
     border-color: var(--primary-green);
 }
+
+/* Image Preview Modal */
+.image-preview-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    backdrop-filter: blur(5px);
+}
+
+.image-preview-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 70%;
+    max-height: 70%;
+}
+
+.image-preview-content img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.image-preview-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10000;
+}
+
+.image-preview-close:hover {
+    color: #ccc;
+}
+
+.open-image {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.open-image:hover {
+    transform: scale(1.02);
+}
 </style>
+
+<!-- Image Preview Modal -->
+<div class="image-preview-modal" id="imagePreviewModal">
+    <span class="image-preview-close" onclick="closeImagePreview()">&times;</span>
+    <div class="image-preview-content">
+        <img id="imagePreviewImg" src="" alt="Preview">
+    </div>
+</div>
+
+<script>
+function openImagePreview(src) {
+    document.getElementById('imagePreviewImg').src = src;
+    document.getElementById('imagePreviewModal').style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeImagePreview() {
+    document.getElementById('imagePreviewModal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// Close modal when clicking outside the image
+document.getElementById('imagePreviewModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeImagePreview();
+    }
+});
+
+// Add click event to all open-image elements
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.open-image').forEach(function(element) {
+        element.addEventListener('click', function() {
+            const src = this.getAttribute('data-src');
+            if (src) {
+                openImagePreview(src);
+            }
+        });
+    });
+});
+</script>
+
 @endsection

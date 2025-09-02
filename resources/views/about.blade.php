@@ -239,33 +239,44 @@
                         </h3>
 
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-6 mb-4">
                                 <div class="leadership-card">
                                     <div class="leadership-avatar">
-                                        <img src="{{ asset('FOTO/DSC_0596.JPG') }}" alt="Kepala Desa {{ $siteSettings['village_head'] ?? 'Abdullah, SP' }}" class="rounded-circle" style="width: 120px; height: 120px; object-fit: cover;">
+                                        <span role="button" class="open-image" data-src="{{ isset($struktur['kades']['photo']) && $struktur['kades']['photo'] ? $struktur['kades']['photo'] : asset('FOTO/DSC_0596.JPG') }}">
+                                            <img src="{{ isset($struktur['kades']['photo']) && $struktur['kades']['photo'] ? $struktur['kades']['photo'] : asset('FOTO/DSC_0596.JPG') }}" alt="Kepala Desa" class="rounded-circle" style="width: 120px; height: 120px; object-fit: cover;">
+                                        </span>
                                     </div>
                                     <div class="leadership-info">
-                                        <h4 class="text-primary">{{ $siteSettings['village_head'] ?? 'Abdullah, SP' }}</h4>
+                                        <h4 class="text-primary">{{ $struktur['kades']['name'] ?? 'Abdullah, SP' }}</h4>
                                         <p class="text-muted">Kepala Desa</p>
-                                        <p><strong>Masa Jabatan:</strong> {{ $siteSettings['term_period'] ?? '2024 - Sekarang' }}</p>
-                                        <p><strong>Status:</strong> Desa Definitif</p>
+                                        <p><strong>Masa Jabatan:</strong> {{ $struktur['kades']['info'] ?? '2024 - Sekarang' }}</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 mb-4">
                                 <div class="leadership-card">
                                     <div class="leadership-avatar">
-                                        <i class="fas fa-balance-scale fa-4x text-success"></i>
+                                        @php
+                                            $sekretaris = collect($struktur['entries']['perangkat'] ?? [])->firstWhere('role_type', 'sekretaris') ?? 
+                                                        collect($struktur['entries']['perangkat'] ?? [])->firstWhere('role_text', 'Sekretaris Desa');
+                                        @endphp
+                                        @if($sekretaris && !empty($sekretaris['photo']))
+                                            <span role="button" class="open-image" data-src="{{ $sekretaris['photo'] }}">
+                                                <img src="{{ $sekretaris['photo'] }}" alt="Sekretaris Desa" class="rounded-circle" style="width: 120px; height: 120px; object-fit: cover;">
+                                            </span>
+                                        @else
+                                            <i class="fas fa-user fa-4x text-muted"></i>
+                                        @endif
                                     </div>
                                     <div class="leadership-info">
-                                        <h4 class="text-success">Amirudding</h4>
-                                        <p class="text-muted">Ketua BPD</p>
-                                        <p><strong>Fungsi:</strong> Mengayomi dan menyalurkan aspirasi masyarakat</p>
-                                        <p><strong>Periode:</strong> 2024 - Sekarang</p>
+                                        <h4 class="text-success">{{ $sekretaris['name'] ?? 'Sekretaris Desa' }}</h4>
+                                        <p class="text-muted">Sekretaris Desa</p>
+                                        <p><strong>Periode:</strong> {{ $sekretaris['info'] ?? '2024 - Sekarang' }}</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -436,5 +447,42 @@
 .leadership-info p:last-child {
     margin-bottom: 0;
 }
+
+.open-image {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.open-image:hover {
+    transform: scale(1.05);
+}
 </style>
+
+<!-- Image Preview Modal -->
+<div class="modal fade" id="aboutImagePreviewModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-md">
+    <div class="modal-content" style="background: transparent; border: none;">
+      <button type="button" class="btn-close btn-close-white ms-auto me-2 mt-2" data-bs-dismiss="modal" aria-label="Close"></button>
+      <img id="aboutImagePreviewModalImg" src="" alt="Preview" style="width:100%; height:auto; border-radius:12px; box-shadow:0 20px 40px rgba(0,0,0,.4);">
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const previewModal = document.getElementById('aboutImagePreviewModal');
+    const previewImg = document.getElementById('aboutImagePreviewModalImg');
+    const bsModal = previewModal ? new bootstrap.Modal(previewModal) : null;
+    
+    // Open image preview modal
+    document.querySelectorAll('.open-image').forEach(el => {
+        el.addEventListener('click', () => {
+            if (!bsModal) return;
+            previewImg.src = el.getAttribute('data-src');
+            bsModal.show();
+        });
+    });
+});
+</script>
+
 @endsection

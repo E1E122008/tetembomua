@@ -93,12 +93,18 @@
     </div>
 </div>
 
-<!-- Gallery Grid -->
-<div class="card fade-in">
+@php
+    $images = [];
+    $videos = [];
+    foreach ($media as $m) { (($m['type'] ?? 'image') === 'video') ? $videos[] = $m : $images[] = $m; }
+@endphp
+
+<!-- Daftar Gambar -->
+<div class="card fade-in mb-4">
     <div class="card-header bg-transparent border-0">
         <div class="d-flex justify-content-between align-items-center">
             <h5 class="mb-0">
-                <i class="fas fa-th me-2 text-primary"></i>
+                <i class="fas fa-image me-2 text-primary"></i>
                 Daftar Gambar
             </h5>
             <div class="filter-buttons">
@@ -111,56 +117,27 @@
         </div>
     </div>
     <div class="card-body">
-        @if(count($media) > 0)
-        <div class="row g-3">
-            @foreach($media as $item)
+        @if(count($images) > 0)
+        <div class="row g-3" id="admin-images-grid">
+            @foreach($images as $item)
             <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="gallery-item" data-category="{{ $item['category'] ?? 'kegiatan' }}">
                     <div class="gallery-media">
-                        @if(($item['type'] ?? 'image') === 'video')
-                            <video controls class="img-fluid">
-                                <source src="{{ $item['path'] }}" type="video/mp4">
-                                <source src="{{ $item['path'] }}" type="video/webm">
-                                <source src="{{ $item['path'] }}" type="video/ogg">
-                                Browser Anda tidak mendukung tag video.
-                            </video>
-                            <div class="video-overlay">
-                                <i class="fas fa-play-circle fa-3x text-white"></i>
-                            </div>
-                        @else
+                        <span role="button" class="open-image" data-src="{{ $item['path'] }}">
                             <img src="{{ $item['path'] }}" alt="{{ $item['name'] }}" class="img-fluid">
-                        @endif
+                        </span>
                         <div class="gallery-overlay">
                             <div class="overlay-content">
-                                @if(($item['type'] ?? 'image') === 'video')
-                                    <span class="badge bg-danger mb-2">Video</span>
-                                @endif
                                 @if(isset($item['category']) && $item['category'])
                                     <span class="badge bg-primary mb-2">{{ ucfirst($item['category']) }}</span>
                                 @endif
-                                @if(isset($item['description']) && $item['description'])
-                                    <p class="mb-2 description-text">{{ $item['description'] }}</p>
-                                @else
-                                    <p class="mb-2 text-muted">Tidak ada keterangan</p>
-                                @endif
-                                @if(isset($item['image_date']) && $item['image_date'])
-                                    <p class="mb-2">{{ date('d/m/Y', strtotime($item['image_date'])) }}</p>
-                                @else
-                                    <p class="mb-2">{{ date('d/m/Y H:i', strtotime($item['date'])) }}</p>
-                                @endif
-                                <p class="mb-2">{{ round($item['size'] / 1024, 2) }} KB</p>
+                                <p class="mb-2 description-text">{{ $item['description'] ?? 'Tidak ada keterangan' }}</p>
+                                <p class="mb-2">{{ isset($item['image_date']) && $item['image_date'] ? date('d/m/Y', strtotime($item['image_date'])) : (isset($item['date']) ? date('d/m/Y', strtotime($item['date'])) : '') }}</p>
+                                <p class="mb-2">{{ isset($item['size']) ? round($item['size'] / 1024, 2) . ' KB' : '' }}</p>
                                 <div class="btn-group" role="group">
-                                    <a href="{{ $item['path'] }}" target="_blank" class="btn btn-sm btn-outline-light">
-                                        <i class="fas fa-eye"></i>
-                                    </a>
-                                    <button type="button" class="btn btn-sm btn-outline-warning" 
-                                            onclick="editMedia('{{ $item['name'] }}', '{{ isset($item['description']) ? addslashes($item['description']) : '' }}', '{{ isset($item['category']) ? $item['category'] : '' }}', '{{ isset($item['image_date']) ? $item['image_date'] : '' }}')">
-                                        <i class="fas fa-edit"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-sm btn-outline-danger" 
-                                            onclick="deleteMedia('{{ $item['name'] }}')">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
+                                    <a href="{{ $item['path'] }}" target="_blank" class="btn btn-sm btn-outline-light"><i class="fas fa-eye"></i></a>
+                                    <button type="button" class="btn btn-sm btn-outline-warning" onclick="editMedia('{{ $item['name'] }}', '{{ isset($item['description']) ? addslashes($item['description']) : '' }}', '{{ isset($item['category']) ? $item['category'] : '' }}', '{{ isset($item['image_date']) ? $item['image_date'] : '' }}')"><i class="fas fa-edit"></i></button>
+                                    <button type="button" class="btn btn-sm btn-outline-danger" onclick="deleteMedia('{{ $item['name'] }}')"><i class="fas fa-trash"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -168,46 +145,69 @@
                     <div class="gallery-info p-2">
                         <div class="d-flex justify-content-between align-items-start mb-1">
                             <h6 class="mb-0 text-truncate">{{ $item['name'] }}</h6>
-                            <div>
-                                @if(($item['type'] ?? 'image') === 'video')
-                                    <span class="badge bg-danger me-1">Video</span>
-                                @endif
-                                @if(isset($item['category']) && $item['category'])
-                                    <span class="badge bg-primary">{{ ucfirst($item['category']) }}</span>
-                                @endif
-                            </div>
+                            @if(isset($item['category']) && $item['category'])
+                                <span class="badge bg-primary">{{ ucfirst($item['category']) }}</span>
+                            @endif
                         </div>
-                        @if(isset($item['description']) && $item['description'])
-                            <p class="mb-1 small text-muted description-text">{{ $item['description'] }}</p>
-                        @else
-                            <p class="mb-1 small text-muted">Tidak ada keterangan</p>
-                        @endif
-                        @if(isset($item['image_date']) && $item['image_date'])
-                            <small class="text-muted">{{ date('d/m/Y', strtotime($item['image_date'])) }}</small>
-                        @else
-                            <small class="text-muted">{{ date('d/m/Y', strtotime($item['date'])) }}</small>
-                        @endif
+                        <p class="mb-1 small text-muted description-text">{{ $item['description'] ?? 'Tidak ada keterangan' }}</p>
                     </div>
                 </div>
             </div>
             @endforeach
         </div>
         @else
-        <div class="text-center py-5">
-            <i class="fas fa-images fa-4x text-muted mb-3"></i>
-            <h5 class="text-muted">Belum ada media</h5>
-            <p class="text-muted">Upload gambar atau video pertama untuk memulai galeri</p>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#uploadModal">
-                <i class="fas fa-upload me-2"></i>Upload Media
-            </button>
+        <div class="text-center text-muted">Belum ada gambar.</div>
+                                @endif
+    </div>
+</div>
+
+<!-- Daftar Video -->
+<div class="card fade-in">
+    <div class="card-header bg-transparent border-0">
+        <h5 class="mb-0"><i class="fas fa-video me-2 text-danger"></i>Daftar Video</h5>
+    </div>
+    <div class="card-body">
+        @if(count($videos) > 0)
+        <div class="row g-3" id="admin-videos-grid">
+            @foreach($videos as $item)
+            <div class="col-lg-4 col-md-6">
+                <div class="gallery-item" data-category="{{ $item['category'] ?? 'kegiatan' }}">
+                    <div class="gallery-media">
+                        <video controls class="img-fluid">
+                            <source src="{{ $item['path'] }}" type="video/mp4">
+                            <source src="{{ $item['path'] }}" type="video/webm">
+                            <source src="{{ $item['path'] }}" type="video/ogg">
+                            Browser Anda tidak mendukung tag video.
+                        </video>
+                        <div class="gallery-overlay">
+                            <div class="overlay-content">
+                                <span class="badge bg-danger mb-2">Video</span>
+                                @if(isset($item['category']) && $item['category'])
+                                    <span class="badge bg-primary mb-2">{{ ucfirst($item['category']) }}</span>
+                                @endif
+                                <p class="mb-2 description-text">{{ $item['description'] ?? 'Tidak ada keterangan' }}</p>
+                                <p class="mb-2">{{ isset($item['image_date']) && $item['image_date'] ? date('d/m/Y', strtotime($item['image_date'])) : (isset($item['date']) ? date('d/m/Y', strtotime($item['date'])) : '') }}</p>
+                                <div class="btn-group" role="group">
+                                    <a href="{{ $item['path'] }}" target="_blank" class="btn btn-sm btn-outline-light"><i class="fas fa-eye"></i></a>
+                                    <button type="button" class="btn btn-sm btn-outline-warning" onclick="editMedia('{{ $item['name'] }}', '{{ isset($item['description']) ? addslashes($item['description']) : '' }}', '{{ isset($item['category']) ? $item['category'] : '' }}', '{{ isset($item['image_date']) ? $item['image_date'] : '' }}')"><i class="fas fa-edit"></i></button>
+                                    <button type="button" class="btn btn-sm btn-outline-danger" onclick="deleteMedia('{{ $item['name'] }}')"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
         </div>
+        @else
+        <div class="text-center text-muted">Belum ada video.</div>
         @endif
     </div>
 </div>
 
 <!-- Upload Modal -->
 <div class="modal fade" id="uploadModal" tabindex="-1">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-md">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">
@@ -544,6 +544,16 @@
 }
 </style>
 
+<!-- Image Preview Modal -->
+<div class="modal fade" id="adminImagePreviewModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-md">
+    <div class="modal-content" style="background: transparent; border: none;">
+      <button type="button" class="btn-close btn-close-white ms-auto me-2 mt-2" data-bs-dismiss="modal" aria-label="Close"></button>
+      <img id="adminImagePreviewModalImg" src="" alt="Preview" style="width:100%; height:auto; border-radius:12px; box-shadow:0 20px 40px rgba(0,0,0,.4);">
+    </div>
+  </div>
+  </div>
+
 <script>
 // Media preview functionality
 function updatePreview() {
@@ -625,6 +635,9 @@ function deleteMedia(filename) {
 document.addEventListener('DOMContentLoaded', function() {
     const filterBtns = document.querySelectorAll('.filter-btn');
     const galleryItems = document.querySelectorAll('.gallery-item');
+    const previewModal = document.getElementById('adminImagePreviewModal');
+    const previewImg = document.getElementById('adminImagePreviewModalImg');
+    const bsModal = previewModal ? new bootstrap.Modal(previewModal) : null;
     
     filterBtns.forEach(btn => {
         btn.addEventListener('click', function() {
@@ -642,6 +655,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     item.style.display = 'none';
                 }
             });
+        });
+    });
+    // Open image preview modal
+    document.querySelectorAll('.open-image').forEach(el => {
+        el.addEventListener('click', () => {
+            if (!bsModal) return;
+            previewImg.src = el.getAttribute('data-src');
+            bsModal.show();
         });
     });
 });

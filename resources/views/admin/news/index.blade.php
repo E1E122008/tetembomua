@@ -54,8 +54,10 @@
                     <tr>
                         <td>{{ $index + 1 }}</td>
                         <td>
-                            <img src="{{ $item['image'] }}" alt="{{ $item['title'] }}" 
-                                 style="width: 60px; height: 40px; object-fit: cover; border-radius: 5px;">
+                            <span role="button" class="open-image" data-src="{{ $item['image'] }}">
+                                <img src="{{ $item['image'] }}" alt="{{ $item['title'] }}" 
+                                     style="width: 60px; height: 40px; object-fit: cover; border-radius: 5px;">
+                            </span>
                         </td>
                         <td>
                             <strong>{{ $item['title'] }}</strong>
@@ -132,3 +134,30 @@
     </div>
 </div>
 @endsection
+
+<!-- Image Preview Modal -->
+<div class="modal fade" id="newsImagePreviewModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-md">
+    <div class="modal-content" style="background: transparent; border: none;">
+      <button type="button" class="btn-close btn-close-white ms-auto me-2 mt-2" data-bs-dismiss="modal" aria-label="Close"></button>
+      <img id="newsImagePreviewModalImg" src="" alt="Preview" style="width:100%; height:auto; border-radius:12px; box-shadow:0 20px 40px rgba(0,0,0,.4);">
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const previewModal = document.getElementById('newsImagePreviewModal');
+    const previewImg = document.getElementById('newsImagePreviewModalImg');
+    const bsModal = previewModal ? new bootstrap.Modal(previewModal) : null;
+    
+    // Open image preview modal
+    document.querySelectorAll('.open-image').forEach(el => {
+        el.addEventListener('click', () => {
+            if (!bsModal) return;
+            previewImg.src = el.getAttribute('data-src');
+            bsModal.show();
+        });
+    });
+});
+</script>
