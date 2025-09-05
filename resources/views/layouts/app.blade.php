@@ -486,6 +486,7 @@
                             <li><a class="dropdown-item" href="{{ route('profile.visi-misi') }}">Visi & Misi</a></li>
                             <li><a class="dropdown-item" href="{{ route('profile.struktur') }}">Struktur Organisasi</a></li>
                             <li><a class="dropdown-item" href="{{ route('profile.demografi') }}">Demografi</a></li>
+                            <li><a class="dropdown-item" href="{{ route('pertanian.komoditas') }}">Komoditas</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -496,7 +497,6 @@
                             <li><a class="dropdown-item" href="{{ route('potensi') }}">Potensi Desa</a></li>
                             <li><a class="dropdown-item" href="{{ route('program') }}">Program Desa</a></li>
                             <li><a class="dropdown-item" href="{{ route('statistik') }}">Statistik</a></li>
-                            <li><a class="dropdown-item" href="{{ route('pertanian.komoditas') }}">Komoditas</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -537,10 +537,11 @@
                         </div>
                         <p class="text-white-50">Desa yang maju dan berbudaya dengan masyarakat yang ramah, produktif, dan komitmen untuk mengembangkan desa secara berkelanjutan.</p>
                         <div class="social-links">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-youtube"></i></a>
-                            <a href="#"><i class="fab fa-whatsapp"></i></a>
+                            @php($social = \App\Helpers\SettingsHelper::get('social_media', []))
+                            <a href="{{ $social['facebook'] ?? '#' }}" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+                            <a href="{{ $social['instagram'] ?? '#' }}" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+                            <a href="{{ $social['youtube'] ?? '#' }}" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+                            <a href="{{ $social['whatsapp'] ?? '#' }}" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
                         </div>
                     </div>
                 </div>
@@ -550,6 +551,7 @@
                         <li><a href="{{ route('profile.visi-misi') }}">Visi & Misi</a></li>
                         <li><a href="{{ route('profile.struktur') }}">Struktur</a></li>
                         <li><a href="{{ route('profile.demografi') }}">Demografi</a></li>
+                        <li><a href="{{ route('pertanian.komoditas') }}">Komoditas</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-6 mb-4">
@@ -558,7 +560,6 @@
                         <li><a href="{{ route('potensi') }}">Potensi Desa</a></li>
                         <li><a href="{{ route('program') }}">Program Desa</a></li>
                         <li><a href="{{ route('statistik') }}">Statistik</a></li>
-                        <li><a href="{{ route('pertanian.komoditas') }}">Komoditas</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-6 mb-4">

@@ -34,6 +34,35 @@
 <!-- Demografi Section -->
 <section class="section">
     <div class="container">
+        <!-- Demografi Penduduk: Diagram Usia & Jenis Kelamin -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <div class="card fade-in">
+                    <div class="card-body p-5">
+                        <div class="text-center mb-5">
+                            <i class="fas fa-people-arrows fa-4x text-primary mb-3"></i>
+                            <h2 class="text-primary fw-bold">DEMOGRAFI PENDUDUK</h2>
+                            <p class="text-muted">Distribusi usia dan rasio jenis kelamin</p>
+                        </div>
+
+                        <div class="row g-4">
+                            <div class="col-lg-6">
+                                <div class="chart-container">
+                                    <h5 class="mb-3">Distribusi Usia</h5>
+                                    <canvas id="ageChart" width="400" height="300"></canvas>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="chart-container">
+                                    <h5 class="mb-3">Rasio Jenis Kelamin</h5>
+                                    <canvas id="genderChart" width="400" height="300"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Kondisi Geografis -->
         <div class="row mb-5">
             <div class="col-12">
@@ -236,6 +265,49 @@
                                         </tbody>
                                     </table>
                                 </div>
+
+                                <div class="mt-5">
+                                    <h4 class="text-center mb-4">
+                                        <i class="fas fa-table me-2 text-success"></i>
+                                        DATA PENDUDUK PER DUSUN
+                                    </h4>
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead class="table-success">
+                                                <tr>
+                                                    <th>Dusun</th>
+                                                    <th>Laki-laki</th>
+                                                    <th>Perempuan</th>
+                                                    <th>Total</th>
+                                                    <th>KK</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Dusun I</td>
+                                                    <td>485</td>
+                                                    <td>512</td>
+                                                    <td>997</td>
+                                                    <td>245</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Dusun II</td>
+                                                    <td>423</td>
+                                                    <td>456</td>
+                                                    <td>879</td>
+                                                    <td>198</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Dusun III</td>
+                                                    <td>467</td>
+                                                    <td>504</td>
+                                                    <td>971</td>
+                                                    <td>242</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                     </div>
                 </div>
             </div>
@@ -358,7 +430,58 @@
                 </div>
             </div>
         </div>
-    </div>
+
+        <!-- UMKM -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <div class="card fade-in">
+                    <div class="card-body p-5">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-store fa-3x text-warning mb-3"></i>
+                            <h3 class="text-warning fw-bold">DATA UMKM DESA</h3>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="table-warning">
+                                    <tr>
+                                        <th>Jenis Usaha</th>
+                                        <th>Jumlah Unit</th>
+                                        <th>Tenaga Kerja</th>
+                                        <th>Omset (Rp)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Warung Makan</td>
+                                        <td>15</td>
+                                        <td>45</td>
+                                        <td>150.000.000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Kerajinan Tangan</td>
+                                        <td>8</td>
+                                        <td>24</td>
+                                        <td>75.000.000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Konveksi</td>
+                                        <td>5</td>
+                                        <td>20</td>
+                                        <td>120.000.000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jasa</td>
+                                        <td>12</td>
+                                        <td>36</td>
+                                        <td>90.000.000</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Sarana Prasarana -->
         <div class="row">
@@ -584,6 +707,58 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Chart distribusi usia
+    const ageEl = document.getElementById('ageChart');
+    if (ageEl) {
+        const ageCtx = ageEl.getContext('2d');
+        new Chart(ageCtx, {
+            type: 'bar',
+            data: {
+                labels: ['0-4', '5-9', '10-14', '15-19', '20-24', '25-29', '30-34', '35-39', '40-44', '45-49', '50-54', '55-59', '60+'],
+                datasets: [{
+                    label: 'Laki-laki',
+                    data: [89, 95, 102, 98, 85, 92, 88, 76, 68, 62, 58, 52, 78],
+                    backgroundColor: '#2E8B57',
+                    borderColor: '#2E8B57',
+                    borderWidth: 1
+                }, {
+                    label: 'Perempuan',
+                    data: [92, 98, 105, 102, 88, 95, 92, 78, 72, 65, 60, 55, 82],
+                    backgroundColor: '#3CB371',
+                    borderColor: '#3CB371',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: { y: { beginAtZero: true } }
+            }
+        });
+    }
+
+    // Chart rasio gender
+    const genderEl = document.getElementById('genderChart');
+    if (genderEl) {
+        const genderCtx = genderEl.getContext('2d');
+        new Chart(genderCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Laki-laki', 'Perempuan'],
+                datasets: [{
+                    data: [1375, 1472],
+                    backgroundColor: ['#2E8B57', '#3CB371'],
+                    borderWidth: 2,
+                    borderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: { legend: { position: 'bottom' } }
+            }
+        });
+    }
+});
 // Chart untuk mata pencaharian
 const ctx = document.getElementById('occupationChart').getContext('2d');
 const occupationChart = new Chart(ctx, {

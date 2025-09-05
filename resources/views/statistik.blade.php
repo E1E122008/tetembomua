@@ -74,8 +74,8 @@
     </div>
 </section>
 
-<!-- Demografi Penduduk -->
-<section class="py-5 bg-light">
+<!-- Demografi Penduduk (dipindahkan ke Profil > Demografi) -->
+<section class="py-5 bg-light d-none">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center mb-5">
@@ -85,65 +85,7 @@
             </div>
         </div>
         
-        <div class="row g-4">
-            <div class="col-lg-6">
-                <div class="chart-card">
-                    <h4>Distribusi Usia Penduduk</h4>
-                    <canvas id="ageChart" width="400" height="300"></canvas>
-                </div>
-            </div>
-            
-            <div class="col-lg-6">
-                <div class="chart-card">
-                    <h4>Rasio Jenis Kelamin</h4>
-                    <canvas id="genderChart" width="400" height="300"></canvas>
-                </div>
-            </div>
-        </div>
-        
-        <div class="row mt-4">
-            <div class="col-lg-12">
-                <div class="table-card">
-                    <h4>Data Penduduk per Dusun</h4>
-                    <div class="table-responsive">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Dusun</th>
-                                    <th>Laki-laki</th>
-                                    <th>Perempuan</th>
-                                    <th>Total</th>
-                                    <th>KK</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Dusun I</td>
-                                    <td>485</td>
-                                    <td>512</td>
-                                    <td>997</td>
-                                    <td>245</td>
-                                </tr>
-                                <tr>
-                                    <td>Dusun II</td>
-                                    <td>423</td>
-                                    <td>456</td>
-                                    <td>879</td>
-                                    <td>198</td>
-                                </tr>
-                                <tr>
-                                    <td>Dusun III</td>
-                                    <td>467</td>
-                                    <td>504</td>
-                                    <td>971</td>
-                                    <td>242</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!-- Konten dipindahkan ke halaman Profil > Demografi -->
     </div>
 </section>
 
@@ -253,51 +195,7 @@
             </div>
         </div>
         
-        <div class="row mt-4">
-            <div class="col-lg-12">
-                <div class="table-card">
-                    <h4>Data UMKM Desa</h4>
-                    <div class="table-responsive">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Jenis Usaha</th>
-                                    <th>Jumlah Unit</th>
-                                    <th>Tenaga Kerja</th>
-                                    <th>Omset (Rp)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Warung Makan</td>
-                                    <td>15</td>
-                                    <td>45</td>
-                                    <td>150.000.000</td>
-                                </tr>
-                                <tr>
-                                    <td>Kerajinan Tangan</td>
-                                    <td>8</td>
-                                    <td>24</td>
-                                    <td>75.000.000</td>
-                                </tr>
-                                <tr>
-                                    <td>Konveksi</td>
-                                    <td>5</td>
-                                    <td>20</td>
-                                    <td>120.000.000</td>
-                                </tr>
-                                <tr>
-                                    <td>Jasa</td>
-                                    <td>12</td>
-                                    <td>36</td>
-                                    <td>90.000.000</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!-- Tabel UMKM dipindahkan ke halaman Profil > Demografi -->
     </div>
 </section>
 
