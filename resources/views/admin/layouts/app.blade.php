@@ -402,10 +402,13 @@
                             <i class="fas fa-home"></i>
                             Kembali ke Website
                         </a>
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-sign-out-alt"></i>
-                            Logout
-                        </a>
+                        <form method="POST" action="{{ route('logout') }}" style="display: inline;" onsubmit="return confirmLogout()">
+                            @csrf
+                            <button type="submit" class="nav-link" style="background: none; border: none; width: 100%; text-align: left; color: rgba(255, 255, 255, 0.9); border-radius: 15px; margin: 0.5rem 0; padding: 1rem 1.5rem; font-weight: 500; transition: all 0.3s ease; position: relative; overflow: hidden; text-decoration: none; cursor: pointer;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='none'">
+                                <i class="fas fa-sign-out-alt"></i>
+                                Logout
+                            </button>
+                        </form>
                     </nav>
                 </div>
             </div>
@@ -450,6 +453,27 @@
                 el.classList.add('slide-in');
             }, index * 100);
         });
+
+        // Logout confirmation function
+        function confirmLogout() {
+            Swal.fire({
+                title: 'Konfirmasi Logout',
+                text: 'Apakah Anda yakin ingin keluar dari admin panel?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#2E8B57',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, Logout',
+                cancelButtonText: 'Batal',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Submit the form
+                    document.querySelector('form[action="{{ route('logout') }}"]').submit();
+                }
+            });
+            return false; // Prevent form submission until confirmed
+        }
     </script>
 
     @yield('scripts')

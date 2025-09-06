@@ -4,100 +4,96 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PertanianController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Admin\GalleryController;
+use App\Http\Controllers\Admin\OrganizationalStructureController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
 */
 
-// Home Routes
+// =================== Public Routes ===================
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 
-// Profile Desa Routes
+// Profile Desa
 Route::prefix('profile')->group(function () {
     Route::get('/visi-misi', [ProfileController::class, 'visiMisi'])->name('profile.visi-misi');
     Route::get('/struktur', [ProfileController::class, 'struktur'])->name('profile.struktur');
     Route::get('/demografi', [ProfileController::class, 'demografi'])->name('profile.demografi');
 });
 
-// Pertanian Routes (only komoditas)
+// Pertanian
 Route::prefix('pertanian')->group(function () {
     Route::get('/komoditas', [PertanianController::class, 'komoditas'])->name('pertanian.komoditas');
 });
 
-// News Routes
+// Lain-lain
 Route::get('/news', [HomeController::class, 'news'])->name('news');
-
-// Potensi Desa Routes
 Route::get('/potensi', [HomeController::class, 'potensi'])->name('potensi');
-
-// Program Desa Routes
 Route::get('/program', [HomeController::class, 'program'])->name('program');
-
-// Galeri Routes
 Route::get('/galeri', [HomeController::class, 'galeri'])->name('galeri');
-
-// Statistik Routes
 Route::get('/statistik', [HomeController::class, 'statistik'])->name('statistik');
 
-// Admin Routes
+// =================== Admin Routes ===================
 Route::prefix('admin')->group(function () {
-    Route::get('/', [App\Http\Controllers\AdminController::class, 'dashboard'])->name('admin.dashboard');
-    Route::get('/login', function () {
-        return view('admin.login');
-    })->name('admin.login');
-    
-    // News Management
-    Route::get('/news', [App\Http\Controllers\AdminController::class, 'news'])->name('admin.news');
-    Route::get('/news/create', [App\Http\Controllers\AdminController::class, 'createNews'])->name('admin.news.create');
-    Route::post('/news', [App\Http\Controllers\AdminController::class, 'storeNews'])->name('admin.news.store');
-    
-    // Population Data Management
-    Route::get('/population', [App\Http\Controllers\AdminController::class, 'population'])->name('admin.population');
-    Route::post('/population', [App\Http\Controllers\AdminController::class, 'updatePopulation'])->name('admin.population.update');
-    
-    // Agricultural Data Management
-    Route::get('/agricultural', [App\Http\Controllers\AdminController::class, 'agricultural'])->name('admin.agricultural');
-    Route::post('/agricultural', [App\Http\Controllers\AdminController::class, 'updateAgricultural'])->name('admin.agricultural.update');
-    
-    // User Management
-    Route::get('/users', [App\Http\Controllers\AdminController::class, 'users'])->name('admin.users');
-    Route::get('/users/create', [App\Http\Controllers\AdminController::class, 'createUser'])->name('admin.users.create');
-    Route::post('/users', [App\Http\Controllers\AdminController::class, 'storeUser'])->name('admin.users.store');
-    
-    // Settings Management
-    Route::get('/settings', [App\Http\Controllers\AdminController::class, 'settings'])->name('admin.settings');
-    Route::post('/settings', [App\Http\Controllers\AdminController::class, 'updateSettings'])->name('admin.settings.update');
-    
-                  // Gallery Management
-              Route::get('/gallery', [App\Http\Controllers\AdminController::class, 'gallery'])->name('admin.gallery');
-              Route::post('/gallery/upload', [App\Http\Controllers\AdminController::class, 'uploadGallery'])->name('admin.gallery.upload');
-              Route::put('/gallery/{filename}/edit', [App\Http\Controllers\AdminController::class, 'editGalleryImage'])->name('admin.gallery.edit');
-              Route::delete('/gallery/{filename}', [App\Http\Controllers\AdminController::class, 'deleteGalleryImage'])->name('admin.gallery.delete');
+    // Login tetap tanpa middleware
+    Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [LoginController::class, 'login'])->name('login.post');
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-              // Enhanced Gallery (DB-backed)
-              Route::resource('gallery-db', App\Http\Controllers\Admin\GalleryController::class, ['as' => 'admin']);
-              Route::post('gallery-db/{id}/toggle-featured', [App\Http\Controllers\Admin\GalleryController::class, 'toggleFeatured'])->name('admin.gallery-db.toggle-featured');
-              Route::post('gallery-db/{id}/toggle-published', [App\Http\Controllers\Admin\GalleryController::class, 'togglePublished'])->name('admin.gallery-db.toggle-published');
+        // Semua route admin lain lewat middleware admin
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 
-    // Struktur Organisasi Management
-    Route::get('/structure', [App\Http\Controllers\AdminController::class, 'structure'])->name('admin.structure');
-    Route::post('/structure', [App\Http\Controllers\AdminController::class, 'updateStructure'])->name('admin.structure.update');
-    Route::post('/structure/kades', [App\Http\Controllers\AdminController::class, 'updateKades'])->name('admin.structure.kades.update');
-    Route::post('/structure/entry', [App\Http\Controllers\AdminController::class, 'storeStructureEntry'])->name('admin.structure.entry.store');
-    Route::post('/structure/entry/{id}', [App\Http\Controllers\AdminController::class, 'updateStructureEntry'])->name('admin.structure.entry.update');
-    Route::delete('/structure/entry/{id}', [App\Http\Controllers\AdminController::class, 'deleteStructureEntry'])->name('admin.structure.entry.delete');
+        // News Management
+        Route::get('/news', [AdminController::class, 'news'])->name('admin.news');
+        Route::get('/news/create', [AdminController::class, 'createNews'])->name('admin.news.create');
+        Route::post('/news', [AdminController::class, 'storeNews'])->name('admin.news.store');
 
-    // New Organizational Structure CRUD (DB-backed)
-    Route::resource('organizational-structure', App\Http\Controllers\Admin\OrganizationalStructureController::class, ['as' => 'admin']);
-    Route::post('organizational-structure/{id}/toggle-status', [App\Http\Controllers\Admin\OrganizationalStructureController::class, 'toggleStatus'])->name('admin.organizational-structure.toggle-status');
-    Route::post('organizational-structure/reorder', [App\Http\Controllers\Admin\OrganizationalStructureController::class, 'reorder'])->name('admin.organizational-structure.reorder');
+        // Population Data
+        Route::get('/population', [AdminController::class, 'population'])->name('admin.population');
+        Route::post('/population', [AdminController::class, 'updatePopulation'])->name('admin.population.update');
+
+        // Agricultural Data
+        Route::get('/agricultural', [AdminController::class, 'agricultural'])->name('admin.agricultural');
+        Route::post('/agricultural', [AdminController::class, 'updateAgricultural'])->name('admin.agricultural.update');
+
+        // User Management
+        Route::get('/users', [AdminController::class, 'users'])->name('admin.users');
+        Route::get('/users/create', [AdminController::class, 'createUser'])->name('admin.users.create');
+        Route::post('/users', [AdminController::class, 'storeUser'])->name('admin.users.store');
+
+        // Settings
+        Route::get('/settings', [AdminController::class, 'settings'])->name('admin.settings');
+        Route::post('/settings', [AdminController::class, 'updateSettings'])->name('admin.settings.update');
+
+        // Gallery
+        Route::get('/gallery', [AdminController::class, 'gallery'])->name('admin.gallery');
+        Route::post('/gallery/upload', [AdminController::class, 'uploadGallery'])->name('admin.gallery.upload');
+        Route::put('/gallery/{filename}/edit', [AdminController::class, 'editGalleryImage'])->name('admin.gallery.edit');
+        Route::delete('/gallery/{filename}', [AdminController::class, 'deleteGalleryImage'])->name('admin.gallery.delete');
+
+        // Enhanced Gallery (DB-backed)
+        Route::resource('gallery-db', GalleryController::class, ['as' => 'admin']);
+        Route::post('gallery-db/{id}/toggle-featured', [GalleryController::class, 'toggleFeatured'])->name('admin.gallery-db.toggle-featured');
+        Route::post('gallery-db/{id}/toggle-published', [GalleryController::class, 'togglePublished'])->name('admin.gallery-db.toggle-published');
+
+        // Struktur Organisasi lama
+        Route::get('/structure', [AdminController::class, 'structure'])->name('admin.structure');
+        Route::post('/structure', [AdminController::class, 'updateStructure'])->name('admin.structure.update');
+        Route::post('/structure/kades', [AdminController::class, 'updateKades'])->name('admin.structure.kades.update');
+        Route::post('/structure/entry', [AdminController::class, 'storeStructureEntry'])->name('admin.structure.entry.store');
+        Route::post('/structure/entry/{id}', [AdminController::class, 'updateStructureEntry'])->name('admin.structure.entry.update');
+        Route::delete('/structure/entry/{id}', [AdminController::class, 'deleteStructureEntry'])->name('admin.structure.entry.delete');
+
+        // Struktur Organisasi (DB-backed)
+        Route::resource('organizational-structure', OrganizationalStructureController::class, ['as' => 'admin']);
+        Route::post('organizational-structure/{id}/toggle-status', [OrganizationalStructureController::class, 'toggleStatus'])->name('admin.organizational-structure.toggle-status');
+        Route::post('organizational-structure/reorder', [OrganizationalStructureController::class, 'reorder'])->name('admin.organizational-structure.reorder');
+    });
 });
