@@ -152,6 +152,115 @@
     </div>
 </div>
 
+<!-- Social Media Information -->
+<div class="row">
+    <div class="col-12 mb-4">
+        <div class="card fade-in">
+            <div class="card-header bg-transparent border-0">
+                <h5 class="mb-0">
+                    <i class="fas fa-share-alt me-2 text-primary"></i>
+                    Media Sosial
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <!-- Facebook -->
+                    <div class="col-md-3 mb-3">
+                        <div class="social-media-item text-center">
+                            <div class="social-icon facebook">
+                                <i class="fab fa-facebook"></i>
+                            </div>
+                            <h6 class="mt-2">Facebook</h6>
+                            <p class="text-muted mb-1">
+                                <strong>Handle:</strong> {{ $settings['social_media']['facebook_handle'] ?? 'Belum diatur' }}
+                            </p>
+                            <p class="text-muted mb-0">
+                                <strong>URL:</strong> 
+                                @if(!empty($settings['social_media']['facebook']))
+                                    <a href="{{ $settings['social_media']['facebook'] }}" target="_blank" class="text-decoration-none">
+                                        {{ Str::limit($settings['social_media']['facebook'], 30) }}
+                                    </a>
+                                @else
+                                    Belum diatur
+                                @endif
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Instagram -->
+                    <div class="col-md-3 mb-3">
+                        <div class="social-media-item text-center">
+                            <div class="social-icon instagram">
+                                <i class="fab fa-instagram"></i>
+                            </div>
+                            <h6 class="mt-2">Instagram</h6>
+                            <p class="text-muted mb-1">
+                                <strong>Handle:</strong> {{ $settings['social_media']['instagram_handle'] ?? 'Belum diatur' }}
+                            </p>
+                            <p class="text-muted mb-0">
+                                <strong>URL:</strong> 
+                                @if(!empty($settings['social_media']['instagram']))
+                                    <a href="{{ $settings['social_media']['instagram'] }}" target="_blank" class="text-decoration-none">
+                                        {{ Str::limit($settings['social_media']['instagram'], 30) }}
+                                    </a>
+                                @else
+                                    Belum diatur
+                                @endif
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- YouTube -->
+                    <div class="col-md-3 mb-3">
+                        <div class="social-media-item text-center">
+                            <div class="social-icon youtube">
+                                <i class="fab fa-youtube"></i>
+                            </div>
+                            <h6 class="mt-2">YouTube</h6>
+                            <p class="text-muted mb-1">
+                                <strong>Handle:</strong> {{ $settings['social_media']['youtube_handle'] ?? 'Belum diatur' }}
+                            </p>
+                            <p class="text-muted mb-0">
+                                <strong>URL:</strong> 
+                                @if(!empty($settings['social_media']['youtube']))
+                                    <a href="{{ $settings['social_media']['youtube'] }}" target="_blank" class="text-decoration-none">
+                                        {{ Str::limit($settings['social_media']['youtube'], 30) }}
+                                    </a>
+                                @else
+                                    Belum diatur
+                                @endif
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- WhatsApp -->
+                    <div class="col-md-3 mb-3">
+                        <div class="social-media-item text-center">
+                            <div class="social-icon whatsapp">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <h6 class="mt-2">WhatsApp</h6>
+                            <p class="text-muted mb-1">
+                                <strong>Number:</strong> {{ $settings['social_media']['whatsapp_number'] ?? 'Belum diatur' }}
+                            </p>
+                            <p class="text-muted mb-0">
+                                <strong>URL:</strong> 
+                                @if(!empty($settings['social_media']['whatsapp']))
+                                    <a href="{{ $settings['social_media']['whatsapp'] }}" target="_blank" class="text-decoration-none">
+                                        {{ Str::limit($settings['social_media']['whatsapp'], 30) }}
+                                    </a>
+                                @else
+                                    Belum diatur
+                                @endif
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Website Settings -->
 <div class="row">
     <div class="col-lg-6 mb-4">
@@ -294,6 +403,89 @@
                     
                     <div class="row">
                         <div class="col-12">
+                            <h6 class="mb-3">
+                                <i class="fab fa-share-alt me-2 text-primary"></i>
+                                Media Sosial
+                            </h6>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="facebook_url" class="form-label">
+                                    <i class="fab fa-facebook text-primary me-2"></i>Facebook URL
+                                </label>
+                                <input type="url" class="form-control" id="facebook_url" name="social_media[facebook]" 
+                                       value="{{ $settings['social_media']['facebook'] ?? '' }}" 
+                                       placeholder="https://facebook.com/desatetembomua">
+                            </div>
+                            <div class="mb-3">
+                                <label for="facebook_handle" class="form-label">
+                                    <i class="fab fa-facebook text-primary me-2"></i>Facebook Handle
+                                </label>
+                                <input type="text" class="form-control" id="facebook_handle" name="social_media[facebook_handle]" 
+                                       value="{{ $settings['social_media']['facebook_handle'] ?? '' }}" 
+                                       placeholder="DesaTetembomua">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="instagram_url" class="form-label">
+                                    <i class="fab fa-instagram text-danger me-2"></i>Instagram URL
+                                </label>
+                                <input type="url" class="form-control" id="instagram_url" name="social_media[instagram]" 
+                                       value="{{ $settings['social_media']['instagram'] ?? '' }}" 
+                                       placeholder="https://instagram.com/desatetembomua">
+                            </div>
+                            <div class="mb-3">
+                                <label for="instagram_handle" class="form-label">
+                                    <i class="fab fa-instagram text-danger me-2"></i>Instagram Handle
+                                </label>
+                                <input type="text" class="form-control" id="instagram_handle" name="social_media[instagram_handle]" 
+                                       value="{{ $settings['social_media']['instagram_handle'] ?? '' }}" 
+                                       placeholder="desa_tetembomua">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="youtube_url" class="form-label">
+                                    <i class="fab fa-youtube text-danger me-2"></i>YouTube URL
+                                </label>
+                                <input type="url" class="form-control" id="youtube_url" name="social_media[youtube]" 
+                                       value="{{ $settings['social_media']['youtube'] ?? '' }}" 
+                                       placeholder="https://youtube.com/@desatetembomua">
+                            </div>
+                            <div class="mb-3">
+                                <label for="youtube_handle" class="form-label">
+                                    <i class="fab fa-youtube text-danger me-2"></i>YouTube Handle
+                                </label>
+                                <input type="text" class="form-control" id="youtube_handle" name="social_media[youtube_handle]" 
+                                       value="{{ $settings['social_media']['youtube_handle'] ?? '' }}" 
+                                       placeholder="Desa Tetembomua">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="whatsapp_url" class="form-label">
+                                    <i class="fab fa-whatsapp text-success me-2"></i>WhatsApp URL
+                                </label>
+                                <input type="url" class="form-control" id="whatsapp_url" name="social_media[whatsapp]" 
+                                       value="{{ $settings['social_media']['whatsapp'] ?? '' }}" 
+                                       placeholder="https://wa.me/6281234567890">
+                            </div>
+                            <div class="mb-3">
+                                <label for="whatsapp_number" class="form-label">
+                                    <i class="fab fa-whatsapp text-success me-2"></i>WhatsApp Number
+                                </label>
+                                <input type="text" class="form-control" id="whatsapp_number" name="social_media[whatsapp_number]" 
+                                       value="{{ $settings['social_media']['whatsapp_number'] ?? '' }}" 
+                                       placeholder="+62 812-3456-7890">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <hr>
+                    
+                    <div class="row">
+                        <div class="col-12">
                             <h6 class="mb-3">Batas Wilayah</h6>
                         </div>
                         <div class="col-md-3">
@@ -386,6 +578,48 @@
 
 .boundary-icon.west {
     background: linear-gradient(135deg, #ffc107, #e0a800);
+}
+
+.social-media-item {
+    padding: 20px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #f8f9fa, #ffffff);
+    border: 1px solid #e9ecef;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.social-media-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.social-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.social-icon.facebook {
+    background: linear-gradient(135deg, #1877f2, #0d65d9);
+}
+
+.social-icon.instagram {
+    background: linear-gradient(135deg, #e4405f, #c13584, #833ab4);
+}
+
+.social-icon.youtube {
+    background: linear-gradient(135deg, #ff0000, #cc0000);
+}
+
+.social-icon.whatsapp {
+    background: linear-gradient(135deg, #25d366, #128c7e);
 }
 </style>
 @endsection

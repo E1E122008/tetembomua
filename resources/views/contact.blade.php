@@ -201,58 +201,14 @@
 <!-- Social Media Section -->
 <section class="section">
     <div class="container">
-        <div class="section-title">
-            <h2>Ikuti Kami</h2>
-            <p>Ikuti media sosial kami untuk informasi terbaru</p>
-        </div>
         <div class="row">
             <div class="col-lg-8 mx-auto">
-                <div class="row text-center">
-                    <div class="col-md-3 col-6 mb-4">
-                        <a href="{{ $siteSettings['social_media']['facebook'] ?? '#' }}" class="text-decoration-none">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <i class="fab fa-facebook fa-3x text-primary mb-3"></i>
-                                    <h6>Facebook</h6>
-                                    <small class="text-muted">@{{ ($siteSettings['village_name'] ?? 'DesaTetembomua') }}</small>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-3 col-6 mb-4">
-                        <a href="{{ $siteSettings['social_media']['instagram'] ?? '#' }}" class="text-decoration-none">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <i class="fab fa-instagram fa-3x text-danger mb-3"></i>
-                                    <h6>Instagram</h6>
-                                    <small class="text-muted">@{{ str_replace(' ', '', strtolower($siteSettings['village_name'] ?? 'desa_tetembomua')) }}</small>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-3 col-6 mb-4">
-                        <a href="{{ $siteSettings['social_media']['youtube'] ?? '#' }}" class="text-decoration-none">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <i class="fab fa-youtube fa-3x text-danger mb-3"></i>
-                                    <h6>YouTube</h6>
-                                    <small class="text-muted">{{ $siteSettings['village_name'] ?? 'Desa Tetembomua' }}</small>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-3 col-6 mb-4">
-                        <a href="#" class="text-decoration-none">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <i class="fab fa-whatsapp fa-3x text-success mb-3"></i>
-                                    <h6>WhatsApp</h6>
-                                    <small class="text-muted">{{ $siteSettings['contact_phone'] ?? '+62 812-3456-7890' }}</small>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+                <x-social-media 
+                    :show-title="true"
+                    title="Ikuti Kami"
+                    subtitle="Ikuti media sosial kami untuk informasi terbaru"
+                    size="normal"
+                />
             </div>
         </div>
     </div>

@@ -538,10 +538,10 @@
                         <p class="text-white-50">Desa yang maju dan berbudaya dengan masyarakat yang ramah, produktif, dan komitmen untuk mengembangkan desa secara berkelanjutan.</p>
                         <div class="social-links">
                             @php($social = \App\Helpers\SettingsHelper::get('social_media', []))
-                            <a href="{{ $social['facebook'] ?? '#' }}" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
-                            <a href="{{ $social['instagram'] ?? '#' }}" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
-                            <a href="{{ $social['youtube'] ?? '#' }}" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
-                            <a href="{{ $social['whatsapp'] ?? '#' }}" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+                            <a href="{{ $social['facebook'] ?? '#' }}" target="_blank" rel="noopener" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="{{ $social['instagram'] ?? '#' }}" target="_blank" rel="noopener" title="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="{{ $social['youtube'] ?? '#' }}" target="_blank" rel="noopener" title="YouTube"><i class="fab fa-youtube"></i></a>
+                            <a href="{{ $social['whatsapp'] ?? '#' }}" target="_blank" rel="noopener" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                         </div>
                     </div>
                 </div>

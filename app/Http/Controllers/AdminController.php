@@ -206,7 +206,16 @@ class AdminController extends Controller
             'contact_email' => 'nullable|email|max:255',
             'contact_address' => 'nullable|string',
             'website_status' => 'boolean',
-            'maintenance_mode' => 'boolean'
+            'maintenance_mode' => 'boolean',
+            // Social media validation
+            'social_media.facebook' => 'nullable|url',
+            'social_media.facebook_handle' => 'nullable|string|max:255',
+            'social_media.instagram' => 'nullable|url',
+            'social_media.instagram_handle' => 'nullable|string|max:255',
+            'social_media.youtube' => 'nullable|url',
+            'social_media.youtube_handle' => 'nullable|string|max:255',
+            'social_media.whatsapp' => 'nullable|url',
+            'social_media.whatsapp_number' => 'nullable|string|max:255'
         ]);
 
         // Update settings in database
@@ -217,6 +226,10 @@ class AdminController extends Controller
             'village_description', 'contact_phone', 'contact_email', 'contact_address',
             'website_status', 'maintenance_mode'
         ]);
+
+        // Handle social media data
+        $socialMediaData = $request->input('social_media', []);
+        $settingsData['social_media'] = $socialMediaData;
 
         // Convert checkbox values to boolean
         $settingsData['website_status'] = $request->has('website_status');

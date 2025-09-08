@@ -46,8 +46,13 @@ class SettingsHelper
                     'contact_address' => 'Desa Tetembomua, Kecamatan Lambuya, Kabupaten Konawe, Sulawesi Tenggara',
                     'social_media' => [
                         'facebook' => 'https://facebook.com/desatetembomua',
+                        'facebook_handle' => 'DesaTetembomua',
                         'instagram' => 'https://instagram.com/desatetembomua',
-                        'youtube' => 'https://youtube.com/@desatetembomua'
+                        'instagram_handle' => 'desa_tetembomua',
+                        'youtube' => 'https://youtube.com/@desatetembomua',
+                        'youtube_handle' => 'Desa Tetembomua',
+                        'whatsapp' => 'https://wa.me/6281234567890',
+                        'whatsapp_number' => '+62 812-3456-7890'
                     ],
                     'website_status' => true,
                     'maintenance_mode' => false
