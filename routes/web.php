@@ -55,9 +55,11 @@ Route::prefix('admin')->group(function () {
         Route::get('/news/create', [AdminController::class, 'createNews'])->name('admin.news.create');
         Route::post('/news', [AdminController::class, 'storeNews'])->name('admin.news.store');
 
-        // Population Data
-        Route::get('/population', [AdminController::class, 'population'])->name('admin.population');
-        Route::post('/population', [AdminController::class, 'updatePopulation'])->name('admin.population.update');
+         // Population Data
+         Route::get('/population', [AdminController::class, 'population'])->name('admin.population.index');
+         Route::post('/population', [AdminController::class, 'updatePopulation'])->name('admin.population.update');
+         Route::post('population/import', [\App\Http\Controllers\Admin\PopulationController::class, 'importExcel'])->name('admin.population.import');
+ 
 
         // Agricultural Data
         Route::get('/agricultural', [AdminController::class, 'agricultural'])->name('admin.agricultural');

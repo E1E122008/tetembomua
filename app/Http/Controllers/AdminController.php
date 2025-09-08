@@ -70,19 +70,10 @@ class AdminController extends Controller
 
     public function population()
     {
-        // Sample population data
-        $population = [
-            'total' => 402,
-            'male' => 222,
-            'female' => 178,
-            'households' => 118,
-            'rt_count' => 6,
-            'farmers' => 206,
-            'traders' => 57,
-            'students' => 102
-        ];
-
-        return view('admin.population.index', compact('population'));
+        // Get population data from database
+        $populations = \App\Models\Population::orderBy('nama')->get();
+        
+        return view('admin.population.index', compact('populations'));
     }
 
     public function updatePopulation(Request $request)

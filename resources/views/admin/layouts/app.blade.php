@@ -365,9 +365,9 @@
                             <i class="fas fa-newspaper"></i>
                             Berita
                         </a>
-                        <a class="nav-link {{ request()->is('admin/population*') ? 'active' : '' }}" href="{{ route('admin.population') }}">
+                        <a class="nav-link {{ request()->is('admin/population*') ? 'active' : '' }}" href="{{ route('admin.population.index') }}">
                             <i class="fas fa-users"></i>
-                            Data Penduduk
+                            Kelola Penduduk
                         </a>
                         <a class="nav-link {{ request()->is('admin/agricultural*') ? 'active' : '' }}" href="{{ route('admin.agricultural') }}">
                             <i class="fas fa-seedling"></i>
@@ -479,5 +479,3 @@
     @yield('scripts')
 </body>
 </html>
-
-

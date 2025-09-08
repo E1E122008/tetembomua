@@ -41,7 +41,10 @@ class HomeController extends Controller
             }
         }
         
-        return view('contact', compact('struktur'));
+        // Load site settings for social media and contact info
+        $siteSettings = \App\Helpers\SettingsHelper::getAll();
+        
+        return view('contact', compact('struktur', 'siteSettings'));
     }
 
     public function news()
