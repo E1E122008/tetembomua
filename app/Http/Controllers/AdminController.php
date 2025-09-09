@@ -97,16 +97,29 @@ class AdminController extends Controller
 
     public function agricultural()
     {
-        // Sample agricultural data
+        $rows = \Illuminate\Support\Facades\DB::table('agricultural_data')
+            ->select(['commodity_name as name', 'commodity_type', 'land_area as area', 'number_of_farmers as farmers', 'image_path', 'notes'])
+            ->orderBy('commodity_name')
+            ->get();
+        $totalArea = (float) $rows->sum('area');
+        $totalFarmers = (int) $rows->sum('farmers');
+
+        $commodities = $rows->filter(fn($r) => ($r->commodity_type ?? 'other') === 'other')
+            ->map(fn($c) => ['name' => $c->name, 'area' => (float)$c->area, 'farmers' => (int)$c->farmers, 'image_path' => $c->image_path, 'description' => $c->notes])
+            ->values()->toArray();
+        $horticultures = $rows->filter(fn($r) => ($r->commodity_type ?? '') === 'vegetables')
+            ->map(fn($c) => ['name' => $c->name, 'area' => (float)$c->area, 'farmers' => (int)$c->farmers, 'image_path' => $c->image_path, 'description' => $c->notes])
+            ->values()->toArray();
+        $fruits = $rows->filter(fn($r) => ($r->commodity_type ?? '') === 'fruits')
+            ->map(fn($c) => ['name' => $c->name, 'area' => (float)$c->area, 'farmers' => (int)$c->farmers, 'image_path' => $c->image_path, 'description' => $c->notes])
+            ->values()->toArray();
+
         $agricultural = [
-            'farmers' => 206,
-            'land_area' => 850,
-            'commodities' => [
-                ['name' => 'Kelapa Sawit', 'area' => 450, 'farmers' => 150],
-                ['name' => 'Kakao', 'area' => 200, 'farmers' => 80],
-                ['name' => 'Padi', 'area' => 150, 'farmers' => 120],
-                ['name' => 'Jagung', 'area' => 50, 'farmers' => 45]
-            ]
+            'farmers' => $totalFarmers,
+            'land_area' => $totalArea,
+            'commodities' => $commodities,
+            'horticultures' => $horticultures,
+            'fruits' => $fruits,
         ];
 
         return view('admin.agricultural.index', compact('agricultural'));
@@ -116,11 +129,170 @@ class AdminController extends Controller
     {
         $request->validate([
             'farmers' => 'required|numeric',
-            'land_area' => 'required|numeric'
+            'land_area' => 'required|numeric',
+            'commodities' => 'nullable|array',
+            'commodities.*.image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:4096',
+            'commodities.*.description' => 'nullable|string|max:500',
+            'horticultures' => 'nullable|array',
+            'horticultures.*.image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:4096',
+            'horticultures.*.description' => 'nullable|string|max:500',
+            'fruits' => 'nullable|array',
+            'fruits.*.image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:4096',
+            'fruits.*.description' => 'nullable|string|max:500',
         ]);
 
-        // In real app, update database
-        // Agricultural::update([...]);
+        // Normalize commodities and recompute totals from input rows
+        $commodities = array_values(array_filter($request->input('commodities', []), function($row){
+            return isset($row['name']) && trim($row['name']) !== '';
+        }));
+        $horticulturesIn = array_values(array_filter($request->input('horticultures', []), function($row){
+            return isset($row['name']) && trim($row['name']) !== '';
+        }));
+        $fruitsIn = array_values(array_filter($request->input('fruits', []), function($row){
+            return isset($row['name']) && trim($row['name']) !== '';
+        }));
+        $totalArea = 0; $totalFarmers = 0;
+        foreach ($commodities as &$row) {
+            $row['name'] = (string)($row['name'] ?? '');
+            $row['area'] = (float)($row['area'] ?? 0);
+            $row['farmers'] = (int)($row['farmers'] ?? 0);
+            $totalArea += $row['area'];
+            $totalFarmers += $row['farmers'];
+        }
+        unset($row);
+
+        // Persist to database: update existing or insert new rows
+        $now = now();
+        $userId = auth()->id() ?? 1;
+        $insertRows = [];
+        
+        // Get existing data to preserve images and other fields
+        $existingData = \Illuminate\Support\Facades\DB::table('agricultural_data')
+            ->get()
+            ->keyBy(function($item) {
+                return $item->commodity_name . '_' . $item->commodity_type;
+            });
+        foreach ($commodities as $i => $row) {
+            $key = $row['name'] . '_other';
+            $existing = $existingData->get($key);
+            
+            $imagePath = $existing->image_path ?? null; // Keep existing image
+            if ($request->hasFile("commodities.$i.image")) {
+                $file = $request->file("commodities.$i.image");
+                if ($file->isValid()) {
+                    $name = 'commodity_' . time() . '_' . preg_replace('/[^a-zA-Z0-9_\.-]/', '_', $file->getClientOriginalName());
+                    $file->move(public_path('FOTO/komoditas'), $name);
+                    $imagePath = '/FOTO/komoditas/' . $name;
+                }
+            }
+            $insertRows[] = [
+                'commodity_name' => $row['name'],
+                'commodity_type' => 'other',
+                'land_area' => round($row['area'], 2),
+                'production_volume' => 0,
+                'productivity_per_hectare' => 0,
+                'number_of_farmers' => (int)$row['farmers'],
+                'average_income_per_hectare' => 0,
+                'harvest_season' => null,
+                'image_path' => $imagePath,
+                'notes' => $row['description'] ?? null,
+                'data_date' => $now->toDateString(),
+                'updated_by' => $userId,
+                'created_at' => $now,
+                'updated_at' => $now,
+            ];
+        }
+        // Add horticultures (vegetables)
+        foreach ($horticulturesIn as $i => $row) {
+            $key = $row['name'] . '_vegetables';
+            $existing = $existingData->get($key);
+            
+            $imagePath = $existing->image_path ?? null; // Keep existing image
+            if ($request->hasFile("horticultures.$i.image")) {
+                $file = $request->file("horticultures.$i.image");
+                if ($file->isValid()) {
+                    $name = 'horti_' . time() . '_' . preg_replace('/[^a-zA-Z0-9_\.-]/', '_', $file->getClientOriginalName());
+                    $file->move(public_path('FOTO/komoditas'), $name);
+                    $imagePath = '/FOTO/komoditas/' . $name;
+                }
+            }
+            $insertRows[] = [
+                'commodity_name' => (string)($row['name'] ?? ''),
+                'commodity_type' => 'vegetables',
+                'land_area' => round((float)($row['area'] ?? 0), 2),
+                'production_volume' => 0,
+                'productivity_per_hectare' => 0,
+                'number_of_farmers' => (int)($row['farmers'] ?? 0),
+                'average_income_per_hectare' => 0,
+                'harvest_season' => null,
+                'image_path' => $imagePath,
+                'notes' => $row['description'] ?? null,
+                'data_date' => $now->toDateString(),
+                'updated_by' => $userId,
+                'created_at' => $now,
+                'updated_at' => $now,
+            ];
+        }
+        // Add fruits
+        foreach ($fruitsIn as $i => $row) {
+            $key = $row['name'] . '_fruits';
+            $existing = $existingData->get($key);
+            
+            $imagePath = $existing->image_path ?? null; // Keep existing image
+            if ($request->hasFile("fruits.$i.image")) {
+                $file = $request->file("fruits.$i.image");
+                if ($file->isValid()) {
+                    $name = 'fruit_' . time() . '_' . preg_replace('/[^a-zA-Z0-9_\.-]/', '_', $file->getClientOriginalName());
+                    $file->move(public_path('FOTO/komoditas'), $name);
+                    $imagePath = '/FOTO/komoditas/' . $name;
+                }
+            }
+            $insertRows[] = [
+                'commodity_name' => (string)($row['name'] ?? ''),
+                'commodity_type' => 'fruits',
+                'land_area' => round((float)($row['area'] ?? 0), 2),
+                'production_volume' => 0,
+                'productivity_per_hectare' => 0,
+                'number_of_farmers' => (int)($row['farmers'] ?? 0),
+                'average_income_per_hectare' => 0,
+                'harvest_season' => null,
+                'image_path' => $imagePath,
+                'notes' => $row['description'] ?? null,
+                'data_date' => $now->toDateString(),
+                'updated_by' => $userId,
+                'created_at' => $now,
+                'updated_at' => $now,
+            ];
+        }
+        // Update or insert each record individually
+        foreach ($insertRows as $row) {
+            $existing = \Illuminate\Support\Facades\DB::table('agricultural_data')
+                ->where('commodity_name', $row['commodity_name'])
+                ->where('commodity_type', $row['commodity_type'])
+                ->first();
+                
+            if ($existing) {
+                // Update existing record
+                \Illuminate\Support\Facades\DB::table('agricultural_data')
+                    ->where('id', $existing->id)
+                    ->update([
+                        'land_area' => $row['land_area'],
+                        'production_volume' => $row['production_volume'],
+                        'productivity_per_hectare' => $row['productivity_per_hectare'],
+                        'number_of_farmers' => $row['number_of_farmers'],
+                        'average_income_per_hectare' => $row['average_income_per_hectare'],
+                        'harvest_season' => $row['harvest_season'],
+                        'image_path' => $row['image_path'],
+                        'notes' => $row['notes'],
+                        'data_date' => $row['data_date'],
+                        'updated_by' => $row['updated_by'],
+                        'updated_at' => $row['updated_at'],
+                    ]);
+            } else {
+                // Insert new record
+                \Illuminate\Support\Facades\DB::table('agricultural_data')->insert($row);
+            }
+        }
 
         return redirect()->route('admin.agricultural')->with('success', 'Data pertanian berhasil diperbarui');
     }

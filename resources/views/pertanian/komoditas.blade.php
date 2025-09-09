@@ -21,7 +21,13 @@
                 <div class="hero-content">
                                         
                     <h1 class="display-4 fw-bold mb-4">Komoditas Pertanian Unggulan</h1>
-                    <p class="lead mb-4">Kelapa Sawit, Kakao, dan Lada sebagai komoditas utama yang menjadi tulang punggung perekonomian desa</p>
+                    <p class="lead mb-4">
+                        @if(count($agricultural['commodities']) > 0)
+                            {{ collect($agricultural['commodities'])->pluck('name')->take(3)->join(', ') }} sebagai komoditas utama yang menjadi tulang punggung perekonomian desa
+                        @else
+                            Komoditas pertanian berkualitas tinggi yang menjadi andalan ekonomi masyarakat Desa Tetembomua
+                        @endif
+                    </p>
                 </div>
             </div>
         </div>
@@ -43,13 +49,19 @@
             </div>
             <div class="col-lg-6">
                 <h2 class="mb-4">Komoditas Unggulan Desa</h2>
-                <p class="mb-4">Desa Tetembomua memiliki komoditas pertanian unggulan yang menjadi andalan ekonomi masyarakat. Mayoritas penduduk desa adalah petani dengan hasil panen utama berupa sawit, kakao, dan lada. Dengan luas lahan pertanian yang subur, desa ini mampu menghasilkan produk pertanian berkualitas tinggi yang siap dipasarkan ke tingkat regional dan nasional.</p>
+                <p class="mb-4">
+                    Desa Tetembomua memiliki {{ count($agricultural['commodities']) + count($agricultural['horticultures']) + count($agricultural['fruits']) }} jenis komoditas pertanian unggulan yang menjadi andalan ekonomi masyarakat. 
+                    @if($agricultural['farmers'] > 0)
+                        Dengan {{ number_format($agricultural['farmers']) }} petani dan luas lahan {{ number_format($agricultural['land_area']) }} hektar, 
+                    @endif
+                    desa ini mampu menghasilkan produk pertanian berkualitas tinggi yang siap dipasarkan ke tingkat regional dan nasional.
+                </p>
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <div class="d-flex align-items-center">
                             <i class="fas fa-seedling text-success me-3 fa-2x"></i>
                             <div>
-                                <h6 class="mb-0">3 Komoditas</h6>
+                                <h6 class="mb-0">{{ count($agricultural['commodities']) + count($agricultural['horticultures']) + count($agricultural['fruits']) }} Komoditas</h6>
                                 <small class="text-muted">Unggulan utama</small>
                             </div>
                         </div>
@@ -58,8 +70,8 @@
                         <div class="d-flex align-items-center">
                             <i class="fas fa-leaf text-primary me-3 fa-2x"></i>
                             <div>
-                                <h6 class="mb-0">100% Organik</h6>
-                                <small class="text-muted">Sertifikasi organik</small>
+                                <h6 class="mb-0">{{ number_format($agricultural['land_area']) }} Ha</h6>
+                                <small class="text-muted">Total luas lahan</small>
                             </div>
                         </div>
                     </div>
@@ -69,89 +81,127 @@
     </div>
 </section>
 
-<!-- Plantation Crops Section -->
+<!-- Statistics Section -->
+@if($agricultural['farmers'] > 0 || $agricultural['land_area'] > 0)
 <section class="section bg-light">
+    <div class="container">
+        <div class="section-title">
+            <h2>Statistik Pertanian</h2>
+            <p>Data pertanian terkini Desa Tetembomua</p>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card text-center h-100">
+                    <div class="card-body">
+                        <i class="fas fa-users fa-3x text-primary mb-3"></i>
+                        <h3 class="text-primary">{{ number_format($agricultural['farmers']) }}</h3>
+                        <h6 class="card-title">Total Petani</h6>
+                        <p class="card-text small text-muted">Petani aktif di Desa Tetembomua</p>
+                    </div>
+                </div>
+                            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card text-center h-100">
+                    <div class="card-body">
+                        <i class="fas fa-map fa-3x text-success mb-3"></i>
+                        <h3 class="text-success">{{ number_format($agricultural['land_area']) }}</h3>
+                        <h6 class="card-title">Luas Lahan (Ha)</h6>
+                        <p class="card-text small text-muted">Total luas lahan pertanian</p>
+                            </div>
+                        </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card text-center h-100">
+                    <div class="card-body">
+                        <i class="fas fa-seedling fa-3x text-warning mb-3"></i>
+                        <h3 class="text-warning">{{ count($agricultural['commodities']) + count($agricultural['horticultures']) + count($agricultural['fruits']) }}</h3>
+                        <h6 class="card-title">Jenis Komoditas</h6>
+                        <p class="card-text small text-muted">Total jenis komoditas yang dibudidayakan</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card text-center h-100">
+                    <div class="card-body">
+                        <i class="fas fa-calculator fa-3x text-info mb-3"></i>
+                        <h3 class="text-info">{{ $agricultural['farmers'] > 0 ? round($agricultural['land_area'] / $agricultural['farmers'], 2) : 0 }}</h3>
+                        <h6 class="card-title">Ha per Petani</h6>
+                        <p class="card-text small text-muted">Rata-rata luas lahan per petani</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</section>
+@endif
+
+<!-- Plantation Crops Section -->
+<section class="section">
     <div class="container">
         <div class="section-title">
             <h2>Tanaman Perkebunan</h2>
             <p>Komoditas perkebunan unggulan yang menjadi andalan ekonomi Desa Tetembomua</p>
         </div>
-        <div class="row">
+        <div class="row justify-content-center">
+            @forelse($agricultural['commodities'] as $index => $commodity)
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card h-100">
-                    <span role="button" class="open-image" data-src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">
-                        <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                             class="card-img-top" alt="Kelapa Sawit">
+                    @if(isset($commodity['image_path']) && $commodity['image_path'])
+                    <span role="button" class="open-image" data-src="{{ asset($commodity['image_path']) }}">
+                        <img src="{{ asset($commodity['image_path']) }}" 
+                             class="card-img-top" alt="{{ $commodity['name'] }}">
                     </span>
+                    @else
+                    <div class="card-img-top d-flex align-items-center justify-content-center bg-light" style="height: 200px;">
+                        <i class="fas fa-seedling fa-3x text-muted"></i>
+                    </div>
+                    @endif
                     <div class="card-body">
                         <h5 class="card-title">
                             <i class="fas fa-seedling text-success me-2"></i>
-                            Kelapa Sawit
+                            {{ $commodity['name'] }}
                         </h5>
-                        <p class="card-text">Kelapa sawit berkualitas tinggi yang menjadi komoditas utama Desa Tetembomua dengan hasil panen yang optimal.</p>
+                        <p class="card-text">{{ $commodity['description'] ?? 'Komoditas berkualitas tinggi yang menjadi andalan ekonomi Desa Tetembomua.' }}</p>
                         <div class="row text-center">
                             <div class="col-6">
                                 <small class="text-muted">Luas Tanam</small>
-                                <h6 class="mb-0">800 Ha</h6>
+                                <h6 class="mb-0">{{ number_format($commodity['area']) }} Ha</h6>
                             </div>
                             <div class="col-6">
+                                <small class="text-muted">Jumlah Petani</small>
+                                <h6 class="mb-0">{{ number_format($commodity['farmers']) }} orang</h6>
+                            </div>
+                        </div>
+                        @if($commodity['production_volume'] > 0)
+                        <div class="row text-center mt-2">
+                            <div class="col-6">
                                 <small class="text-muted">Produksi</small>
-                                <h6 class="mb-0">12,000 Ton</h6>
+                                <h6 class="mb-0">{{ number_format($commodity['production_volume']) }} Ton</h6>
+                            </div>
+                            <div class="col-6">
+                                <small class="text-muted">Produktivitas</small>
+                                <h6 class="mb-0">{{ number_format($commodity['productivity']) }} Ton/Ha</h6>
+                            </div>
+                        </div>
+                        @endif
+                        <div class="text-center mt-2">
+                            <span class="badge bg-success">Organik</span>
                             </div>
                         </div>
                     </div>
                 </div>
+            @empty
+            <div class="col-12">
+                <div class="text-center py-5">
+                    <i class="fas fa-seedling fa-3x text-muted mb-3"></i>
+                    <h5 class="text-muted">Belum ada data komoditas perkebunan</h5>
+                    <p class="text-muted">Data komoditas perkebunan akan ditampilkan setelah admin menambahkan data di panel admin.</p>
+                    <a href="{{ route('contact') }}" class="btn btn-outline-primary">
+                        <i class="fas fa-envelope me-2"></i>Hubungi Admin
+                    </a>
             </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card h-100">
-                    <span role="button" class="open-image" data-src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">
-                        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                             class="card-img-top" alt="Kakao">
-                    </span>
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <i class="fas fa-seedling text-warning me-2"></i>
-                            Kakao
-                        </h5>
-                        <p class="card-text">Kakao berkualitas premium yang menghasilkan biji kakao dengan cita rasa yang unggul untuk industri cokelat.</p>
-                        <div class="row text-center">
-                            <div class="col-6">
-                                <small class="text-muted">Luas Tanam</small>
-                                <h6 class="mb-0">300 Ha</h6>
-                            </div>
-                            <div class="col-6">
-                                <small class="text-muted">Produksi</small>
-                                <h6 class="mb-0">450 Ton</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card h-100">
-                    <span role="button" class="open-image" data-src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">
-                        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                             class="card-img-top" alt="Lada">
-                    </span>
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <i class="fas fa-seedling text-info me-2"></i>
-                            Lada
-                        </h5>
-                        <p class="card-text">Lada berkualitas tinggi yang menjadi komoditas rempah-rempah unggulan dengan aroma dan rasa yang kuat.</p>
-                        <div class="row text-center">
-                            <div class="col-6">
-                                <small class="text-muted">Luas Tanam</small>
-                                <h6 class="mb-0">150 Ha</h6>
-                            </div>
-                            <div class="col-6">
-                                <small class="text-muted">Produksi</small>
-                                <h6 class="mb-0">75 Ton</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforelse
         </div>
     </div>
 </section>
@@ -163,59 +213,63 @@
             <h2>Hortikultura</h2>
             <p>Sayuran dan buah-buahan segar yang berkualitas tinggi</p>
         </div>
-        <div class="row">
+        <div class="row justify-content-center">
+            @forelse($agricultural['horticultures'] as $index => $horticulture)
             <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card h-100">
-                    <span role="button" class="open-image" data-src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">
-                        <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                             class="card-img-top" alt="Tomat">
+                    @if(isset($horticulture['image_path']) && $horticulture['image_path'])
+                    <span role="button" class="open-image" data-src="{{ asset($horticulture['image_path']) }}">
+                        <img src="{{ asset($horticulture['image_path']) }}" 
+                             class="card-img-top" alt="{{ $horticulture['name'] }}">
                     </span>
+                    @else
+                    <div class="card-img-top d-flex align-items-center justify-content-center bg-light" style="height: 200px;">
+                        <i class="fas fa-leaf fa-3x text-muted"></i>
+                    </div>
+                    @endif
                     <div class="card-body text-center">
-                        <h6 class="card-title">Tomat Cherry</h6>
-                        <p class="card-text small">Tomat cherry organik yang manis dan segar.</p>
+                        <h6 class="card-title">{{ $horticulture['name'] }}</h6>
+                        <p class="card-text small">{{ $horticulture['description'] ?? 'Sayuran berkualitas tinggi yang segar dan bergizi.' }}</p>
+                        <div class="row text-center mt-2">
+                            <div class="col-6">
+                                <small class="text-muted">Luas</small>
+                                <div class="fw-bold">{{ number_format($horticulture['area']) }} Ha</div>
+                    </div>
+                            <div class="col-6">
+                                <small class="text-muted">Petani</small>
+                                <div class="fw-bold">{{ number_format($horticulture['farmers']) }}</div>
+                </div>
+            </div>
+                        @if($horticulture['production_volume'] > 0)
+                        <div class="row text-center mt-1">
+                            <div class="col-6">
+                                <small class="text-muted">Produksi</small>
+                                <div class="fw-bold">{{ number_format($horticulture['production_volume']) }} Ton</div>
+                    </div>
+                            <div class="col-6">
+                                <small class="text-muted">Produktivitas</small>
+                                <div class="fw-bold">{{ number_format($horticulture['productivity']) }} Ton/Ha</div>
+                </div>
+            </div>
+                        @endif
+                        <div class="text-center mt-2">
                         <span class="badge bg-success">Organik</span>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card h-100">
-                    <span role="button" class="open-image" data-src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">
-                        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                             class="card-img-top" alt="Cabai">
-                    </span>
-                    <div class="card-body text-center">
-                        <h6 class="card-title">Cabai Merah</h6>
-                        <p class="card-text small">Cabai merah yang pedas dan berkualitas tinggi.</p>
-                        <span class="badge bg-success">Organik</span>
+            </div>
+            @empty
+            <div class="col-12">
+                <div class="text-center py-4">
+                    <i class="fas fa-leaf fa-2x text-muted mb-2"></i>
+                    <h6 class="text-muted">Belum ada data holtikultura</h6>
+                    <p class="text-muted small">Data holtikultura akan ditampilkan setelah admin menambahkan data di panel admin.</p>
+                    <a href="{{ route('contact') }}" class="btn btn-sm btn-outline-success">
+                        <i class="fas fa-envelope me-1"></i>Hubungi Admin
+                    </a>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card h-100">
-                    <span role="button" class="open-image" data-src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">
-                        <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                             class="card-img-top" alt="Terong">
-                    </span>
-                    <div class="card-body text-center">
-                        <h6 class="card-title">Terong Ungu</h6>
-                        <p class="card-text small">Terong ungu yang segar dan bergizi tinggi.</p>
-                        <span class="badge bg-success">Organik</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card h-100">
-                    <span role="button" class="open-image" data-src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">
-                        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                             class="card-img-top" alt="Bayam">
-                    </span>
-                    <div class="card-body text-center">
-                        <h6 class="card-title">Bayam Hijau</h6>
-                        <p class="card-text small">Bayam hijau yang kaya zat besi dan vitamin.</p>
-                        <span class="badge bg-success">Organik</span>
-                    </div>
-                </div>
-            </div>
+            @endforelse
         </div>
     </div>
 </section>
@@ -227,119 +281,71 @@
             <h2>Buah-Buahan</h2>
             <p>Buah-buahan segar yang dipanen langsung dari kebun desa</p>
         </div>
-        <div class="row">
+        <div class="row justify-content-center">
+            @forelse($agricultural['fruits'] as $index => $fruit)
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card h-100">
-                    <span role="button" class="open-image" data-src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">
-                        <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                             class="card-img-top" alt="Pisang">
+                    @if(isset($fruit['image_path']) && $fruit['image_path'])
+                    <span role="button" class="open-image" data-src="{{ asset($fruit['image_path']) }}">
+                        <img src="{{ asset($fruit['image_path']) }}" 
+                             class="card-img-top" alt="{{ $fruit['name'] }}">
                     </span>
+                    @else
+                    <div class="card-img-top d-flex align-items-center justify-content-center bg-light" style="height: 200px;">
+                        <i class="fas fa-apple-alt fa-3x text-muted"></i>
+                    </div>
+                    @endif
                     <div class="card-body">
                         <h5 class="card-title">
                             <i class="fas fa-apple-alt text-warning me-2"></i>
-                            Pisang Raja
+                            {{ $fruit['name'] }}
                         </h5>
-                        <p class="card-text">Pisang raja yang manis dan bergizi tinggi, cocok untuk konsumsi langsung maupun olahan.</p>
-                        <div class="d-flex justify-content-between align-items-center">
+                        <p class="card-text">{{ $fruit['description'] ?? 'Buah-buahan segar yang dipanen langsung dari kebun desa dengan kualitas terbaik.' }}</p>
+                        <div class="row text-center mb-2">
+                            <div class="col-6">
+                                <small class="text-muted">Luas</small>
+                                <div class="fw-bold">{{ number_format($fruit['area']) }} Ha</div>
+                            </div>
+                            <div class="col-6">
+                                <small class="text-muted">Petani</small>
+                                <div class="fw-bold">{{ number_format($fruit['farmers']) }}</div>
+                        </div>
+                    </div>
+                        @if($fruit['production_volume'] > 0)
+                        <div class="row text-center mb-2">
+                            <div class="col-6">
+                                <small class="text-muted">Produksi</small>
+                                <div class="fw-bold">{{ number_format($fruit['production_volume']) }} Ton</div>
+                            </div>
+                            <div class="col-6">
+                                <small class="text-muted">Produktivitas</small>
+                                <div class="fw-bold">{{ number_format($fruit['productivity']) }} Ton/Ha</div>
+                </div>
+            </div>
+                        @endif
+                        <div class="text-center mt-2">
                             <span class="badge bg-success">Organik</span>
-                            <small class="text-muted">Panen: 3x setahun</small>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card h-100">
-                    <span role="button" class="open-image" data-src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">
-                        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                             class="card-img-top" alt="Pepaya">
-                    </span>
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <i class="fas fa-apple-alt text-warning me-2"></i>
-                            Pepaya California
-                        </h5>
-                        <p class="card-text">Pepaya California yang manis dan segar, kaya akan vitamin C dan serat.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="badge bg-success">Organik</span>
-                            <small class="text-muted">Panen: Sepanjang tahun</small>
+            @empty
+            <div class="col-12">
+                <div class="text-center py-4">
+                    <i class="fas fa-apple-alt fa-2x text-muted mb-2"></i>
+                    <h6 class="text-muted">Belum ada data buah-buahan</h6>
+                    <p class="text-muted small">Data buah-buahan akan ditampilkan setelah admin menambahkan data di panel admin.</p>
+                    <a href="{{ route('contact') }}" class="btn btn-sm btn-outline-warning">
+                        <i class="fas fa-envelope me-1"></i>Hubungi Admin
+                    </a>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card h-100">
-                    <span role="button" class="open-image" data-src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">
-                        <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                             class="card-img-top" alt="Jeruk">
-                    </span>
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <i class="fas fa-apple-alt text-warning me-2"></i>
-                            Jeruk Siam
-                        </h5>
-                        <p class="card-text">Jeruk Siam yang manis dan segar, kaya akan vitamin C untuk kesehatan.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="badge bg-success">Organik</span>
-                            <small class="text-muted">Panen: Musim kemarau</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforelse
         </div>
     </div>
 </section>
 
-<!-- Spices Section -->
-<section class="section">
-    <div class="container">
-        <div class="section-title">
-            <h2>Rempah-Rempah</h2>
-            <p>Rempah-rempah berkualitas yang menjadi bumbu dapur</p>
-        </div>
-        <div class="row">
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card h-100">
-                    <div class="card-body text-center">
-                        <i class="fas fa-seedling fa-3x text-success mb-3"></i>
-                        <h6 class="card-title">Kunyit</h6>
-                        <p class="card-text small">Kunyit organik yang berkhasiat untuk kesehatan.</p>
-                        <span class="badge bg-success">Organik</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card h-100">
-                    <div class="card-body text-center">
-                        <i class="fas fa-seedling fa-3x text-warning mb-3"></i>
-                        <h6 class="card-title">Jahe</h6>
-                        <p class="card-text small">Jahe merah yang berkhasiat untuk kesehatan.</p>
-                        <span class="badge bg-success">Organik</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card h-100">
-                    <div class="card-body text-center">
-                        <i class="fas fa-seedling fa-3x text-primary mb-3"></i>
-                        <h6 class="card-title">Lengkuas</h6>
-                        <p class="card-text small">Lengkuas yang segar untuk bumbu masakan.</p>
-                        <span class="badge bg-success">Organik</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card h-100">
-                    <div class="card-body text-center">
-                        <i class="fas fa-seedling fa-3x text-info mb-3"></i>
-                        <h6 class="card-title">Kencur</h6>
-                        <p class="card-text small">Kencur yang berkhasiat untuk kesehatan.</p>
-                        <span class="badge bg-success">Organik</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+
 
 <!-- Quality Standards Section -->
 <section class="section bg-light">
@@ -576,3 +582,4 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 @endsection
+
